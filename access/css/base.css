@@ -1,0 +1,15 @@
+:root{
+    --primary_color:#1D4ED8;
+    --secondary_color:#3B82F6;
+    --tertiary_color:#F97316;
+    --neutral_color:#0F172A;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+}
