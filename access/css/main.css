@@ -209,7 +209,7 @@
     list-style: none;
     display: flex;
     align-items: center;
-    padding: 6px 0;
+    padding: 2px 0;
     font-size: 1.6rem;
     cursor: pointer;
     border-radius: 5px;
@@ -269,4 +269,119 @@
     font-size: 1.3rem;
     color: #C45600;
     font-weight: 700;
+}
+
+/* phần slide chính */
+.slide__content{
+        background: linear-gradient(
+        135deg,
+        #315EDC 0%,
+        #416FE5 50%,
+        #2D5DD5 100%
+    );
+    height: 100%;
+    border-radius: 5px;
+}
+.slide__content-left{
+    position: relative;
+    color: white;
+    padding: 20px;
+    height: 100%;
+   
+}
+.slide__left-label{
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 5px 14px 0px 23px;
+    border-radius: 20px;
+    color: #E9EEFF;
+   background-color: rgba(255, 255, 255, 0.15);
+}
+.slide__left-label::after{
+    content: "";
+    position: absolute;
+    background-color: #FFD0B8;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top:37%;
+    left:10px;
+}
+.slider__left-text{
+    font-size: 4.6rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    word-spacing: -2px;
+     margin-bottom: -10px;
+}
+.slider__left-text--sale{
+    font-size: 4.6rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    word-spacing: -2px;
+   color: #FFDBCA;
+}
+.slider__left-text-sub{
+    color: #DCE5FF;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 400px;
+}
+.slider__left-button{
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+.slider__left-button-explore{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #783200;
+    padding: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    justify-self: center;
+}
+.slider__left-button-explore--text{
+     margin: 2px 0px 2px 8px;
+     font-size: 1.3rem;
+    font-weight: 600;
+}
+.slider__left-button-explore--icon{
+    margin: 2px 0px 2px 8px; 
+    font-size: 1rem;
+}
+.slider__left-button-voucher{
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    background-color:rgba(255, 255, 255, 0.12);
+    color: white;
+}
+.slider__left-footer{
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+   align-items: center;
+}
+.slider__left-footer--text{
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+.slider__left-footer--icon{
+    margin-right: 5px;
+}
+.slider__left-footer--dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color:rgba(255, 255, 255, 0.2) ;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
