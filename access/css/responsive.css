@@ -1,0 +1,194 @@
+/* cho cả mobile và tablet */
+@media (max-width: 992px){
+    .navbar__trend{
+        display: none;
+    }
+    .navbar__menu{
+        display: block;
+    }
+    .slide__navbar{
+        display: none;
+    }
+    .slide__bar{
+        display: none;
+    }
+    .navbar__logo{
+        margin-left: 0;
+    }
+    /* thanh tìm kiếm */
+    .navbar__search{
+        margin-left: 0;
+    }
+    .navbar__category{
+        display: none;
+    }
+
+    .navbar__notify, .navbar__cart, .navbar__user{
+        margin-right: 5px;
+    }
+    .slider__footer-benefits{
+        margin-bottom: 5px;
+    }
+    .body__voucher-code{
+        margin-bottom: 5px;
+    }
+}
+/* Mobile: dưới 768px */
+@media (max-width: 767.98px) {
+     html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;              /* Chrome, Safari, Edge */
+    }
+    .navbar__menu-category{
+        width: 70vw;
+    }
+    .navbar__logo{
+        width: 45px;
+        overflow: hidden;
+        padding-top: 6px;
+    }
+    .navbar__mid {
+        flex: 0 0 auto;
+        margin-left: auto;
+        height: 77%;
+    }
+    .navbar__search{
+        width: auto;
+        background-color: transparent;
+    }
+    .navbar__search.navbar__search-color{
+        background-color:#EDF0FF ;
+    }
+    .navbar__search-input{
+       height: 100%;
+       border-radius: 5px;
+       
+    }
+    .navbar__search-input-text{
+        display: none;
+        padding-left: 5px;
+        padding-left: 5px;
+        animation: show_search linear 0.3s ;
+    }
+    @keyframes show_search {
+        from{
+            transform: translateX(10%);
+            opacity: 0;
+        }
+        to{
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    .navbar__search-input-text.active{
+        display: block;
+    }
+    .navbar__search-icon{
+        height: 77%;
+        width: 48px;
+    }
+    .navbar__right {
+        margin-left: 10px;
+        padding-top:16px ;
+    }
+    .navbar__user-link{
+        display: block;
+    }
+    .navbar__user-login, .navbar__user-resgister{
+        display: none;
+    }
+    .slider__footer-benefits{
+        height: 140px;
+    }
+    .flashsale__left-text {
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
+    .flashsale__left-time{
+        font-size: 1rem;
+        margin-right: 3px;
+    }
+    .flashsale__right-link p{
+        display: none;
+    }
+    .body__voucher-header-name{
+        font-size: 1.5rem;
+    }
+    .body__voucher-header--link p{
+        display: none;
+    }
+    .body__product-title{
+        display: block;
+    }
+    .body__product-name{
+        font-size: 1.4rem;
+    }
+    .body__product-text{
+        font-size: 1.6rem;
+    }
+    .body__product-list{
+        margin-bottom: 5px;
+    }
+    .body__product-select{
+        margin-right: 3px;
+        padding: 3px 4px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet: từ 768px đến dưới 992px */
+@media (min-width: 768px) and (max-width: 992px) {
+    .header{
+        height: 70px;
+    }
+    .navbar__logo{
+        width: 40px;
+    }
+    .navbar__search-input{
+        height: 46px;
+        width: 400px;
+    }
+    .navbar__search-input-text{
+        padding-left: 10px
+    }
+    .navbar__right{
+        padding-top:20px ;
+        margin-left: 10px;
+    }
+    
+}
+/* laptop cấu hình thấp */
+@media (max-width:1200px){
+     .navbar__trend{
+        margin-left: 10px;
+        display: none;
+    }
+      .navbar__menu{
+        display: block;
+    }
+    .navbar__search{
+        margin-left: 10px;
+        max-width: 600px;
+    }
+    .navbar__search-input-text{
+        padding-left: 16px
+    }
+    .navbar__category{
+        display: none;
+    }
+    .slide__bar{
+        display: none;
+    }
+    .slide__img {
+       width: 100%;
+   }
+    .slide__img img {
+      width: 100%;
+      height: auto;  
+      display: block;
+      margin-top: 20px;
+    }
+    .slider__footer-benefits{
+        margin-bottom: 5px;
+    }
+}

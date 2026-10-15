@@ -9,6 +9,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+p{
+    margin-bottom: 0;
+}
+ul{
+    padding-left: 0;
+}
 html {
     font-size: 62.5%;
     line-height: 1.6rem;

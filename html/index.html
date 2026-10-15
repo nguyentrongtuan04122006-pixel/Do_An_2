@@ -6,6 +6,7 @@
     <link href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../access/css/main.css">
     <link rel="stylesheet" href="../access/css/base.css">
+    <link rel="stylesheet" href="../access/css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,wght,GRAD,opsz@0..1,100..700,0..200,20..48" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>Document</title>
@@ -13,6 +14,98 @@
 <body>
     <div class="header">
         <div class=" header__navbar container-sm">
+            <div class="navbar__menu">
+                <span class="material-symbols-outlined">menu</span>
+                <div class="navbar__menu-category">
+                    <div class="">
+                        <div class="navbar__menu-category--title">DANH MỤC CHÍNH</div>
+                            <ul>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">mobile</span></div>
+                                    Điện thoại & Tablet
+                                    <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                     <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">laptop_mac</span></div>
+                                    Laptop & Thiết Bị
+                                    <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">styler</span></div>
+                                    Thời Trang Nam Nữ
+                                    <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                   <div class="navbar__menu-category-icon "><span class="material-symbols-outlined ">auto_awesome</span></div>
+                                    Mỹ Phẩm & Làm Đẹp
+                                    <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">home_iot_device</span></div>
+                                    Gia Dụng Thông Minh 
+                                      <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">shopping_cart</span></div>
+                                    Bách Hóa Đời Sống
+                                      <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined ">child_friendly</span></div>
+                                    Mẹ & Bé Tiện Ích
+                                     <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                                <li class="navbar__menu-category--list">
+                                    <div class="navbar__menu-category-icon"><span class="material-symbols-outlined">fitness_center</span></div>
+                                    Thể Thao & Du Lịch
+                                     <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="navbar__menu-utilities">
+                            <div class="navabar__menu-utilities--title">Ưu đãi và Tiện ích</div>
+                            <ul>
+                                <li class="navbar__menu-utilities--list">
+                                    <a href="" class="menu__utilities-link">
+                                         <span class="material-symbols-outlined menu__utilities-link--flash">bolt</span>
+                                        Flash Sale
+                                        <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                    </a>
+                                     
+                                </li>
+                                <li class="navbar__menu-utilities--list">
+                                    <a href="" class="menu__utilities-link">
+                                        <span class="material-symbols-outlined menu__utilities-link--hot">trending_up</span>
+                                        Bán chạy
+                                        <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                    </a>
+                                </li>
+                                <li class="navbar__menu-utilities--list">
+                                    <a href="" class="menu__utilities-link">
+                                        <span class="material-symbols-outlined menu__utilities-link--new">package_2</span>
+                                        Hàng mới về
+                                        <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                    </a>
+                                </li>
+                                <li class="navbar__menu-utilities--list">
+                                    <a href="" class="menu__utilities-link">
+                                        <span class="material-symbols-outlined menu__utilities-link--voucher">redeem</span>
+                                        Kho voucher& Ưu đãi
+                                        <span class="material-symbols-outlined slide__bar-show">chevron_right</span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="navbar__menu-saler">
+                          <span class="material-symbols-outlined">storefront</span>
+                        Kênh người bán
+                    </div>
+                    <div class="navbar__menu-close">
+                        <span class="material-symbols-outlined">close</span>
+                    </div>
+                </div>
+                <div class="over_lay"></div>
+            </div>
             <div class="navbar__logo">
                 <img src="/access/picture/screen.png" alt="" class="navbar__logo-icon">
             </div>
@@ -55,9 +148,11 @@
                 </a>
             </div>
             <div class="navbar__user">
-                <a href="" class="navbar__user-link">
+                <div href="" class="navbar__user-link">
                     <span class="material-symbols-outlined">person</span>
-                </a>
+                </div> 
+                <a class="navbar__user-login">Đăng nhập</a>
+                <a class="navbar__user-resgister">Đăng ký</a>
             </div>
             </div>
            
@@ -86,6 +181,12 @@
                         <a href="">
                        <span class="material-symbols-outlined">redeem</span>
                         Voucher & Ưu đãi
+                        </a>
+                    </li>
+                     <li class="slide__navbar-item slide__navbar-vendor">
+                        <a href="">
+                       <span class="material-symbols-outlined">storefront</span>
+                        Kênh Người Bán
                         </a>
                     </li>
                 </ul>   
@@ -149,9 +250,9 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-9">
-                        <div class="slide__content">
-                            <div class="slide__content-left">
+                    <div class="col-12 col-xl-9 ">
+                        <!-- <div class="slide__content">
+                               <div class="slide__content-left">
                                 <span class="slide__left-label">ĐẠI TIỆC MUA SẮM SIÊU SALE 2026</span>
                                 <p class="slider__left-text">BÙNG NỔ ƯU ĐÃI</p>
                                 <p class="slider__left-text--sale">GIẢM ĐẾN 50%</p>
@@ -170,7 +271,7 @@
                                         Freeship từ đơn 0Đ</p>
                                     <span class="slider__left-footer--dot"></span>
                                     <p class="slider__left-footer--text"><span class="material-symbols-outlined slider__left-footer--icon">credit_card</span>
-                                        Trả góp 0% lãi suất</p>
+                                        Trả góp 0% lãi suất</p> 
                                 </div>
                             </div>
                             <div class="slide__content-right">
@@ -181,7 +282,10 @@
                                     <img src="../access/picture/Gemini_Generated_Image_novaphone.png" alt="">
                                 </div>
                             </div>
-                        </div> 
+                        </div>   -->
+                        <div class="slide__img">
+                            <img src="../access/picture/siu_972x460_noscale.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,7 +293,7 @@
         <div class="slide__footer">
             <div class="container-sm">
                 <div class="row gx-3">
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined">verified</span>
@@ -198,7 +302,7 @@
                             <p class="slider__benerfits-sub--text">Cam kết 100%</p>
                         </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined">local_shipping</span>
@@ -207,7 +311,7 @@
                             <p class="slider__benerfits-sub--text">Cam kết 100%</p>
                         </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined slider__benefits-icon-special">electric_bolt</span>
@@ -216,7 +320,7 @@
                             <p class="slider__benerfits-sub--text">Giá sốc khung giờ</p>
                         </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined">currency_exchange</span>
@@ -225,7 +329,7 @@
                             <p class="slider__benerfits-sub--text">Mua sắm tiết kiệm</p>
                         </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined">public</span>
@@ -234,7 +338,7 @@
                             <p class="slider__benerfits-sub--text">Nhập khẩu chính ngạch</p>
                         </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-3 col-4">
                         <div class="slider__footer-benefits">
                             <div class="slider__benefits-icon">
                                 <span class="material-symbols-outlined slider__benefits-icon-special">payments</span>
@@ -261,13 +365,13 @@
                     </div>
                     <div class="body__flashsale_right">
                         <a href="" class="flashsale__right-link">
-                            Xem tất cả deal sốc
+                           <p>Xem tất cả deal sốc</p> 
                             <span class="material-symbols-outlined">arrow_right_alt</span>
                         </a>
                     </div>
                 </div>
                 <div class="row">
-                     <div class="col-xl-2">
+                     <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -284,7 +388,7 @@
                             <div class="flashsale__product-sale">-21%</div>
                          </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -301,7 +405,7 @@
                             <div class="flashsale__product-sale">-21%</div>
                          </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -318,7 +422,7 @@
                             <div class="flashsale__product-sale">-21%</div>
                          </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -335,7 +439,7 @@
                             <div class="flashsale__product-sale">-21%</div>
                          </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -352,7 +456,7 @@
                             <div class="flashsale__product-sale">-21%</div>
                          </div>
                     </div>
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product">
                             <div class="flashsale__product-img">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -386,7 +490,7 @@
 
                                <div class="body__voucher-header-right">
                                   <a href="" class="body__voucher-header--link">
-                                     Xem thêm mã giảm giá
+                                     <p> Xem thêm mã giảm giá</p>
                                      <span class="material-symbols-outlined">arrow_right_alt</span>
                                    </a>
                                </div>
@@ -394,7 +498,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-3">
+                        <div class="col-xl-3 col-md-6">
                             <div class="body__voucher-code">
                                 <div class="body__code-icon">
                                     <span class="material-symbols-outlined">local_shipping</span>
@@ -409,7 +513,7 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="col-xl-3">
+                          <div class="col-xl-3 col-md-6">
                             <div class="body__voucher-code">
                                 <div class="body__code-icon">
                                     <span class="material-symbols-outlined">local_shipping</span>
@@ -424,7 +528,7 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="col-xl-3">
+                          <div class="col-xl-3 col-md-6">
                             <div class="body__voucher-code">
                                 <div class="body__code-icon">
                                     <span class="material-symbols-outlined">local_shipping</span>
@@ -439,7 +543,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="col-xl-3">
+                         <div class="col-xl-3 col-md-6">
                             <div class="body__voucher-code">
                                 <div class="body__code-icon">
                                     <span class="material-symbols-outlined">local_shipping</span>
@@ -501,8 +605,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                       <div class="col-xl-2">
+                <div class="row"> 
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -527,9 +631,9 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
+                         </div>     
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -554,9 +658,9 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
+                         </div>     
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -581,9 +685,9 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
+                         </div>     
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -608,9 +712,9 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
+                         </div>     
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -635,9 +739,9 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
+                         </div>     
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
                          <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
                             <div class="flashsale__product-img ">
                                 <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
@@ -662,332 +766,10 @@
                                 <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
                             </div>
                             <div class="flashsale__product-sale">-21%</div>
-                         </div>
+                         </div>     
+                    </div>
                 </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
-                   <div class="col-xl-2">
-                         <div class="body__flashsale-product" style="border: 1px solid #ddd;background-color: #fff; box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15) ;">
-                            <div class="flashsale__product-img ">
-                                <img src="../access/picture/Gemini_Generated_Image_iphone16.png" alt="">
-                            </div>
-                            <div class="body__product-rating">
-                                <div class="body__rating-stars">
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review">star</span>
-                                    <span class="material-symbols-outlined body__rating-review partial rating-4-7">star</span>
-                                </div>
-                                <div class="body__rating-number">(4.7).</div>
-                                <div class="body__rating-saled">Đã bán 3.8k</div>
-                            </div>
-                            <p class="flashsale__product-name">iPhone 16 Pro 256GB Titan Tự Nhiên </p>
-                            <div class="flashsale__product-footer">
-                                <div class="flashsale__product-footer--price">
-                            <p class="flashsale__product-price">28.490.000đ</p>
-                            <p class="flashsale__product-oldprice">35.990.000đ</p>
-                            </div>
-                                <span class="flashsale__product-footer--addcart material-symbols-outlined">add_shopping_cart</span>
-                            </div>
-                            <div class="flashsale__product-sale">-21%</div>
-                         </div>
-                </div>
+
                 <div class="row">
                     <div class="body__product-more">
                         <button>
@@ -1002,7 +784,7 @@
     <div class="footer">
         <div class="container-sm">
             <div class="row">
-                <div class="col-xl-5">
+                <div class="col-xl-5 col-md-7">
                     <div class="footer__contact">
                         <div class="footer__contact-logo">
                             <img src="../access/picture/screen.png" alt="">
@@ -1035,7 +817,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2">
+                <div class="col-xl-2 col-md-3">
                     <div class="footer__service">
                         <div class="footer__service-title">Chăm sóc khách hàng</div>
                         <ul class="footer__service-list">
@@ -1047,7 +829,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-2">
+                <div class="col-xl-2 col-md-2">
                     <div class="footer__service">
                         <div class="footer__service-title">Về NovaMall</div>
                         <ul class="footer__service-list">
@@ -1059,7 +841,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-xl-3 col-12">
                     <div class="footer__partner">
                         <div class="footer__service-title">Đối tác & Thanh toán</div>
                         <div class="footer__partner-name">CỔNG THANH TOÁN BẢO MẬT</div>
@@ -1092,4 +874,8 @@
     </div>
 </body>
 <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../access/js/home.js">
+    show_closeSearch();
+    show_Menu();
+</script>
 </html>
