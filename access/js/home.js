@@ -32,3 +32,26 @@ function show_Menu(){
     });
 }
 show_Menu();
+function Count_time(){
+    const hours = document.querySelector('.flashsale__left-hour');
+    const minutes = document.querySelector('.flashsale__left-minutes');
+    const seconds = document.querySelector('.flashsale__left-second');
+    let time = Number(hours.textContent)*3600 + Number(minutes.textContent)*60 + Number(seconds.textContent);
+    // kiểm tra xem có đủ 2 chữ số ko
+    function check_time(n) {
+       return n < 10 ? "0" + n : n;
+    }
+    function show_time(){
+        hours.textContent = check_time(Math.floor(time/3600));
+        minutes.textContent = check_time(Math.floor((time % 3600)/60));
+        seconds.textContent = check_time(Math.floor(time % 60))
+    }
+    let timer = setInterval(function(){
+         time = time -1;
+         show_time();
+         if(time <= 0 ){
+            clearInterval(timer);
+         }
+    },1000)
+}
+Count_time();

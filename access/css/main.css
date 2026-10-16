@@ -458,11 +458,43 @@
     border-radius: 5px;
     display: flex;
 }
-.slide__img img{
-    max-width: 100%;
-    height: 460px;
-    object-fit: fill;
+.slide__banner{
+  position: relative;
+    width: 100%;
+    overflow: hidden;
     border-radius: 5px;
+    padding-bottom: 0;
+}
+.slide__banner .carousel-inner,
+.slide__banner .carousel-item {
+    width: 100%;
+}
+.slide__banner .carousel-item img {
+    display: block;
+    width: 100%;
+     height: auto;              /* bỏ 460px cố định */
+    aspect-ratio: 972 / 460;  /*giữ nguyên tỉ lệ ảnh*/
+    object-fit: cover;
+}
+.slide__banner .carousel-control-prev,
+.slide__banner .carousel-control-next {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 64px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+}
+.slide__banner .carousel-control-prev { left: 0; }
+.slide__banner .carousel-control-next { right: 0; }
+
+.slide__banner .material-symbols-outlined {
+    font-size: 20px;
 }
 .slide__content-left{
     position: relative;
