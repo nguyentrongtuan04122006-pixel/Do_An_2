@@ -260,23 +260,29 @@ function renderProduct(containerId,productList){
             <!-- Đánh giá sản phẩm -->
             <div class="body__product-rating">
                 <div class="body__rating-stars">
-                    ${[1, 2, 3, 4, 5].map(star => {
-                        const rating = product.rate;
-                        const decimal = Math.round((rating % 1) * 10) / 10;
-                        let starClass = "";
-                        if (rating >= star) {
-                            starClass = "";
-                        } else if (rating > star - 1) {
-                            starClass = `partial rating-${Math.floor(rating)}-${Math.round(decimal * 10)}`;
-                        } else {
-                            starClass = "empty";
-                        }
-                        return `
-                            <span class="material-symbols-outlined body__rating-review ${starClass}">
-                                star
-                            </span>
-                        `;
-                    }).join("")}
+                   ${[1, 2, 3, 4, 5].map(function(star) {
+                    const rating = product.rate;
+                    let starClass = "";
+
+                  if (rating >= star) {
+                    // Sao đầy
+                      starClass = "full";
+                   } else if (rating > star - 1) {
+                     // Sao một phần
+                     const decimal = Math.round((rating % 1) * 10);
+
+                    starClass = `partial rating-0-${decimal}`;
+                    } else {
+                    // Sao rỗng
+                    starClass = "empty";
+                  }
+ 
+                  return `
+                   <span class="material-symbols-outlined body__rating-review ${starClass}">
+                   star
+                  </span>
+                  `;
+                  }).join("")}
                 </div>
                 <div class="body__rating-number">
                     (${product.rate})
