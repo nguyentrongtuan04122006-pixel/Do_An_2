@@ -32,6 +32,16 @@
     .body__voucher-code{
         margin-bottom: 5px;
     }
+    /* login */
+    .login_left{
+        display: none;
+    }
+    .login_right{
+        margin: auto;
+    }
+    .login{
+        height: 470px;
+    }
 }
 /* Mobile: dưới 768px */
 @media (max-width: 767.98px) {
@@ -134,6 +144,24 @@
         padding: 3px 4px;
         font-size: 1.1rem;
     }
+    /* login */
+    .login_right{
+        margin: auto;
+        padding-left: 10px;
+    }
+    .login_right-sub-label,.login_right-user input,.login_right-pw label,.login_right-pw input,.login_right-forget-pw,.login_right-bt{
+        width: 100%;
+    }
+    .login_header-text{
+        display: none;
+    }
+    /* register */
+    .register__input{
+        width: 100%;
+    }
+    .register__login-text{
+        width: 100%;
+    }
 }
 
 /* Tablet: từ 768px đến dưới 992px */
@@ -155,7 +183,7 @@
         padding-top:20px ;
         margin-left: 10px;
     }
-    
+
 }
 /* laptop cấu hình thấp */
 @media (max-width:1200px){

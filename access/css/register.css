@@ -1,0 +1,47 @@
+.register__header-left{
+    margin-top: 10px;
+}
+.register__title{
+    margin-bottom: 2px;
+}
+.register__subtitle{
+    font-size: 1.3rem;
+}
+.register__label{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.register__input-wrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.register__input-wrap span{
+    position: absolute;
+     pointer-events: none; /* click xuyên qua icon vào input */
+     left:4px;
+     font-size: 2.6rem;
+     color:  #94a3b8
+}
+.register__input{
+    width: 90%;
+    padding: 14px 14px 14px 40px;
+    border: none;
+    background-color: #FAF8FF;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    outline: none;
+}
+.register__login-text{
+    width: 90%;
+    margin-top: 5px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: end;
+    color: var(--neutral_color);
+}
+.register__login-link{
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary_color);
+}

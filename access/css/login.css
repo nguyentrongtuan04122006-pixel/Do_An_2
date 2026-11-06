@@ -1,7 +1,23 @@
+.login_header-content{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.login_header-text{
+    padding-top: 14px;
+    font-size: 2.3rem;
+}
+.login_header_help{
+    text-decoration: none ;
+    display: flex;
+    margin-left: auto;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary_color);
+}
 .login{
     width: 100%;
-
-     background: linear-gradient(to bottom, #1d4ed8, #19236e);
+    background: linear-gradient(to bottom, #1d4ed8, #19236e);
 }
 .login_body{
       display: flex;
@@ -9,7 +25,7 @@
 .login_left{
     width: 517px;
     height: 470px;
-    margin-left: 180px;
+    margin-left: 130px;
 }
 .login_left img{
     width: 100%;
@@ -18,4 +34,116 @@
 }
 .login_right{
     background-color: #fff;
+    padding: 10px;
+    width: 500px;
+    height: 460px;
+    padding-left: 35px;
+    transform: translateY(1%);
+    border-radius: 5px;
+}
+.login_right-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    margin-top: 10px;
+}
+.login_right-header button{
+    background-color: var(--primary_color);
+    border: none;
+    padding: 4px 14px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+   
+}
+.login_right-header span{
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #888;
+}
+.login_right-label{
+    font-size: 1.9rem;
+}
+.login_right-sub-label{
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+.login_right-user label{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--neutral_color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.login_right-user input{
+    width: 90%;
+    border: none;
+    padding: 8px;
+    font-size: 1.4rem;
+    background-color: #FAF8FF;
+    outline: none;
+    margin-bottom: 10px;
+}
+.login_right-pw label{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--neutral_color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.login_right-pw input{
+    width: 90%;
+    border: none;
+    padding: 8px;
+    font-size: 1.4rem;
+    background-color: #FAF8FF;
+    outline: none;
+}
+.login_right-forget-pw{
+    width: 90%;
+    color: var(--primary_color);
+    font-size: 1.2rem;
+    font-weight: 600;
+   display: flex;
+   justify-content: end;
+   text-decoration: none;
+}
+.login_right-bt{
+    width: 90%;
+    display: flex;
+    background-color: var(--primary_color);
+    border: none;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 9px 0;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.login_right-register{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+.login_right-register a{
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary_color);
+}
+.login_right-policy{
+      text-align: center;
+    font-size: 1.3rem;
+}
+.login_right-policy a{
+    text-decoration: none;
+    font-weight: 600;
 }

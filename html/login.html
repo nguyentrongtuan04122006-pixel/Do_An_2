@@ -6,57 +6,56 @@
     <title>Document</title>
     <link rel="stylesheet" href="../access/css/main.css">
     <link rel="stylesheet" href="../access/css/base.css">
-    <link rel="stylesheet" href="../access/css/responsive.css">
     <link rel="stylesheet" href="../access/css/login.css">
+     <link rel="stylesheet" href="../access/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="login_header">
+      <div class="container login_header-content">
+         <div class="login_header-logo">
+            <img src="../access/picture/screen.png" alt="" srcset="">
+         </div>
+         <h1 class="login_header-text">ĐĂNG NHẬP</h1>
+         <a href="" class="login_header_help">Bạn cần giúp đỡ?</a>
+        </div>
+    </div>
     <div class="login">
         <div class="container login_body">
         <div class="login_left">
             <img src="../access/picture/novamall-banner-790x747.png" alt="">
         </div>
         <div class="login_right">
-    <div>
+    <div class="login_right-header">
       <button type="button">Đăng Nhập</button>
       <span>Hotline 24/7: 1900 8888</span>
     </div>
-    <h1>Chào mừng bạn trở lại!</h1>
-    <p>Đăng nhập để nhận ngay ưu đãi cá nhân hóa và quản lý đơn hàng NovaMall.</p>
+    <h1 class="login_right-label">Chào mừng bạn trở lại!</h1>
+    <p class="login_right-sub-label">Đăng nhập để nhận ngay ưu đãi cá nhân hóa và quản lý đơn hàng NovaMall.</p>
     <form>
-      <div>
-        <label for="account">Số điện thoại hoặc Email <span>*</span></label>
+      <div class="login_right-user">
+        <label for="account" >Số điện thoại hoặc Email <span>*</span></label>
         <input id="account" type="text" placeholder="Nhập số điện thoại hoặc email đăng ký" autocomplete="username" required>
       </div>
-      <div>
-        <label for="password">Mật khẩu <span>*</span></label>
-        <a href="#">Quên mật khẩu?</a>
+      <div class="login_right-pw">
+        <label for="password">Mật khẩu</label> 
         <input id="password" type="password" placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)" minlength="8" autocomplete="current-password" required>
       </div>
+      <a class="login_right-forget-pw" href="#">Quên mật khẩu?</a>
       <div>
-        <label>
-          <input type="checkbox" checked>
-          Ghi nhớ đăng nhập an toàn trong 30 ngày
-        </label>
       </div>
-      <button type="submit">ĐĂNG NHẬP NGAY →</button>
-      <button type="button">Đăng nhập không cần mật khẩu qua OTP / Zalo</button>
+      <button type="submit" class="login_right-bt">ĐĂNG NHẬP NGAY 
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
     </form>
-    <p>HOẶC TIẾP TỤC VỚI</p>
-    <div>
-      <button type="button">Google</button>
-      <button type="button">Apple</button>
-      <button type="button">Facebook</button>
-    </div>
-
-    <p>Bạn chưa có tài khoản NovaMall? <a href="#">Đăng ký ngay miễn phí</a></p>
-
-     <p>
+    <p class="login_right-register">Bạn chưa có tài khoản NovaMall? <a href="/html/register.html">Đăng ký ngay miễn phí</a></p>
+     <p class="login_right-policy">
       Bằng việc tiếp tục, bạn đồng ý với
       <a href="#">Điều khoản Dịch vụ</a> và
       <a href="#">Chính sách Quyền riêng tư</a> của NovaMall.
      </p>
-        </div>
+      </div>
     </div>
     </div>
     <div id="footer"></div>
