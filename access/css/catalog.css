@@ -1,0 +1,325 @@
+.body{
+    background-color: #FAF8FD;
+     padding-bottom: 20px;
+}
+.body_left{
+    background-color:#fff ;
+    position: relative;
+    top: 5px;
+    border-radius: 12px;
+    padding: 10px;
+}
+.body_left-header{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+.body_left-header span{
+    font-size: 2.5rem;
+}
+.body_content-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.body_content-list span{
+    position: relative;
+    top:2px
+}
+.body_content-groceries{
+    list-style: none;
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.body_content-groceries input{
+    margin-right: 5px;
+}
+.body_content_price {
+  display: block;
+  height: auto;            /* xoá height: 60px cũ */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.body_price-text {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* Hai ô giá: xếp ngang */
+.body_price-inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.body_price-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 6px;
+  background: #f7f7fb;
+  border: 1px solid #e3e3ea;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.body_price-unit {
+  font-size: 13px;
+  color: #555;
+  text-decoration: underline;
+}
+
+.body_price-sep {
+  color: #888;
+}
+
+/* Khung thanh trượt: tự có chiều cao, 3 phần tử bên trong bám vào nó */
+.body_price-slider {
+  position: relative;
+  height: 18px;
+  width: 100%;
+}
+
+.body_price-choose--cost {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.body_price-track,
+.body_price-progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+}
+
+.body_price-track {
+  left: 0;
+  right: 0;
+  background: #e3e3ea;
+}
+
+.body_price-progress {
+  left: 1.67%;    /* 500000 / 30000000 */
+  right: 16.67%;  /* 100% - 25000000 / 30000000 */
+  background: #3b5bdb;
+}
+
+.body_price-range {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.body_price-range::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 18px;
+}
+
+.body_price-range::-moz-range-track {
+  background: transparent;
+}
+
+.body_price-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #3b5bdb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.body_price-range::-moz-range-thumb {
+  pointer-events: auto;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #3b5bdb;
+}
+.body_content-store, .body_content-rating{
+    margin-top: 8px;
+}
+.body_store-text, .body_rating-text{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+.body-rating__item{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.body__rating-stars span{
+    font-size: 1.8rem;
+    margin-right: 5px;
+}
+.body-rating__item div{
+    margin-right: 5px;
+}
+.apply{
+    background-color: var(--primary_color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    width: 100%;
+   margin-top: 20px;
+   margin-bottom: 10px;
+   padding: 8px;
+   border-radius: 5px;
+}
+.sort_bar{
+    background-color: #fff;
+    margin-top:5px;
+    padding: 3px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+}
+.sort_left{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort_label {
+  margin-right: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+}
+
+/* Nút lọc dạng viên thuốc */
+.sort_btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #eef0fb;
+  color: #3b4a6b;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sort_btn--active {
+  background: #2f4fd8;
+  color: #fff;
+  font-weight: 600;
+}
+
+.sort_select {
+  padding: 6px 30px 6px 14px;
+  border: none;
+  border-radius: 999px;
+  background-color: #eef0fb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14' viewBox='0 0 10 14' fill='none' stroke='%23333' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5l3-3 3 3M2 9l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  color: #3b4a6b;
+  font-size: 13px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+/* Nút số trang */
+.page_btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 8px;
+  background: #eef0fb;
+  color: #3b4a6b;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page_btn:hover {
+  background: #dfe3f8;
+}
+
+/* Trang hiện tại */
+.page_btn--active {
+  background: #0a31b8;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(10, 49, 184, 0.35);
+}
+
+.page_btn--active:hover {
+  background: #0a31b8;
+}
+
+/* Dấu ... */
+.page_dots {
+  min-width: 24px;
+  text-align: center;
+  color: #9aa1b2;
+  user-select: none;
+}
+
+/* Mũi tên trang sau */
+.page_next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #0a31b8;
+  cursor: pointer;
+}
+
+.page_next:hover {
+  background: #eef0fb;
+}

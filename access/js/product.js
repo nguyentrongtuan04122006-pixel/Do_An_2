@@ -330,3 +330,92 @@ function renderProduct(containerId,productList){
     </div>`
     }).join("");
 }
+
+
+function renderCatalog(containerId,productList){
+    const container = document.getElementById(containerId);
+    if(!container)
+        return;
+    container.innerHTML = productList.map(function(product){
+        return ` <div class="col-xl-3 col-md-4 col- col-6">
+        <div class="body__flashsale-product"
+             style="border: 1px solid #ddd;
+                    background-color: #fff;
+                    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);">
+
+            <div class="flashsale__product-img">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <!-- Đánh giá sản phẩm -->
+            <div class="body__product-rating">
+                <div class="body__rating-stars">
+                   ${[1, 2, 3, 4, 5].map(function(star) {
+                    const rating = product.rate;
+                    let starClass = "";
+
+                  if (rating >= star) {
+                    // Sao đầy
+                      starClass = "full";
+                   } else if (rating > star - 1) {
+                     // Sao một phần
+                     const decimal = Math.round((rating % 1) * 10);
+
+                    starClass = `partial rating-0-${decimal}`;
+                    } else {
+                    // Sao rỗng
+                    starClass = "empty";
+                  }
+ 
+                  return `
+                   <span class="material-symbols-outlined body__rating-review ${starClass}">
+                   star
+                  </span>
+                  `;
+                  }).join("")}
+                </div>
+                <div class="body__rating-number">
+                    (${product.rate})
+                </div>
+
+                <div class="body__rating-saled">
+                    Đã bán ${
+                        product.sold >= 1000
+                            ? (product.sold / 1000).toFixed(1) + "k"
+                            : product.sold
+                    }
+                </div>
+            </div>
+            <!-- Tên sản phẩm -->
+            <p class="flashsale__product-name">
+                ${product.name}
+            </p>
+            <!-- Giá sản phẩm -->
+            <div class="flashsale__product-footer">
+                <div class="flashsale__product-footer--price">
+                    <p class="flashsale__product-price">
+                        ${product.newPrice.toLocaleString("vi-VN")}đ
+                    </p>
+
+                    <p class="flashsale__product-oldprice">
+                        ${product.oldPrice.toLocaleString("vi-VN")}đ
+                    </p>
+                </div>
+                <!-- Nút thêm vào giỏ hàng -->
+                <span class="flashsale__product-footer--addcart material-symbols-outlined">
+                    add_shopping_cart
+                </span>
+            </div>
+            <!-- Phần trăm giảm giá -->
+            <div class="flashsale__product-sale">
+                ${
+                   product.oldPrice > 0
+                     ? "-" + Math.round(
+                     (1 - product.newPrice / product.oldPrice) * 100
+                    ) + "%"
+                      : "0%"
+                }
+            </div>
+        </div>
+    </div>`
+    }).join("");
+}

@@ -747,7 +747,7 @@
     height: 200px;
     margin: auto;
     padding-top: 10px;
-     overflow: hidden;
+     object-fit: contain;
 }
 .flashsale__product-img img{
     width: 100%;
@@ -904,7 +904,7 @@
 .body__voucher-silder{
     margin-top: 10px;
     background: linear-gradient(135deg, #0137B1 0%, #1D57D9 100%);
-    min-height: 200px;
+    min-height: 150px;
     border-radius: 20px;
 }
 .body__silder-content{
