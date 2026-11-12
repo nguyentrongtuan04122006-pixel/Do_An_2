@@ -337,7 +337,7 @@ function renderCatalog(containerId,productList){
     if(!container)
         return;
     container.innerHTML = productList.map(function(product){
-        return ` <div class="col-xl-3 col-md-4 col- col-6">
+        return ` <div class="col-xl-3 col-md-3 col-6">
         <div class="body__flashsale-product"
              style="border: 1px solid #ddd;
                     background-color: #fff;

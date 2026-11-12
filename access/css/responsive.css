@@ -1,222 +1,383 @@
 /* cho cả mobile và tablet */
-@media (max-width: 992px){
-    .navbar__trend{
-        display: none;
-    }
-    .navbar__menu{
-        display: block;
-    }
-    .slide__navbar{
-        display: none;
-    }
-    .slide__bar{
-        display: none;
-    }
-    .navbar__logo{
-        margin-left: 0;
-    }
-    /* thanh tìm kiếm */
-    .navbar__search{
-        margin-left: 0;
-    }
-    .navbar__category{
+@media (max-width: 992px) {
+    .navbar__trend {
         display: none;
     }
 
-    .navbar__notify, .navbar__cart, .navbar__user{
-        margin-right: 5px;
+    .navbar__menu {
+        display: block;
     }
-    .slider__footer-benefits{
-        margin-bottom: 5px;
-    }
-    .body__voucher-code{
-        margin-bottom: 5px;
-    }
-    /* login */
-    .login_left{
+
+    .slide__navbar {
         display: none;
     }
-    .login_right{
+
+    .slide__bar {
+        display: none;
+    }
+
+    .navbar__logo {
+        margin-left: 0;
+    }
+
+    /* thanh tìm kiếm */
+    .navbar__search {
+        margin-left: 0;
+    }
+
+    .navbar__category {
+        display: none;
+    }
+
+    .navbar__notify,
+    .navbar__cart,
+    .navbar__user {
+        margin-right: 5px;
+    }
+
+    .slider__footer-benefits {
+        margin-bottom: 5px;
+    }
+
+    .body__voucher-code {
+        margin-bottom: 5px;
+    }
+
+    /* login */
+    .login_left {
+        display: none;
+    }
+
+    .login_right {
         margin: auto;
     }
-    .login{
+
+    .login {
         height: 470px;
     }
+
+    /* danh mục sản phẩm */
+    .body_left {
+        display: none;
+    }
+    .body_left-header{
+        display: none;
+    }
+    .sort_label {
+        display: none;
+    }
+
+    .sort_btn.sort_btn-check {
+        display: inline-block;
+    }
+
+    .filter_overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 9999;
+
+        display: flex;
+        align-items: flex-end;
+
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .filter_overlay.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .filter_popup {
+        width: 100%;
+        max-height: 85vh;
+        background: white;
+        border-radius: 15px 15px 0 0;
+        padding: 15px;
+        overflow-y: auto;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .filter_overlay.show .filter_popup {
+        transform: translateY(0);
+    }
+
+    .filter_popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+    }
+
+    .filter_close {
+        border: none;
+        background: transparent;
+    }
 }
+
 /* Mobile: dưới 768px */
 @media (max-width: 767.98px) {
-     html::-webkit-scrollbar,
+
+    html::-webkit-scrollbar,
     body::-webkit-scrollbar {
-        display: none;              /* Chrome, Safari, Edge */
+        display: none;
+        /* Chrome, Safari, Edge */
     }
-    .navbar__menu-category{
+
+    .navbar__menu-category {
         width: 70vw;
     }
-    .navbar__logo{
+
+    .navbar__logo {
         width: 45px;
         overflow: hidden;
         padding-top: 6px;
     }
+
     .navbar__mid {
         flex: 0 0 auto;
         margin-left: auto;
         height: 77%;
     }
-    .navbar__search{
+
+    .navbar__search {
         width: auto;
         background-color: transparent;
     }
-    .navbar__search.navbar__search-color{
-        background-color:#EDF0FF ;
+
+    .navbar__search.navbar__search-color {
+        background-color: #EDF0FF;
     }
-    .navbar__search-input{
-       height: 100%;
-       border-radius: 5px;
-       
+
+    .navbar__search-input {
+        height: 100%;
+        border-radius: 5px;
+
     }
-    .navbar__search-input-text{
+
+    .navbar__search-input-text {
         display: none;
         padding-left: 5px;
         padding-left: 5px;
-        animation: show_search linear 0.3s ;
+        animation: show_search linear 0.3s;
     }
+
     @keyframes show_search {
-        from{
+        from {
             transform: translateX(10%);
             opacity: 0;
         }
-        to{
+
+        to {
             transform: translateX(0);
             opacity: 1;
         }
     }
-    .navbar__search-input-text.active{
+
+    .navbar__search-input-text.active {
         display: block;
     }
-    .navbar__search-icon{
+
+    .navbar__search-icon {
         height: 77%;
         width: 48px;
     }
+
     .navbar__right {
         margin-left: 10px;
-        padding-top:16px ;
+        padding-top: 16px;
     }
-    .navbar__user-link{
+
+    .navbar__user-link {
         display: block;
     }
-    .navbar__user-login, .navbar__user-resgister{
+
+    .navbar__user-login,
+    .navbar__user-resgister {
         display: none;
     }
-    .slider__footer-benefits{
+
+    .slider__footer-benefits {
         height: 140px;
     }
+
     .flashsale__left-text {
         font-size: 1.5rem;
         margin-right: 5px;
     }
-    .flashsale__left-time{
+
+    .flashsale__left-time {
         font-size: 1rem;
         margin-right: 3px;
     }
-    .flashsale__right-link p{
+
+    .flashsale__right-link p {
         display: none;
     }
-    .body__voucher-header-name{
+
+    .body__voucher-header-name {
         font-size: 1.5rem;
     }
-    .body__voucher-header--link p{
+
+    .body__voucher-header--link p {
         display: none;
     }
-    .body__product-title{
+
+    .body__product-title {
         display: block;
     }
-    .body__product-name{
+
+    .body__product-name {
         font-size: 1.4rem;
     }
-    .body__product-text{
+
+    .body__product-text {
         font-size: 1.6rem;
     }
-    .body__product-list{
+
+    .body__product-list {
         margin-bottom: 5px;
     }
-    .body__product-select{
+
+    .body__product-select {
         margin-right: 3px;
         padding: 3px 4px;
         font-size: 1.1rem;
     }
+
+    .body__rating-number {
+        display: none;
+    }
+
     /* login */
-    .login_right{
+    .login_right {
         margin: auto;
         padding-left: 10px;
     }
-    .login_right-sub-label,.login_right-user input,.login_right-pw label,.login_right-pw input,.login_right-forget-pw,.login_right-bt{
+
+    .login_right-sub-label,
+    .login_right-user input,
+    .login_right-pw label,
+    .login_right-pw input,
+    .login_right-forget-pw,
+    .login_right-bt {
         width: 100%;
     }
-    .login_header-text{
+
+    .login_header-text {
         display: none;
     }
+
     /* register */
-    .register__input{
+    .register__input {
         width: 100%;
     }
-    .register__login-text{
+
+    .register__login-text {
         width: 100%;
+    }
+
+    /* danh mục */
+    .sort_bar {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+
+        padding: 10px;
+        scrollbar-width: none;
+    }
+
+    /* Không cho các phần tử xuống dòng */
+    .sort_bar>* {
+        flex-shrink: 0;
+    }
+
+    .sort_btn,
+    .sort_select {
+        white-space: nowrap;
+    }
+
+    .sort_select {
+        width: auto;
     }
 }
 
 /* Tablet: từ 768px đến dưới 992px */
 @media (min-width: 768px) and (max-width: 992px) {
-    .header{
+    .header {
         height: 70px;
     }
-    .navbar__logo{
+
+    .navbar__logo {
         width: 40px;
     }
-    .navbar__search-input{
+
+    .navbar__search-input {
         height: 46px;
         width: 400px;
     }
-    .navbar__search-input-text{
+
+    .navbar__search-input-text {
         padding-left: 10px
     }
-    .navbar__right{
-        padding-top:20px ;
+
+    .navbar__right {
+        padding-top: 20px;
         margin-left: 10px;
     }
 
 }
+
 /* laptop cấu hình thấp */
-@media (max-width:1200px){
-     .navbar__trend{
+@media (max-width:1200px) {
+    .navbar__trend {
         margin-left: 10px;
         display: none;
     }
-      .navbar__menu{
+
+    .navbar__menu {
         display: block;
     }
-    .navbar__search{
+
+    .navbar__search {
         margin-left: 10px;
         max-width: 600px;
     }
-    .navbar__search-input-text{
+
+    .navbar__search-input-text {
         padding-left: 16px
     }
-    .navbar__category{
+
+    .navbar__category {
         display: none;
     }
-    .slide__bar{
+
+    .slide__bar {
         display: none;
     }
+
     .slide__img {
-       width: 100%;
-   }
-    .slide__img img {
-      width: 100%;
-      height: auto;  
-      display: block;
-      margin-top: 20px;
+        width: 100%;
     }
-    .slider__footer-benefits{
+
+    .slide__img img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 20px;
+    }
+
+    .slider__footer-benefits {
         margin-bottom: 5px;
     }
 }

@@ -37,12 +37,18 @@
     }
 }
 .navbar__menu-category--title{
+    display: flex;
+    align-items: center;
     font-size: 1.8rem;
     font-weight: 600;
     color:#fff;
     padding: 16px 0 10px 8px;
     background-color: var(--primary_color);
     border-top-right-radius:5px ;
+}
+.navbar__menu-category--title a{
+    color: #fff;
+    text-decoration: none;
 }
 .navbar__menu-category--list{
     list-style: none;
@@ -1085,7 +1091,7 @@
     object-fit :contain;
 }
 .footer__contact-text{
-    width: 400px;
+    max-width: 400px;
     font-size: 1.4rem;
     color: #6b7280;
 }

@@ -21,8 +21,7 @@
     <div class="body">
         <div class="container">
             <div class="row align-items-start">
-
-                <div class="body_left col-md-3 col-2">
+                <div class="body_left col-lg-3">
                     <div class="body_left-header">
                         <span class="material-symbols-outlined">tune</span>
                         BỘ LỌC TÌM KIẾM
@@ -129,8 +128,9 @@
                         </button>
                     </div>
                 </div>
-                <div class="body_right col-md-9">
+                <div class="body_right col-lg-9 col-12">
                     <div class="sort_bar col-12">
+                        <button class="sort_btn sort_btn-check">Bộ lọc</button>
                         <span class="sort_label">SẮP XẾP THEO:</span>
                         <button class="sort_btn sort_btn--active">Phổ Biến</button>
                         <button class="sort_btn">Mới Nhất</button>
@@ -139,7 +139,6 @@
                             <option>Giá: Thấp đến Cao</option>
                             <option>Giá: Cao đến Thấp</option>
                         </select>
-
                     </div>
                     <div class="row" id="product"></div>
                     <nav class="pagination" aria-label="Phân trang">
@@ -159,11 +158,12 @@
             <div id="footer"></div>
 </body>
 <script src="../access/js/layout.js"></script>
+<script src="../access/js/home.js"></script>
 <script src="../access/js/product.js"></script>
 <script>
     renderCatalog("product", productList.filter(function (product) {
         return product.isFlashSale === false;
     }))
 </script>
-
+<script src="../access/js/catalog.js"></script>
 </html>

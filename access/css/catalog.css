@@ -183,7 +183,7 @@
     font-weight: 600;
     cursor: pointer;
 }
-.body__rating-stars span{
+.body__rating-item span{
     font-size: 1.8rem;
     margin-right: 5px;
 }
@@ -238,7 +238,9 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-
+.sort_btn-check{
+  display: none;
+}
 .sort_btn--active {
   background: #2f4fd8;
   color: #fff;
