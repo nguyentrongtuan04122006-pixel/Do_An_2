@@ -989,7 +989,11 @@
     border-radius: 10px;
 }
 /*sản phẩm */
-
+.product_link{
+        text-decoration: none;
+    color: inherit;
+    display: block;
+}
 .body__product-rating {
     display: flex;
     align-items: center;

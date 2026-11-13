@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../access/css/main.css">
+    <link rel="stylesheet" href="../access/css/base.css">
+    <link rel="stylesheet" href="../access/css/CT_product.css">
+    <link rel="stylesheet" href="../access/css/responsive.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,wght,GRAD,opsz@0..1,100..700,0..200,20..48"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="body">
+        <div class="container">
+            <div class="product_detail">
+                <div class="row">
+                    <div class="col-md-5 col-12">
+                        <div class="product_galerry">
+                            <div class="product_img-main">
+                                <img id="main_image" src="" alt="">
+                                <video id="main_video" controls src=""></video>
+                            </div>
+                            <div class="product_gallery-thumbnails" id="gallery_thumbs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-12">
+                        <div class="product_content">
+                            <div class="product_content-name"></div>
+                            <div class="product_content-inform">
+                                <div class="product_rating">
+                                    <span class="product_rating-point"></span>
+
+                                    <div class="body__rating-stars"></div>
+                                </div>
+
+                                <div class="product_rating-saled"></div>
+                            </div>
+                            <div class="product_content-price">
+                                <span class="material-symbols-outlined">
+                                    local_activity
+                                </span>
+                                <span class="product_content-text"></span>
+                            </div>
+                            <div class="product_options">
+                                <!-- Màu sắc -->
+                                <div class="option_row">
+                                    <div class="option_label">Màu Sắc</div>
+                                    <div class="option_list" data-group="color">
+                                    </div>
+                                </div>
+                                <!-- Phân loại (không có ảnh) -->
+                                <div class="option_row">
+                                    <div class="option_label">Phân Loại</div>
+                                    <div class="option_list" data-group="type"></div>
+                                </div>
+                                <!-- Số lượng -->
+                                <div class="option_row">
+                                    <div class="option_label">Số Lượng</div>
+                                    <div class="qty_wrap">
+                                        <div class="qty">
+                                            <button type="button" id="qty_minus">−</button>
+                                            <input type="text" id="qty_input" value="1">
+                                            <button type="button" id="qty_plus">+</button>
+                                        </div>
+                                        <span class="stock">CÒN HÀNG</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="buy_actions">
+                                <button type="button" class="btn_add-cart" id="btn_add-cart">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                    Thêm Vào Giỏ Hàng
+                                </button>
+
+                                <button type="button" class="btn_buy-now" id="btn_buy-now">
+                                    <span class="buy_title">Mua Với Voucher</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+</body>
+<script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="../access/js/CT_product.js"></script>
+<script src="../access/js/home.js"></script>
+<script src="../access/js/product.js"></script>
+<script src="../access/js/layout.js"></script>
+
+</html>

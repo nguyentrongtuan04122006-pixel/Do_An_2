@@ -363,12 +363,15 @@
 <script src="../access/js/home.js"></script>
 <script src="../access/js/product.js"></script>
 <script src="../access/js/layout.js"></script>
-<script>
-     renderProduct("flash_sale",productList.filter(function(product){
-         return product.isFlashSale === true;
-    }))
-     renderProduct("product",productList.filter(function(product){
-         return product.isFlashSale === false;
-    }))
+<script type="module">
+    import { productList, renderProduct } from "../access/js/product.js";
+
+    renderProduct("flash_sale", productList.filter(function (product) {
+        return product.isFlashSale === true;
+    }));
+
+    renderProduct("product", productList.filter(function (product) {
+        return product.isFlashSale === false;
+    }));
 </script>
 </html>
