@@ -7,7 +7,7 @@ function show_closeSearch(){
         search.classList.toggle('navbar__search-color')
     })
 }
-show_closeSearch();
+
 function show_Menu(){
     function show(){
         menu_category.classList.add('show');
@@ -31,7 +31,7 @@ function show_Menu(){
     close();
     });
 }
-show_Menu();
+
 function Count_time(){
     const hours = document.querySelector('.flashsale__left-hour');
     const minutes = document.querySelector('.flashsale__left-minutes');
@@ -54,4 +54,9 @@ function Count_time(){
          }
     },1000)
 }
-Count_time();
+// Khởi tạo các chức năng sau khi HTML header đã được tải
+window.initHomeFeatures = function () {
+    show_closeSearch();
+    show_Menu();
+    Count_time();
+};

@@ -264,10 +264,9 @@
     display: flex;
     height: 100%;
     align-items: center;
-    margin-left: 20px;
 }
 .navbar__notify, .navbar__cart, .navbar__user{
-    margin-right: 20px;
+    margin-right: 10px;
     cursor: pointer;
     
 }
@@ -324,7 +323,36 @@
     color: white;
    
 }
-
+.navbar__user-auth {
+    position: relative;
+}
+.navbar__user-auth:hover #logout_btn {
+    display: block;
+}
+#logout_btn {
+    display: none;
+    position: absolute;
+    top: 125%;
+    right: 0;
+    padding: 10px 15px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+     border: 1px solid #ddd;
+}
+#logout_btn::after{
+ content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    top: -8px;
+    left: 20px;
+    transform: rotate(45deg);
+}
 /* Slide */
 .slide{
   background-color: #FAF8FF;  
