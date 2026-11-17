@@ -325,3 +325,6 @@
 .page_next:hover {
   background: #eef0fb;
 }
+.filter_popup{
+  display: none;
+}

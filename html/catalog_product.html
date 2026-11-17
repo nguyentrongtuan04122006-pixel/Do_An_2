@@ -155,15 +155,20 @@
                     </nav>
                 </div>
             </div>
-            <div id="footer"></div>
+        </div>
+    </div>
+    <div id="footer"></div>
 </body>
 <script src="../access/js/layout.js"></script>
 <script src="../access/js/home.js"></script>
-<script src="../access/js/product.js"></script>
-<script>
+<script type="module" src="../access/js/product.js"></script>
+
+<script type="module">
+    import { productList, renderCatalog } from "../access/js/product.js";
+
     renderCatalog("product", productList.filter(function (product) {
         return product.isFlashSale === false;
-    }))
+    }));
 </script>
 <script src="../access/js/catalog.js"></script>
 </html>

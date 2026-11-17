@@ -1,62 +1,82 @@
-function show_closeSearch(){
+function show_closeSearch() {
     const search_input = document.querySelector('.navbar__search-input-text');
     const search_icon = document.querySelector('.navbar__search-icon');
     const search = document.querySelector('.navbar__search');
-    search_icon.addEventListener('click',function(){
+    search_icon.addEventListener('click', function () {
         search_input.classList.toggle('active');
         search.classList.toggle('navbar__search-color')
     })
 }
 
-function show_Menu(){
-    function show(){
+function show_Menu() {
+    function show() {
         menu_category.classList.add('show');
         over_lay.classList.add('show')
     }
-    function close(){
+    function close() {
         menu_category.classList.remove('show');
         over_lay.classList.remove('show')
     }
-    const menu= document.querySelector('.navbar__menu');
+    const menu = document.querySelector('.navbar__menu');
     const menu_category = document.querySelector('.navbar__menu-category');
     const btn_close = document.querySelector('.navbar__menu-close');
     const over_lay = document.querySelector('.over_lay');
-    menu.addEventListener('click',show);
+    menu.addEventListener('click', show);
     btn_close.addEventListener('click', (e) => {
-    e.stopPropagation(); // dừng sự kiện tại đây, không lên cha nữa
-    close();
+        e.stopPropagation(); // dừng sự kiện tại đây, không lên cha nữa
+        close();
     });
     over_lay.addEventListener('click', (e) => {
-    e.stopPropagation();
-    close();
+        e.stopPropagation();
+        close();
     });
 }
 
-function Count_time(){
+function Count_time() {
     const hours = document.querySelector('.flashsale__left-hour');
     const minutes = document.querySelector('.flashsale__left-minutes');
     const seconds = document.querySelector('.flashsale__left-second');
-    let time = Number(hours.textContent)*3600 + Number(minutes.textContent)*60 + Number(seconds.textContent);
+    let time = Number(hours.textContent) * 3600 + Number(minutes.textContent) * 60 + Number(seconds.textContent);
     // kiểm tra xem có đủ 2 chữ số ko
     function check_time(n) {
-       return n < 10 ? "0" + n : n;
+        return n < 10 ? "0" + n : n;
     }
-    function show_time(){
-        hours.textContent = check_time(Math.floor(time/3600));
-        minutes.textContent = check_time(Math.floor((time % 3600)/60));
+    function show_time() {
+        hours.textContent = check_time(Math.floor(time / 3600));
+        minutes.textContent = check_time(Math.floor((time % 3600) / 60));
         seconds.textContent = check_time(Math.floor(time % 60))
     }
-    let timer = setInterval(function(){
-         time = time -1;
-         show_time();
-         if(time <= 0 ){
+    let timer = setInterval(function () {
+        time = time - 1;
+        show_time();
+        if (time <= 0) {
             clearInterval(timer);
-         }
-    },1000)
+        }
+    }, 1000)
 }
+function userMobile() {
+     const userLink = document.querySelector(".navbar__user-link");
+    const userAuth = document.querySelector(".navbar__user-auth");
+
+    if (!userLink || !userAuth) return;
+
+    userLink.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userAuth.classList.toggle("show");
+    });
+
+    // Bấm ra ngoài thì đóng
+    document.addEventListener("click", function (e) {
+        if (!userLink.contains(e.target) && !userAuth.contains(e.target)) {
+            userAuth.classList.remove("show");
+        }
+    });
+}
+
 // Khởi tạo các chức năng sau khi HTML header đã được tải
 window.initHomeFeatures = function () {
     show_closeSearch();
     show_Menu();
     Count_time();
+    userMobile();
 };
