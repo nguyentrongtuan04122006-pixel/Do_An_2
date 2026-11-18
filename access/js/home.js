@@ -54,29 +54,11 @@ function Count_time() {
         }
     }, 1000)
 }
-function userMobile() {
-     const userLink = document.querySelector(".navbar__user-link");
-    const userAuth = document.querySelector(".navbar__user-auth");
 
-    if (!userLink || !userAuth) return;
-
-    userLink.addEventListener("click", function (e) {
-        e.stopPropagation();
-        userAuth.classList.toggle("show");
-    });
-
-    // Bấm ra ngoài thì đóng
-    document.addEventListener("click", function (e) {
-        if (!userLink.contains(e.target) && !userAuth.contains(e.target)) {
-            userAuth.classList.remove("show");
-        }
-    });
-}
 
 // Khởi tạo các chức năng sau khi HTML header đã được tải
 window.initHomeFeatures = function () {
     show_closeSearch();
     show_Menu();
     Count_time();
-    userMobile();
 };

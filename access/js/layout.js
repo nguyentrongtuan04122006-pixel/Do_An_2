@@ -21,7 +21,8 @@
                 loadPart("#header", headerUrl),
                 loadPart("#footer", footerUrl)
             ]);
-            initLogin()
+            initLogin();
+            userMobile();
             if (typeof window.initHomeFeatures === "function") {
                 window.initHomeFeatures();
             }
@@ -84,3 +85,22 @@ document.onclick = function (e) {
     }
 };
 }
+function userMobile() {
+     const userLink = document.querySelector(".navbar__user-link");
+    const userAuth = document.querySelector(".navbar__user-auth");
+
+    if (!userLink || !userAuth) return;
+
+    userLink.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userAuth.classList.toggle("show");
+    });
+
+    // Bấm ra ngoài thì đóng
+    document.addEventListener("click", function (e) {
+        if (!userLink.contains(e.target) && !userAuth.contains(e.target)) {
+            userAuth.classList.remove("show");
+        }
+    });
+}
+userMobile();
