@@ -1,0 +1,657 @@
+/* ========================================================
+   GIAO DIỆN ĐĂNG NHẬP KÊNH NGƯỜI BÁN - SELLER LOGIN
+   THIẾT KẾ CARD ĐẶC QUYỀN CHUẨN XÁC THEO MẪU
+   ======================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.seller-login-page {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #F8FAFD;
+  /* Họa tiết lưới mờ (tech grid) chuẩn màu xanh nhạt như thiết kế */
+  background-image: 
+    linear-gradient(to right, rgba(219, 234, 254, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(219, 234, 254, 0.45) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: #0F172A;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+/* ================= CONTAINER CHÍNH ================= */
+.seller-login-container {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* ================= HEADER TRANG ================= */
+.seller-top-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Huy hiệu Cổng quản trị */
+.seller-portal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  color: #1D4ED8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px rgba(29, 78, 216, 0.05);
+}
+
+.seller-portal-badge .material-symbols-outlined {
+  font-size: 16px;
+  color: #1D4ED8;
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Tiêu đề chính */
+.seller-main-heading {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+/* Tiêu đề phụ */
+.seller-sub-heading {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+/* ================= 2 CỘT NỘI DUNG ================= */
+.seller-main-section {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+/* ---------------- CỘT TRÁI: CARD ĐẶC QUYỀN NHÀ BÁN HÀNG ---------------- */
+.seller-member-card {
+  background: linear-gradient(150deg, #1A4ED8 0%, #2563EB 55%, #1E40AF 100%);
+  border-radius: 24px;
+  padding: 34px 32px 30px;
+  color: #FFFFFF;
+  box-shadow: 0 16px 40px rgba(29, 78, 216, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Quầng sáng trang trí nền nhẹ */
+.seller-member-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Badge Cam: Đặc quyền thành viên / nhà bán mới */
+.seller-member-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #EA580C;
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
+}
+
+.seller-member-star {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Tiêu đề lớn phối chữ Vàng Gold */
+.seller-member-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.seller-title-gold {
+  color: #FDE047;
+  font-weight: 800;
+}
+
+/* Mô tả phụ */
+.seller-member-desc {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Danh sách quyền lợi */
+.seller-member-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.seller-perk-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.seller-perk-row .material-symbols-outlined {
+  font-size: 17px;
+  color: #67E8F9;
+  font-variation-settings: 'FILL' 1;
+  flex-shrink: 0;
+}
+
+.seller-perk-row strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* Khung Gói Quà Chào Mừng Dưới Đáy Thẻ */
+.seller-gift-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.seller-gift-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seller-gift-iconbox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+}
+
+.seller-gift-iconbox .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.seller-gift-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-gift-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.seller-gift-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.seller-gift-tag {
+  background-color: #FFFFFF;
+  color: #1D4ED8;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+
+.seller-gift-check {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+/* ---------------- CỘT PHẢI: BOX ĐĂNG NHẬP ---------------- */
+.seller-login-box {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #EDF2F7;
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Đường line gradient đỉnh thẻ chuẩn NovaMall: Blue -> Cyan -> Orange */
+.seller-box-topbar {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #1D4ED8 0%, #3B82F6 60%, #F97316 100%);
+}
+
+.seller-box-content {
+  padding: 26px 30px 24px;
+}
+
+/* Header trong box đăng nhập */
+.seller-box-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.seller-box-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 2px;
+  letter-spacing: -0.3px;
+}
+
+.seller-box-subtitle {
+  font-size: 12px;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Badge SSL */
+.seller-ssl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #F0FDF4;
+  border: 1px solid #DCFCE7;
+  color: #16A34A;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 12px;
+}
+
+.seller-ssl-badge .material-symbols-outlined {
+  font-size: 13px;
+}
+
+/* Form Groups */
+.seller-field-group {
+  margin-bottom: 16px;
+}
+
+.seller-field-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.seller-label-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.seller-label-flex .seller-field-label {
+  margin-bottom: 0;
+}
+
+.seller-forgot-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1D4ED8;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.seller-forgot-link:hover {
+  text-decoration: underline;
+  color: #2563EB;
+}
+
+/* Input Boxes */
+.seller-input-box {
+  display: flex;
+  align-items: center;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 12px;
+  transition: all 0.2s ease;
+}
+
+.seller-input-box:focus-within {
+  border-color: #1D4ED8;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+}
+
+.seller-input-box--error {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.seller-icon-left {
+  font-size: 20px !important;
+  color: #94A3B8;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.seller-input-ctrl {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: #0F172A;
+  outline: none;
+}
+
+.seller-input-ctrl::placeholder {
+  color: #94A3B8;
+  font-size: 12px;
+}
+
+.seller-toggle-eye {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.seller-toggle-eye:hover {
+  color: #334155;
+}
+
+.seller-toggle-eye .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.seller-field-error {
+  display: none;
+  color: #EF4444;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Remember Row */
+.seller-remember-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.seller-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.seller-checkbox-item input {
+  width: 16px;
+  height: 16px;
+  accent-color: #1D4ED8;
+  cursor: pointer;
+}
+
+.seller-checkbox-text {
+  font-size: 12.5px;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Nút Submit Chính - Gradient Xanh Hoàng Gia NovaMall */
+.seller-submit-btn {
+  width: 100%;
+  height: 46px;
+  background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+  transition: all 0.2s ease;
+}
+
+.seller-submit-btn:hover {
+  background: linear-gradient(90deg, #1E40AF 0%, #1D4ED8 100%);
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.4);
+  transform: translateY(-1px);
+}
+
+.seller-submit-btn:active {
+  transform: translateY(0);
+}
+
+.seller-submit-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* Divider Hoặc */
+.seller-or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 18px 0;
+}
+
+.seller-or-divider::before,
+.seller-or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.seller-or-divider span {
+  padding: 0 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* Nút Đăng nhập SMS */
+.seller-sms-btn {
+  width: 100%;
+  height: 42px;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.seller-sms-btn:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+.seller-sms-btn .material-symbols-outlined {
+  font-size: 18px;
+  color: #EA580C;
+}
+
+/* Đăng ký mở shop prompt */
+.seller-signup-prompt {
+  text-align: center;
+  font-size: 12.5px;
+  color: #64748B;
+  margin-top: 22px;
+}
+
+.seller-signup-prompt a {
+  color: #1D4ED8;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.seller-signup-prompt a:hover {
+  text-decoration: underline;
+  color: #2563EB;
+}
+
+/* ================= 3 TRUST BADGES BÊN DƯỚI ================= */
+.seller-bottom-trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.seller-trust-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+  transition: all 0.2s ease;
+}
+
+.seller-trust-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.05);
+  border-color: #CBD5E1;
+}
+
+.seller-trust-iconbox {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.seller-trust-iconbox .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.seller-trust-iconbox--green {
+  background-color: #F0FDF4;
+  color: #16A34A;
+}
+
+.seller-trust-iconbox--orange {
+  background-color: #FFF7ED;
+  color: #EA580C;
+}
+
+.seller-trust-iconbox--blue {
+  background-color: #EFF6FF;
+  color: #1D4ED8;
+}
+
+.seller-trust-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-trust-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 2px;
+}
+
+.seller-trust-desc {
+  font-size: 11px;
+  color: #64748B;
+  margin: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .seller-main-section {
+    grid-template-columns: 1fr;
+  }
+  .seller-bottom-trust {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,954 @@
+/* ========================================================
+   GIAO DIỆN KÊNH NGƯỜI BÁN NOVAMALL - CHUẨN DESIGN
+   ======================================================== */
+
+:root {
+  --seller-primary: #1D4ED8;
+  --seller-primary-light: #EFF6FF;
+  --seller-primary-hover: #1E40AF;
+  --seller-orange: #EA580C;
+  --seller-orange-light: #FFF7ED;
+  --seller-orange-dark: #7C2D12;
+  --seller-red: #DC2626;
+  --seller-red-light: #FEF2F2;
+  --seller-green: #16A34A;
+  --seller-text-main: #0F172A;
+  --seller-text-sub: #64748B;
+  --seller-text-muted: #94A3B8;
+  --seller-border: #E2E8F0;
+  --seller-bg: #F4F6FB;
+  --seller-card-bg: #FFFFFF;
+  --seller-sidebar-width: 270px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.seller-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--seller-bg);
+  color: var(--seller-text-main);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+.seller-header {
+  height: 64px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--seller-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.seller-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seller-header__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 12px;
+}
+
+.seller-header__logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.seller-header__logo-divider {
+  width: 1px;
+  height: 26px;
+  background-color: #CBD5E1;
+}
+
+.seller-header__brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-header__brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E293B;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.seller-header__brand-subtitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.seller-header__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.seller-header__back-mall {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #1D4ED8;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.seller-header__back-mall:hover {
+  background-color: var(--seller-primary-light);
+  color: #1D4ED8;
+}
+
+.seller-header__back-mall .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.seller-header__divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--seller-border);
+}
+
+.seller-header__icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: #475569;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.seller-header__icon-btn:hover {
+  background-color: #F1F5F9;
+  color: var(--seller-primary);
+}
+
+.seller-header__icon-btn .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.seller-header__badge-count {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  background-color: #1D4ED8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+  line-height: 14px;
+  border: 2px solid #fff;
+}
+
+.seller-header__help-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.seller-header__help-btn:hover {
+  color: var(--seller-primary);
+}
+
+.seller-header__user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.seller-header__avatar-wrapper {
+  position: relative;
+}
+
+.seller-header__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--seller-border);
+}
+
+.seller-header__user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-header__user-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--seller-text-main);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.seller-header__verified-icon {
+  font-size: 15px;
+  color: #1D4ED8;
+  font-variation-settings: 'FILL' 1;
+}
+
+.seller-header__user-status {
+  font-size: 11.5px;
+  color: #16A34A;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.seller-header__status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #16A34A;
+  border-radius: 50%;
+}
+
+/* ================= WRAPPER & SIDEBAR ================= */
+.seller-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+.seller-sidebar {
+  width: var(--seller-sidebar-width);
+  background-color: #FFFFFF;
+  border-right: 1px solid var(--seller-border);
+  flex-shrink: 0;
+  padding: 16px 10px 40px;
+  overflow-y: auto;
+  max-height: calc(100vh - 64px);
+  position: sticky;
+  top: 64px;
+}
+
+.seller-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.seller-sidebar::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1;
+  border-radius: 4px;
+}
+
+.seller-sidebar__group {
+  margin-bottom: 20px;
+}
+
+.seller-sidebar__group-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--seller-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 6px 12px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seller-sidebar__group-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--seller-primary);
+  border-radius: 50%;
+}
+
+.seller-sidebar__menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seller-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  color: #334155;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.seller-sidebar__link:hover {
+  background-color: #F8FAFC;
+  color: var(--seller-primary);
+}
+
+.seller-sidebar__link .material-symbols-outlined {
+  font-size: 19px;
+  color: #64748B;
+  flex-shrink: 0;
+}
+
+.seller-sidebar__link:hover .material-symbols-outlined {
+  color: var(--seller-primary);
+}
+
+.seller-sidebar__link-text {
+  flex: 1;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.seller-sidebar__link.active {
+  background-color: var(--seller-primary);
+  color: #FFFFFF !important;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+}
+
+.seller-sidebar__link.active .material-symbols-outlined {
+  color: #FFFFFF !important;
+}
+
+.seller-sidebar__badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 16px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.seller-sidebar__badge--neutral {
+  background-color: #F1F5F9;
+  color: #475569;
+}
+
+.seller-sidebar__badge--blue {
+  background-color: #1D4ED8;
+  color: #FFFFFF;
+}
+
+.seller-sidebar__badge--red {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.seller-sidebar__badge--orange {
+  background-color: #FFEDD5;
+  color: #EA580C;
+}
+
+/* ================= MAIN CONTENT ================= */
+.seller-main {
+  flex: 1;
+  padding: 20px 28px 60px;
+  background-color: var(--seller-bg);
+  min-width: 0;
+}
+
+/* Announcement Banner */
+.seller-alert-banner {
+  background-color: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.05);
+}
+
+.seller-alert-banner__left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.seller-alert-banner__icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: #7C2D12;
+  color: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.seller-alert-banner__icon-box .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.seller-alert-banner__text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seller-alert-banner__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #7C2D12;
+  font-weight: 700;
+}
+
+.seller-alert-banner__tag {
+  background-color: #7C2D12;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.seller-alert-banner__sub {
+  font-size: 12.5px;
+  color: #9A3412;
+  font-weight: 400;
+}
+
+.seller-alert-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.seller-alert-banner__cta-btn {
+  background-color: #7C2D12;
+  color: #FFFFFF;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.seller-alert-banner__cta-btn:hover {
+  background-color: #9A3412;
+  color: #FFFFFF;
+}
+
+.seller-alert-banner__close {
+  background: none;
+  border: none;
+  color: #9A3412;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.seller-alert-banner__close:hover {
+  background-color: rgba(124, 45, 18, 0.1);
+}
+
+/* ================= CARD CHUNG ================= */
+.seller-card {
+  background-color: var(--seller-card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--seller-border);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.seller-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 16px;
+}
+
+.seller-card__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seller-card__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--seller-text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seller-card__info-icon {
+  font-size: 16px;
+  color: var(--seller-text-muted);
+  cursor: pointer;
+}
+
+.seller-card__badge-realtime {
+  background-color: #EFF6FF;
+  color: #1D4ED8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #DBEAFE;
+}
+
+.seller-card__subtitle {
+  font-size: 12.5px;
+  color: var(--seller-text-sub);
+}
+
+/* ================= DANH SÁCH CẦN LÀM (TO-DO LIST) ================= */
+.seller-todo__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+}
+
+.seller-todo__item {
+  text-align: center;
+  padding: 16px 8px 14px;
+  border-radius: 8px;
+  background-color: #F8FAFC;
+  border: 1px solid #EDF2F7;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.seller-todo__item:hover {
+  background-color: #FFFFFF;
+  border-color: #1D4ED8;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.08);
+  transform: translateY(-2px);
+}
+
+.seller-todo__number {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.seller-todo__number--blue {
+  color: #1D4ED8;
+}
+
+.seller-todo__number--red {
+  color: #DC2626;
+}
+
+.seller-todo__number--orange {
+  color: #C2410C;
+}
+
+.seller-todo__number--gray {
+  color: #475569;
+}
+
+.seller-todo__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.seller-todo__sublabel {
+  font-size: 11px;
+  color: #64748B;
+  margin-top: auto;
+}
+
+.seller-todo__sublabel--alert {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.seller-todo__sublabel--warn {
+  color: #EA580C;
+  font-weight: 600;
+}
+
+/* ================= PHÂN TÍCH BÁN HÀNG ================= */
+.seller-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #F1F5F9;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.seller-filter-tab {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.seller-filter-tab:hover {
+  color: #1E293B;
+}
+
+.seller-filter-tab.active {
+  background-color: #FFFFFF;
+  color: #1D4ED8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #DBEAFE;
+}
+
+/* KPI Cards 4 Cột */
+.seller-kpi__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.seller-kpi__card {
+  background-color: #F8FAFC;
+  border: 1px solid #EDF2F7;
+  border-radius: 10px;
+  padding: 16px 18px;
+  transition: all 0.2s ease;
+}
+
+.seller-kpi__card:hover {
+  background-color: #FFFFFF;
+  border-color: #1D4ED8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.seller-kpi__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.seller-kpi__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.seller-kpi__icon {
+  font-size: 18px;
+  color: #1D4ED8;
+}
+
+.seller-kpi__value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.seller-kpi__trend {
+  font-size: 11.5px;
+  color: #16A34A;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.seller-kpi__trend span {
+  font-weight: 400;
+  color: #64748B;
+  margin-left: 2px;
+}
+
+/* Chart Canvas Section */
+.seller-chart-container {
+  padding-top: 10px;
+}
+
+.seller-chart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.seller-chart__legends {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.seller-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.seller-chart__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.seller-chart__dot--primary {
+  background-color: #1D4ED8;
+}
+
+.seller-chart__dot--secondary {
+  background-color: #38BDF8;
+}
+
+.seller-chart__unit {
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+/* Canvas SVG Chart */
+.seller-chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+
+.seller-chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.seller-chart__axis-text {
+  font-size: 11px;
+  fill: #94A3B8;
+  font-weight: 500;
+}
+
+.seller-chart__axis-text--active {
+  fill: #1D4ED8;
+  font-weight: 700;
+}
+
+.seller-chart__grid-line {
+  stroke: #F1F5F9;
+  stroke-width: 1;
+}
+
+/* ================= KÊNH MARKETING ================= */
+.seller-marketing-section {
+  margin-top: 24px;
+}
+
+.seller-marketing__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.seller-marketing__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.seller-marketing__title .material-symbols-outlined {
+  color: #F59E0B;
+  font-size: 20px;
+  font-variation-settings: 'FILL' 1;
+}
+
+.seller-marketing__view-all {
+  text-decoration: none;
+  color: #1D4ED8;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.seller-marketing__view-all:hover {
+  text-decoration: underline;
+}
+
+.seller-marketing__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.seller-marketing__card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--seller-border);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.seller-marketing__card:hover {
+  transform: translateY(-3px);
+  border-color: #1D4ED8;
+  box-shadow: 0 8px 16px rgba(29, 78, 216, 0.08);
+}
+
+.seller-marketing__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.seller-marketing__icon--orange {
+  background-color: #FFF7ED;
+  color: #EA580C;
+}
+
+.seller-marketing__icon--blue {
+  background-color: #EFF6FF;
+  color: #1D4ED8;
+}
+
+.seller-marketing__icon--green {
+  background-color: #F0FDF4;
+  color: #16A34A;
+}
+
+.seller-marketing__icon--purple {
+  background-color: #FAF5FF;
+  color: #9333EA;
+}
+
+.seller-marketing__icon .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.seller-marketing__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seller-marketing__card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.seller-marketing__card-desc {
+  font-size: 12px;
+  color: #64748B;
+  line-height: 1.4;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .seller-todo__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .seller-kpi__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seller-marketing__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .seller-sidebar {
+    display: none;
+  }
+  .seller-main {
+    padding: 16px;
+  }
+  .seller-todo__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seller-alert-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .seller-alert-banner__actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
