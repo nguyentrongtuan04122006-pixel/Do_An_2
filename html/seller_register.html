@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../access/css/seller_register.css">
+    <link rel="stylesheet" href="../access/css/seller_responsive.css">
+</head>
+
+<body>
+    <header class="seller-header">
+        <div class="seller-header__inner">
+
+            <a href="index.html" class="seller-header__logo">
+                <img src="../access/picture/screen.png" alt="NovaMall">
+            </a>
+
+            <div class="seller-header__title">
+                <span class="seller-header__divider"></span>
+                <div>
+                    <h1>Đăng ký trở thành Người bán</h1>
+                    <p>Khởi tạo gian hàng và bắt đầu kinh doanh cùng NovaMall</p>
+                </div>
+            </div>
+
+            <a href="#" class="seller-header__support">
+                <span class="material-symbols-outlined">headset_mic</span>
+                <div>
+                    <strong>Trung tâm hỗ trợ</strong>
+                    <small>Hỗ trợ Người bán 24/7</small>
+                </div>
+            </a>
+
+        </div>
+    </header>
+
+    <main class="page">
+
+        <!-- PHẦN 01: THÔNG TIN TÀI KHOẢN -->
+        <section class="card">
+
+            <header class="card-head">
+                <div class="head-left">
+                    <span class="icon-box">
+                        <span class="material-symbols-outlined">lock_person</span>
+                    </span>
+                    <div>
+                        <div class="step-row">
+                            <span class="step">Phần 01</span>
+                        </div>
+                        <h2>Thông Tin Tài Khoản Quản Trị &amp; Đăng Nhập</h2>
+                    </div>
+                </div>
+
+                <span class="pill">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    Bảo mật 2 lớp SSL 256-Bit
+                </span>
+            </header>
+
+            <p class="label">Mô hình kinh doanh của bạn <i>*</i></p>
+
+            <!-- Mô hình kinh doanh: 2 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <label class="radio-card active">
+                        <input type="radio" name="biz" checked>
+                        <span class="radio-dot"></span>
+                        <span>
+                            <strong>Cá nhân / Hộ kinh doanh cá thể</strong>
+                            <small>Dành cho shop tự doanh, bán buôn gia đình hoặc nhà sáng tạo nội dung độc lập.</small>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="radio-card">
+                        <input type="radio" name="biz">
+                        <span class="radio-dot"></span>
+                        <span>
+                            <strong>Công ty / Doanh nghiệp &amp; Thương hiệu</strong>
+                            <small>Có giấy phép đăng ký kinh doanh (ĐKKD), mã số thuế công ty, phù hợp NovaMall
+                                Mall.</small>
+                        </span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Số điện thoại và Email: 2 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <div class="label-row">
+                            <label for="phone">Số điện thoại nhận mã OTP <i>*</i></label>
+                            <span class="verified">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                Đã xác thực OTP
+                            </span>
+                        </div>
+
+                        <div class="input has-prefix">
+                            <span class="prefix">+84<br><small>(VN)</small></span>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel-national"
+                                placeholder="Ví dụ: 0988 686 929">
+                        </div>
+
+                        <p class="hint">Số điện thoại chính dùng để kích hoạt ví thanh toán và phục hồi tài khoản.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <div class="label-row">
+                            <label for="email">Email nhận báo cáo doanh thu &amp; Hóa đơn <i>*</i></label>
+                        </div>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">mail</span>
+                            <input id="email" name="email" type="email" autocomplete="email"
+                                placeholder="seller@novamall.vn">
+                        </div>
+
+                        <p class="hint">Dùng nhận sao kê dòng tiền đối soát và văn bản thuế định kỳ hằng tháng.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mật khẩu: 2 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <label class="label-row" for="pw">
+                            Mật khẩu đăng nhập quản trị <i>*</i>
+                        </label>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">key</span>
+                            <input id="pw" name="password" type="password" autocomplete="new-password"
+                                placeholder="Nhập mật khẩu">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <label class="label-row" for="pw2">
+                            Xác nhận lại mật khẩu <i>*</i>
+                        </label>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">lock_reset</span>
+                            <input id="pw2" name="password_confirm" type="password" autocomplete="new-password"
+                                placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHẦN 02: THÔNG TIN GIAN HÀNG -->
+        <section class="card accent">
+
+            <header class="card-head">
+                <div class="head-left">
+                    <span class="icon-box solid">
+                        <span class="material-symbols-outlined">storefront</span>
+                    </span>
+
+                    <div>
+                        <div class="step-row">
+                            <span class="step">Phần 02</span>
+                        </div>
+                        <h2>Thông Tin Gian Hàng &amp; Định Danh Thuế</h2>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tên gian hàng và ngành hàng: 2 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <div class="label-row">
+                            <label for="shop">Tên gian hàng / Thương hiệu dự kiến <i>*</i></label>
+                            <span class="verified">Tên khả dụng</span>
+                        </div>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">store</span>
+                            <input id="shop" name="shop_name" type="text" maxlength="30" autocomplete="off"
+                                placeholder="Ví dụ: Linh Modern Style">
+                        </div>
+
+                        <div class="hint split">
+                            <span>Đường dẫn gian hàng: novamall.vn/shop-linh-modern</span>
+                            <span>25/30 ký tự</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <label class="label-row" for="cat">
+                            Ngành hàng kinh doanh trọng tâm <i>*</i>
+                        </label>
+
+                        <div class="input select">
+                            <span class="material-symbols-outlined">category</span>
+
+                            <select id="cat" name="category" required>
+                                <option value="" selected disabled hidden>Chọn ngành hàng</option>
+                                <option>Thời Trang &amp; Phụ Kiện Cao Cấp (Nam/Nữ)</option>
+                                <option>Nhà cửa &amp; Đời sống</option>
+                                <option>Mẹ &amp; Bé</option>
+                            </select>
+
+                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                        </div>
+
+                        <p class="hint">Bạn vẫn có thể thêm danh mục phụ sau khi gian hàng được kích hoạt.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Chủ gian hàng và CCCD: 2 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <label class="label-row" for="name">
+                            Họ và tên chủ gian hàng (Theo CCCD) <i>*</i>
+                        </label>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">badge</span>
+                            <input id="name" name="owner_name" type="text" autocomplete="name"
+                                placeholder="Ví dụ: Nguyễn Văn A">
+                        </div>
+
+                        <p class="hint">Phải trùng khớp hoàn toàn với tên chủ tài khoản ngân hàng nhận tiền đối soát.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="field">
+                        <div class="label-row">
+                            <label for="cccd">Số Căn cước công dân (12 số) / MST Cá nhân <i>*</i></label>
+                            <span class="verified">Định danh điện tử VNeID</span>
+                        </div>
+
+                        <div class="input">
+                            <span class="material-symbols-outlined">id_card</span>
+                            <input id="cccd" name="cccd" type="text" inputmode="numeric" maxlength="12"
+                                autocomplete="off" placeholder="Nhập 12 số CCCD">
+                        </div>
+
+                        <p class="hint">NovaMall tự động liên kết cơ sở dữ liệu thuế quốc gia để xuất hóa đơn điện tử tự
+                            động.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHẦN 03: KHO HÀNG VÀ VẬN CHUYỂN -->
+        <section class="card">
+
+            <header class="card-head">
+                <div class="head-left">
+                    <span class="icon-box">
+                        <span class="material-symbols-outlined">warehouse</span>
+                    </span>
+
+                    <div>
+                        <div class="step-row">
+                            <span class="step">Phần 03</span>
+                            <span class="tag">Thiết lập lấy hàng</span>
+                        </div>
+                        <h2>Địa Chỉ Kho Lấy Hàng &amp; Vận Chuyển</h2>
+                    </div>
+                </div>
+
+                <span class="pill plain">
+                    <span class="material-symbols-outlined">local_shipping</span>
+                    Shipper đến tận kho lấy hàng không phát sinh phụ phí
+                </span>
+            </header>
+
+            <!-- Thông tin kho: 3 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-md-4">
+                    <div class="field">
+                        <label class="label-row" for="w1">Tên kho hàng định danh <i>*</i></label>
+                        <div class="input">
+                            <input id="w1" name="warehouse_name" type="text" placeholder="Ví dụ: Kho Tổng TP.HCM">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="field">
+                        <label class="label-row" for="w2">Người phụ trách trực tiếp <i>*</i></label>
+                        <div class="input">
+                            <input id="w2" name="warehouse_contact" type="text" placeholder="Họ tên người phụ trách">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="field">
+                        <label class="label-row" for="w3">Số điện thoại liên hệ kho <i>*</i></label>
+                        <div class="input">
+                            <input id="w3" name="warehouse_phone" type="tel" placeholder="Ví dụ: 0912 345 678">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Địa chỉ kho: 4 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="field">
+                        <label class="label-row" for="p">Tỉnh / Thành phố <i>*</i></label>
+
+                        <div class="input select">
+                            <select id="p" name="province" required>
+                                <option value="" selected disabled hidden>Chọn tỉnh / thành</option>
+                                <option>TP. Hồ Chí Minh</option>
+                                <option>Hà Nội</option>
+                            </select>
+                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="field">
+                        <label class="label-row" for="d">Quận / Huyện <i>*</i></label>
+
+                        <div class="input select">
+                            <select id="d" name="district" required>
+                                <option value="" selected disabled hidden>Chọn quận / huyện</option>
+                                <option>Quận Bình Thạnh</option>
+                                <option>Quận 1</option>
+                            </select>
+                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="field">
+                        <label class="label-row" for="w">Phường / Xã <i>*</i></label>
+
+                        <div class="input select">
+                            <select id="w" name="ward" required>
+                                <option value="" selected disabled hidden>Chọn phường / xã</option>
+                                <option>Phường 25</option>
+                                <option>Phường 26</option>
+                            </select>
+                            <span class="material-symbols-outlined select-arrow">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="field">
+                        <label class="label-row" for="s">Số nhà &amp; Tên đường <i>*</i></label>
+                        <div class="input">
+                            <input id="s" name="street" type="text" placeholder="Số nhà, tên đường">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Đơn vị vận chuyển -->
+            <div class="label-row between">
+                <p class="label">Các đơn vị vận chuyển đối tác tích hợp</p>
+                <span class="note">Tối ưu hóa hành trình giao nhận hàng hóa nội tỉnh và liên tỉnh</span>
+            </div>
+
+            <!-- Vận chuyển: 4 cột -->
+            <div class="row g-3">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <label class="carrier locked">
+                        <span class="dot" style="background:#2F5BEA"></span>
+                        <b>NovaExpress</b>
+                        <input type="checkbox" checked disabled>
+                        <small>Giao hỏa tốc 2 giờ &amp; giao nhanh trong ngày.</small>
+                    </label>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <label class="carrier">
+                        <span class="dot" style="background:#8A5A2B"></span>
+                        <b>Giao Hàng Nhanh</b>
+                        <input type="checkbox" checked>
+                        <small>Tự động điều phối bưu tá lấy hàng tận nơi.</small>
+                    </label>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <label class="carrier">
+                        <span class="dot" style="background:#D63B3B"></span>
+                        <b>Viettel Post</b>
+                        <input type="checkbox" checked>
+                        <small>Phủ sóng 63 tỉnh thành đến tận vùng sâu vùng xa.</small>
+                    </label>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <label class="carrier">
+                        <span class="dot" style="background:#7A4A1E"></span>
+                        <b>SPX Logistics</b>
+                        <input type="checkbox" checked>
+                        <small>Chiết khấu cước vận chuyển cho người bán lớn.</small>
+                    </label>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    <div class="register-footer">
+
+        <!-- Điều khoản -->
+        <label class="register-terms">
+            <input type="checkbox" id="agree_terms">
+            <span>
+                Tôi đã đọc và đồng ý với
+                <a href="#">Điều khoản dịch vụ</a>
+                và
+                <a href="#">Chính sách bảo mật</a>
+                của NovaMall.
+            </span>
+        </label>
+
+        <!-- Nút đăng ký -->
+        <button type="button" class="btn-register" id="btn_register">
+            Xác nhận đăng ký
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+
+        <!-- Đăng nhập -->
+        <p class="register-login">
+            Đã có tài khoản?
+            <a href="seller_login.html">Đăng nhập</a>
+        </p>
+
+    </div>
+</body>
+<script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

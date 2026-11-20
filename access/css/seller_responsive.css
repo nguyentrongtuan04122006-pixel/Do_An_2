@@ -58,6 +58,7 @@
         white-space: nowrap;
         flex-shrink: 0;
     }
+
     .seller-sidebar {
         position: fixed;
         top: 64px;
@@ -160,6 +161,54 @@
 
     .seller-header__user-profile .material-symbols-outlined {
         display: none;
+    }
+
+    /* đăng kí */
+    .seller-header__inner {
+        justify-content: space-between;
+        padding: 10px 16px;
+        min-height: 65px;
+    }
+
+    .seller-header__logo {
+        width: 130px;
+        flex-shrink: 0;
+    }
+
+    .seller-header__logo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .seller-header__title {
+        display: none;
+    }
+
+    .note {
+        display: none;
+    }
+
+.register-terms {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 12px;
+        text-align: left;
+    }
+
+    .register-terms input {
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .register-terms span {
+        flex: 1;
+        min-width: 0;
     }
 }
 
