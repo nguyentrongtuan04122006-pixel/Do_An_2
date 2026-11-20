@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kênh Người Bán - NovaMall</title>
-  
+
   <!-- Font & Icon -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet">
+
   <!-- CSS -->
   <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../access/css/base.css">
   <link rel="stylesheet" href="../access/css/seller_home.css">
+  <link rel="stylesheet" href="../access/css/seller_responsive.css">
 </head>
+
 <body class="seller-body">
 
   <!-- ================= TOP NAVBAR ================= -->
   <header class="seller-header">
     <div class="seller-header__left">
+      <button class="btn border-0 p-1 me-2 d-lg-none" type="button" id="sellerMenuToggle" aria-label="Mở danh mục"
+        aria-expanded="false">
+        <span class="material-symbols-outlined" style="font-size: 28px; color: #334155;">
+          menu
+        </span>
+      </button>
       <a href="../html/seller_home.html" class="seller-header__brand">
         <img src="../access/picture/screen.png" alt="NovaMall" class="seller-header__logo-img">
         <span class="seller-header__logo-divider"></span>
@@ -57,18 +69,12 @@
 
       <!-- Profile Nhà bán -->
       <div class="seller-header__user-profile">
-        <div class="seller-header__avatar-wrapper">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="NovaTech Official" class="seller-header__avatar">
-        </div>
         <div class="seller-header__user-info">
           <div class="seller-header__user-name">
             <span>NovaTech Official</span>
             <span class="material-symbols-outlined seller-header__verified-icon">check_circle</span>
           </div>
-          <div class="seller-header__user-status">
-            <span class="seller-header__status-dot"></span>
-            <span>Đang hoạt động</span>
-          </div>
+
         </div>
         <span class="material-symbols-outlined" style="font-size: 18px; color: #94A3B8;">expand_more</span>
       </div>
@@ -79,8 +85,8 @@
   <div class="seller-layout">
 
     <!-- ================= SIDEBAR ================= -->
-    <aside class="seller-sidebar">
-      
+    <aside class="seller-sidebar" id="sellerSidebar">
+
       <!-- Nhóm 1: QUẢN LÝ GIAN HÀNG -->
       <div class="seller-sidebar__group">
         <div class="seller-sidebar__group-title">QUẢN LÝ GIAN HÀNG</div>
@@ -392,10 +398,12 @@
               <path d="M 780 75 Q 840 65 910 60" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,4" />
 
               <!-- Đường biểu diễn Hôm qua (Đường phụ mờ) -->
-              <path d="M 40 195 Q 200 190 360 175 T 600 155 T 780 130 T 910 120" fill="none" stroke="#93C5FD" stroke-width="2" stroke-dasharray="3,3" />
+              <path d="M 40 195 Q 200 190 360 175 T 600 155 T 780 130 T 910 120" fill="none" stroke="#93C5FD"
+                stroke-width="2" stroke-dasharray="3,3" />
 
               <!-- Đường biểu diễn Hôm nay (Chính, đậm nét uốn cong mượt) -->
-              <path d="M 40 190 Q 200 185 360 160 T 600 125 T 780 75" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round" />
+              <path d="M 40 190 Q 200 185 360 160 T 600 125 T 780 75" fill="none" stroke="#1D4ED8" stroke-width="3"
+                stroke-linecap="round" />
 
               <!-- Các điểm nút dữ liệu hôm nay (Points) -->
               <circle cx="40" cy="190" r="4" fill="#1D4ED8" />
@@ -415,7 +423,8 @@
               <text x="400" y="210" text-anchor="middle" class="seller-chart__axis-text">09:00</text>
               <text x="520" y="210" text-anchor="middle" class="seller-chart__axis-text">12:00</text>
               <text x="650" y="210" text-anchor="middle" class="seller-chart__axis-text">14:00</text>
-              <text x="780" y="210" text-anchor="middle" class="seller-chart__axis-text seller-chart__axis-text--active">15:30 (Hiện tại)</text>
+              <text x="780" y="210" text-anchor="middle"
+                class="seller-chart__axis-text seller-chart__axis-text--active">15:30 (Hiện tại)</text>
               <text x="850" y="210" text-anchor="middle" class="seller-chart__axis-text">18:00</text>
               <text x="910" y="210" text-anchor="middle" class="seller-chart__axis-text">24:00</text>
             </svg>
@@ -482,7 +491,6 @@
           </a>
         </div>
       </section>
-
     </main>
   </div>
 
@@ -490,4 +498,5 @@
   <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../access/js/seller_home.js"></script>
 </body>
+
 </html>

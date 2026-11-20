@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,25 @@
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet">
 
   <!-- Bootstrap 5 -->
   <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../access/css/base.css">
   <link rel="stylesheet" href="../access/css/seller_login.css">
+  <link rel="stylesheet" href="../access/css/seller_responsive.css">
 </head>
+
 <body class="seller-login-page">
 
-  <div class="seller-login-container">
+  <div class="seller-login-container container">
 
     <!-- ================= HEADER TRANG ================= -->
-    <header class="seller-top-header">
+    <header class="seller-top-header ">
       <div class="seller-portal-badge">
         <span class="material-symbols-outlined">verified_user</span>
         <span>Cổng Quản Trị & Vận Hành Gian Hàng NovaMall</span>
@@ -33,199 +39,180 @@
       </p>
     </header>
 
-    <!-- ================= 2 CỘT NỘI DUNG ================= -->
-    <main class="seller-main-section">
+    <!-- ================= 2 CỘT NỘI DUNG (Bootstrap grid) ================= -->
+    <main class="row g-4">
 
-      <!-- CỘT TRÁI: CARD ĐẶC QUYỀN NHÀ BÁN HÀNG (CHUẨN THIẾT KẾ MẪU) -->
-      <div class="seller-member-card">
-        <!-- Badge Cam: Đặc quyền nhà bán mới -->
-        <div class="seller-member-badge">
-          <span class="seller-member-star">✪</span>
-          <span>ĐẶC QUYỀN NHÀ BÁN MỚI</span>
-        </div>
-
-        <!-- Tiêu đề lớn phối chữ Vàng Gold -->
-        <h2 class="seller-member-title">
-          Gia nhập hôm nay —<br>
-          <span class="seller-title-gold">Nhận trọn vẹn đặc quyền</span><br>
-          Kênh Người Bán!
-        </h2>
-
-        <!-- Mô tả phụ -->
-        <p class="seller-member-desc">
-          Mở gian hàng miễn phí chỉ trong 1 phút để tận hưởng gói hỗ trợ tăng tốc doanh số, voucher trợ giá độc quyền và tiếp cận hơn 10 triệu khách hàng tiềm năng.
-        </p>
-
-        <!-- Danh sách quyền lợi nổi bật -->
-        <div class="seller-member-perks">
-          <div class="seller-perk-row">
-            <span class="material-symbols-outlined">check_circle</span>
-            <span><strong>0% phí cố định</strong> trong 3 tháng đầu kinh doanh</span>
+      <!-- CỘT TRÁI: CARD ĐẶC QUYỀN NHÀ BÁN HÀNG -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="seller-member-card h-100">
+          <div class="seller-member-badge">
+            <span class="seller-member-star">✪</span>
+            <span>ĐẶC QUYỀN NHÀ BÁN MỚI</span>
           </div>
-          <div class="seller-perk-row">
-            <span class="material-symbols-outlined">check_circle</span>
-            <span><strong>Gói FreeShip 0Đ</strong> trợ giá vận chuyển toàn quốc</span>
-          </div>
-          <div class="seller-perk-row">
-            <span class="material-symbols-outlined">check_circle</span>
-            <span><strong>Ưu tiên hiển thị</strong> vị trí vàng tại Flash Sale & Siêu Sale</span>
-          </div>
-        </div>
 
-        <!-- Khung Gói Quà Chào Mừng dưới đáy thẻ -->
-        <div class="seller-gift-card">
-          <div class="seller-gift-left">
-            <div class="seller-gift-iconbox">
-              <span class="material-symbols-outlined">featured_seasonal_and_gifts</span>
+          <h2 class="seller-member-title">
+            Gia nhập hôm nay —<br>
+            <span class="seller-title-gold">Nhận trọn vẹn đặc quyền</span><br>
+            Kênh Người Bán!
+          </h2>
+
+          <p class="seller-member-desc">
+            Mở gian hàng miễn phí chỉ trong 1 phút để tận hưởng gói hỗ trợ tăng tốc doanh số, voucher trợ giá độc quyền
+            và tiếp cận hơn 10 triệu khách hàng tiềm năng.
+          </p>
+
+          <div class="seller-member-perks">
+            <div class="seller-perk-row">
+              <span class="material-symbols-outlined">check_circle</span>
+              <span><strong>0% phí cố định</strong> trong 3 tháng đầu kinh doanh</span>
             </div>
-            <div class="seller-gift-text">
-              <div class="seller-gift-label">GÓI QUÀ CHÀO MỪNG GIAN HÀNG</div>
-              <div class="seller-gift-value">Tổng Trị Giá 3.000.000đ</div>
+            <div class="seller-perk-row">
+              <span class="material-symbols-outlined">check_circle</span>
+              <span><strong>Gói FreeShip 0Đ</strong> trợ giá vận chuyển toàn quốc</span>
+            </div>
+            <div class="seller-perk-row">
+              <span class="material-symbols-outlined">check_circle</span>
+              <span><strong>Ưu tiên hiển thị</strong> vị trí vàng tại Flash Sale & Siêu Sale</span>
             </div>
           </div>
-          <div class="seller-gift-tag">
-            <span>Miễn Phí</span>
-            <span class="seller-gift-check">✓</span>
+
+          <div class="seller-gift-card">
+            <div class="seller-gift-left">
+              <div class="seller-gift-iconbox">
+                <span class="material-symbols-outlined">featured_seasonal_and_gifts</span>
+              </div>
+              <div class="seller-gift-text">
+                <div class="seller-gift-label">GÓI QUÀ CHÀO MỪNG GIAN HÀNG</div>
+                <div class="seller-gift-value">Tổng Trị Giá 3.000.000đ</div>
+              </div>
+            </div>
+            <div class="seller-gift-tag">
+              <span>Miễn Phí</span>
+              <span class="seller-gift-check">✓</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- CỘT PHẢI: FORM ĐĂNG NHẬP KÊNH BÁN -->
-      <div class="seller-login-box">
-        <!-- Đường viền gradient xanh ở đỉnh thẻ -->
-        <div class="seller-box-topbar"></div>
+      <div class="col-12 col-lg-6">
+        <div class="seller-login-box h-100">
+          <div class="seller-box-topbar"></div>
 
-        <div class="seller-box-content">
-          <!-- Header của box đăng nhập -->
-          <div class="seller-box-header">
-            <div class="seller-box-titles">
-              <h2 class="seller-box-title">Đăng Nhập Kênh Bán</h2>
-              <p class="seller-box-subtitle">Truy cập bảng điều khiển vận hành gian hàng</p>
-            </div>
-            <div class="seller-ssl-badge">
-              <span class="material-symbols-outlined">lock</span>
-              <span>SSL 256-Bit</span>
-            </div>
-          </div>
-
-          <!-- Form đăng nhập -->
-          <form id="sellerLoginForm" novalidate>
-            <!-- Field 1: Email / SĐT / Tên shop -->
-            <div class="seller-field-group">
-              <label for="sellerAccount" class="seller-field-label">EMAIL / SỐ ĐIỆN THOẠI / TÊN SHOP</label>
-              <div class="seller-input-box">
-                <span class="material-symbols-outlined seller-icon-left">person</span>
-                <input 
-                  type="text" 
-                  id="sellerAccount" 
-                  class="seller-input-ctrl" 
-                  placeholder="shop_official@novamall.vn hoặc 090xxxxxxx"
-                  autocomplete="username"
-                  required
-                >
+          <div class="seller-box-content">
+            <div class="seller-box-header">
+              <div class="seller-box-titles">
+                <h2 class="seller-box-title">Đăng Nhập Kênh Bán</h2>
+                <p class="seller-box-subtitle">Truy cập bảng điều khiển vận hành gian hàng</p>
               </div>
-              <div class="seller-field-error" id="accountError"></div>
-            </div>
-
-            <!-- Field 2: Mật khẩu -->
-            <div class="seller-field-group">
-              <div class="seller-label-flex">
-                <label for="sellerPassword" class="seller-field-label">MẬT KHẨU</label>
-                <a href="#" class="seller-forgot-link" id="forgotPwBtn">Quên mật khẩu?</a>
+              <div class="seller-ssl-badge">
+                <span class="material-symbols-outlined">lock</span>
+                <span>SSL 256-Bit</span>
               </div>
-              <div class="seller-input-box">
-                <span class="material-symbols-outlined seller-icon-left">lock</span>
-                <input 
-                  type="password" 
-                  id="sellerPassword" 
-                  class="seller-input-ctrl" 
-                  placeholder="••••••••••••"
-                  autocomplete="current-password"
-                  required
-                >
-                <button type="button" class="seller-toggle-eye" id="togglePasswordBtn" title="Hiện/ẩn mật khẩu">
-                  <span class="material-symbols-outlined" id="togglePasswordIcon">visibility</span>
-                </button>
+            </div>
+
+            <form id="sellerLoginForm" novalidate>
+              <div class="seller-field-group">
+                <label for="sellerAccount" class="seller-field-label">EMAIL / SỐ ĐIỆN THOẠI / TÊN SHOP</label>
+                <div class="seller-input-box">
+                  <span class="material-symbols-outlined seller-icon-left">person</span>
+                  <input type="text" id="sellerAccount" class="seller-input-ctrl"
+                    placeholder="shop_official@novamall.vn hoặc 090xxxxxxx" autocomplete="username" required>
+                </div>
+                <div class="seller-field-error" id="accountError"></div>
               </div>
-              <div class="seller-field-error" id="passwordError"></div>
+
+              <div class="seller-field-group">
+                <div class="seller-label-flex">
+                  <label for="sellerPassword" class="seller-field-label">MẬT KHẨU</label>
+                  <a href="#" class="seller-forgot-link" id="forgotPwBtn">Quên mật khẩu?</a>
+                </div>
+                <div class="seller-input-box">
+                  <span class="material-symbols-outlined seller-icon-left">lock</span>
+                  <input type="password" id="sellerPassword" class="seller-input-ctrl" placeholder="••••••••••••"
+                    autocomplete="current-password" required>
+                  <button type="button" class="seller-toggle-eye" id="togglePasswordBtn" title="Hiện/ẩn mật khẩu">
+                    <span class="material-symbols-outlined" id="togglePasswordIcon">visibility</span>
+                  </button>
+                </div>
+                <div class="seller-field-error" id="passwordError"></div>
+              </div>
+
+              <div class="seller-remember-row">
+                <label class="seller-checkbox-item">
+                  <input type="checkbox" id="rememberSeller" checked>
+                  <span class="seller-checkbox-text">Ghi nhớ đăng nhập</span>
+                </label>
+              </div>
+
+              <button type="submit" class="seller-submit-btn">
+                <span>ĐĂNG NHẬP KÊNH NGƯỜI BÁN</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+
+              <div class="seller-or-divider">
+                <span>HOẶC PHƯƠNG THỨC KHÁC</span>
+              </div>
+
+              <button type="button" class="seller-sms-btn" id="smsLoginBtn">
+                <span class="material-symbols-outlined">sms</span>
+                <span>Đăng nhập mã SMS</span>
+              </button>
+            </form>
+
+            <div class="seller-signup-prompt">
+              <span>Bạn mới tham gia NovaMall? </span>
+              <a href="#">Đăng ký mở shop ngay ➔</a>
             </div>
-
-            <!-- Ghi nhớ đăng nhập -->
-            <div class="seller-remember-row">
-              <label class="seller-checkbox-item">
-                <input type="checkbox" id="rememberSeller" checked>
-                <span class="seller-checkbox-text">Ghi nhớ đăng nhập</span>
-              </label>
-            </div>
-
-            <!-- Nút Đăng nhập chính -->
-            <button type="submit" class="seller-submit-btn">
-              <span>ĐĂNG NHẬP KÊNH NGƯỜI BÁN</span>
-              <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-
-            <!-- Divider Hoặc -->
-            <div class="seller-or-divider">
-              <span>HOẶC PHƯƠNG THỨC KHÁC</span>
-            </div>
-
-            <!-- Đăng nhập mã SMS -->
-            <button type="button" class="seller-sms-btn" id="smsLoginBtn">
-              <span class="material-symbols-outlined">sms</span>
-              <span>Đăng nhập mã SMS</span>
-            </button>
-          </form>
-
-          <!-- Đăng ký mở shop -->
-          <div class="seller-signup-prompt">
-            <span>Bạn mới tham gia NovaMall? </span>
-            <a href="#">Đăng ký mở shop ngay ➔</a>
           </div>
         </div>
       </div>
 
     </main>
 
-    <!-- ================= 3 TRUST BADGES BÊN DƯỚI ================= -->
-    <footer class="seller-bottom-trust">
-      <!-- Badge 1: Bảo mật đa lớp -->
-      <div class="seller-trust-item">
-        <div class="seller-trust-iconbox seller-trust-iconbox--green">
-          <span class="material-symbols-outlined">verified_user</span>
-        </div>
-        <div class="seller-trust-info">
-          <h4 class="seller-trust-name">Bảo mật đa lớp</h4>
-          <p class="seller-trust-desc">Chuẩn SSL 256-Bit & PCI-DSS toàn diện</p>
-        </div>
-      </div>
-
-      <!-- Badge 2: Hỗ trợ nhà bán -->
-      <div class="seller-trust-item">
-        <div class="seller-trust-iconbox seller-trust-iconbox--orange">
-          <span class="material-symbols-outlined">support_agent</span>
-        </div>
-        <div class="seller-trust-info">
-          <h4 class="seller-trust-name">Hỗ trợ nhà bán 1900 6868</h4>
-          <p class="seller-trust-desc">Tổng đài tư vấn trực tiếp 8:00 - 21:00</p>
+    <!-- ================= 3 TRUST BADGES (Bootstrap grid) ================= -->
+    <footer class="row g-3 mt-2">
+      <div class="col-12 col-md-4">
+        <div class="seller-trust-item h-100">
+          <div class="seller-trust-iconbox seller-trust-iconbox--green">
+            <span class="material-symbols-outlined">verified_user</span>
+          </div>
+          <div class="seller-trust-info">
+            <h4 class="seller-trust-name">Bảo mật đa lớp</h4>
+            <p class="seller-trust-desc">Chuẩn SSL 256-Bit & PCI-DSS toàn diện</p>
+          </div>
         </div>
       </div>
 
-      <!-- Badge 3: Cẩm nang người bán -->
-      <div class="seller-trust-item">
-        <div class="seller-trust-iconbox seller-trust-iconbox--blue">
-          <span class="material-symbols-outlined">menu_book</span>
+      <div class="col-12 col-md-4">
+        <div class="seller-trust-item h-100">
+          <div class="seller-trust-iconbox seller-trust-iconbox--orange">
+            <span class="material-symbols-outlined">support_agent</span>
+          </div>
+          <div class="seller-trust-info">
+            <h4 class="seller-trust-name">Hỗ trợ nhà bán 1900 6868</h4>
+            <p class="seller-trust-desc">Tổng đài tư vấn trực tiếp 8:00 - 21:00</p>
+          </div>
         </div>
-        <div class="seller-trust-info">
-          <h4 class="seller-trust-name">Cẩm nang người bán</h4>
-          <p class="seller-trust-desc">Bắt đầu kinh doanh trên NovaMall Seller</p>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="seller-trust-item h-100">
+          <div class="seller-trust-iconbox seller-trust-iconbox--blue">
+            <span class="material-symbols-outlined">menu_book</span>
+          </div>
+          <div class="seller-trust-info">
+            <h4 class="seller-trust-name">Cẩm nang người bán</h4>
+            <p class="seller-trust-desc">Bắt đầu kinh doanh trên NovaMall Seller</p>
+          </div>
         </div>
       </div>
     </footer>
-
   </div>
 
   <!-- Scripts -->
   <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../access/js/seller_login.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,169 @@
+/* cho cả mobile và tablet */
+@media (max-width: 992px) {
+
+    /* login */
+    .seller-member-card {
+        display: none;
+    }
+
+    /* trang chủ */
+    .seller-main {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+    }
+
+    /* Header gọn lại */
+    .seller-header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .seller-card__badge-realtime {
+        display: none;
+    }
+
+    .seller-header__right {
+        gap: 1px;
+    }
+
+    .seller-header__divider,
+    .seller-header__help-btn span:last-child,
+    .seller-header__back-mall span:last-child {
+        display: none;
+    }
+
+    /* Tiêu đề card + tab lọc xếp dọc */
+    .seller-card__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* Tab lọc cuộn ngang thay vì xuống dòng */
+    .seller-filter-tabs {
+        max-width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .seller-filter-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .seller-filter-tab {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .seller-sidebar {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        bottom: 0;
+
+        width: 280px;
+        max-width: 85vw;
+        height: calc(100vh - 64px);
+        max-height: none;
+
+        padding: 16px 10px 40px;
+        margin: 0;
+
+        background: #fff;
+        overflow-y: auto;
+        z-index: 1055;
+
+        transform: translateX(-100%);
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    /* Khi mở sidebar */
+    .seller-sidebar.show {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Lớp nền phía sau */
+    .seller-sidebar-overlay {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 64px);
+
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1050;
+
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+    }
+
+    .seller-sidebar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+/* Mobile: dưới 768px */
+@media (max-width: 767.98px) {
+    .seller-header__brand-title {
+        display: none;
+    }
+
+    /* trang chủ */
+    .seller-header__left {
+        gap: 0px;
+    }
+
+    .seller-header__back-mall {
+        padding: 3px;
+        gap: 0px;
+    }
+
+    .seller-header__brand {
+        gap: 5px;
+        width: 120px;
+    }
+
+    .seller-header__help-btn {
+        gap: 0;
+        padding: 4px
+    }
+
+    .seller-header__icon-btn {
+        display: none;
+    }
+
+    .seller-header__right {
+        gap: 0px;
+        margin-left: 0px;
+    }
+
+
+    .seller-header__verified-icon {
+        display: none;
+    }
+
+    .seller-header__user-profile .material-symbols-outlined {
+        display: none;
+    }
+}
+
+/* Tablet: từ 768px đến dưới 992px */
+@media (min-width: 768px) and (max-width: 992px) {}
+
+@media (max-width:1200px) {}

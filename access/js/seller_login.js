@@ -103,32 +103,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  // 4. Đăng nhập mã SMS
-  if (smsLoginBtn) {
-    smsLoginBtn.addEventListener("click", function () {
-      const phone = prompt("Nhập số điện thoại đã đăng ký gian hàng:");
-      if (phone && phone.trim()) {
-        alert("Mã xác thực OTP gồm 6 chữ số đã được gửi tới số điện thoại " + phone.trim() + "!");
-        const otp = prompt("Nhập mã OTP 6 số để đăng nhập:");
-        if (otp && otp.trim().length === 6) {
-          alert("Xác thực OTP thành công! Đang chuyển hướng vào Kênh Người Bán...");
-          window.location.href = "../html/seller_home.html";
-        } else if (otp) {
-          alert("Mã OTP không hợp lệ, vui lòng thử lại.");
-        }
-      }
-    });
-  }
-
-  // 5. Quên mật khẩu
-  if (forgotPwBtn) {
-    forgotPwBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      const contact = prompt("Vui lòng nhập Email hoặc SĐT đăng ký để nhận liên kết đặt lại mật khẩu:");
-      if (contact && contact.trim()) {
-        alert("Hướng dẫn khôi phục mật khẩu đã được gửi tới: " + contact.trim());
-      }
-    });
-  }
 });
