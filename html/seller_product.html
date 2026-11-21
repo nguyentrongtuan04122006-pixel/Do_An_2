@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản Lý Sản Phẩm - NovaMall</title>
+
+  <!-- Bootstrap -->
+     <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- CSS giao diện Seller -->
+  <link rel="stylesheet" href="../access/css/seller_home.css">
+  <link rel="stylesheet" href="../access/css/seller_responsive.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet">
+
+  <!-- CSS riêng trang quản lý sản phẩm -->
+  <link rel="stylesheet" href="../access/css/seller_product.css">
+</head>
+
+<body class="seller-body">
+
+  <!-- HEADER DÙNG CHUNG -->
+  <div id="sellerHeader"></div>
+
+  <div class="seller-layout">
+
+    <!-- SIDEBAR DÙNG CHUNG -->
+    <div id="sellerSidebar"></div>
+
+    <!-- NỘI DUNG TRANG QUẢN LÝ SẢN PHẨM -->
+    <main class="seller-main">
+
+      <div class="py-3 py-lg-4">
+
+        <!-- Header trang -->
+        <div class="nova-tag mb-1">
+          SELLER HUB V3.4
+          <small class="text-secondary fw-normal ms-1">
+            Cập nhật thời gian thực: 2 phút trước
+          </small>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+          <div>
+            <h1 class="h3 fw-bold mb-1">Trung Tâm Quản Lý Bán Hàng NovaMall</h1>
+            <p class="text-secondary mb-0">
+              Giám sát toàn diện chuỗi cung ứng, cấu hình phân loại và điều phối xử lý đơn hàng đa kênh
+            </p>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-light border btn-sm fw-semibold">
+              <i class="bi bi-download me-1"></i>Xuất Excel
+            </button>
+            <button class="btn btn-light border btn-sm fw-semibold">
+              <i class="bi bi-list-check me-1"></i>Cập nhật hàng loạt
+            </button>
+            <button class="btn btn-primary btn-sm fw-semibold">
+              <i class="bi bi-plus-circle me-1"></i>Thêm Sản Phẩm Mới
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab chính + thông báo -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+          <div class="d-flex flex-wrap gap-2">
+            <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-warn">
+              <i class="bi bi-exclamation-triangle me-1"></i>
+              5 sản phẩm sắp cạn kho (&lt;10 đơn vị)
+            </div>
+            <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-info">
+              <i class="bi bi-speedometer2 me-1"></i>
+              Tỉ lệ hoàn tất đơn: <b>99.2%</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab trạng thái -->
+        <ul class="nav nav-pills gap-2 mb-3 small">
+          <li class="nav-item">
+            <a class="nav-link active py-1 px-3" href="#">
+              Tất cả <span class="badge rounded-pill bg-light text-primary ms-1">254</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 px-3 text-dark" href="#">
+              Đang hoạt động <span class="badge rounded-pill nova-count ms-1">236</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 px-3 bg-white border border-danger-subtle text-danger" href="#">
+              <i class="bi bi-exclamation-triangle me-1"></i>Hết hàng
+              <span class="badge rounded-pill bg-danger-subtle text-danger ms-1">5</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 px-3 text-dark" href="#">
+              Chờ duyệt <span class="badge rounded-pill nova-count ms-1">9</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 px-3 text-dark" href="#">
+              Đã ẩn / Tạm khóa <span class="badge rounded-pill nova-count ms-1">4</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Bộ lọc -->
+        <form class="card border rounded-3 mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+
+              <div class="col-12 col-lg">
+                <label class="form-label small fw-bold">Tìm kiếm sản phẩm</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input type="text" class="form-control bg-light" placeholder="Tên sản phẩm, Mã SKU, Barcode...">
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <label class="form-label small fw-bold">Ngành hàng</label>
+                <select class="form-select bg-light">
+                  <option>Tất cả ngành hàng</option>
+                  <option>Thời trang Nữ</option>
+                  <option>Điện Thoại &amp; Tablet</option>
+                  <option>Phụ kiện Âm thanh</option>
+                </select>
+              </div>
+
+              <div class="col-6 col-lg-2">
+                <label class="form-label small fw-bold">Tồn kho</label>
+                <select class="form-select bg-light">
+                  <option>Tất cả số lượng</option>
+                  <option>Sắp hết hàng</option>
+                  <option>Hết hàng</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-lg-auto d-flex gap-2">
+                <button type="button" class="btn btn-primary fw-bold px-4">
+                  <i class="bi bi-funnel me-1"></i>Áp dụng bộ lọc
+                </button>
+                <button type="reset" class="btn btn-light border" title="Đặt lại">
+                  <i class="bi bi-arrow-clockwise"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+        <!-- Bảng sản phẩm -->
+        <div class="card border rounded-3 overflow-hidden">
+
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 px-3 py-2 nova-bulk small">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="checkAll">
+                <label class="form-check-label" for="checkAll">
+                  Chọn tất cả (Trang này: 6)
+                </label>
+              </div>
+              <span class="text-secondary">|</span>
+              <button type="button" class="btn btn-secondary-subtle btn-sm py-0 px-2 fw-semibold bg-secondary-subtle">
+                Ẩn hàng loạt
+              </button>
+              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-secondary-subtle">
+                Đổi giá nhanh
+              </button>
+              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-danger-subtle text-danger">
+                Xóa
+              </button>
+            </div>
+            <div class="text-secondary">
+              Sắp xếp theo: <b class="text-dark">Mới cập nhật <i class="bi bi-caret-down-fill small"></i></b>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 nova-table">
+              <thead>
+                <tr>
+                  <th style="width:40px">#</th>
+                  <th>Thông tin sản phẩm &amp; SKU</th>
+                  <th>Phân loại / Biến thể</th>
+                  <th>Giá niêm yết / Khuyến mãi</th>
+                  <th>Tồn kho</th>
+                  <th>Doanh số (30D)</th>
+                  <th>Trạng thái</th>
+                  <th class="text-end">Hành động</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb"></div>
+                      <div>
+                        <div class="fw-bold nova-name">Đầm Maxi Hoa Nhí Dáng Xòe Tiểu Thư Cổ Vuông Dạo Phố</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: DR-MAXI-091</span> • Thời trang Nữ
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">3 Màu sắc: Vàng, Tím, Trắng</div>
+                    <div class="mt-1">
+                      <span class="badge nova-size">Size S</span>
+                      <span class="badge nova-size">Size M</span>
+                      <span class="badge nova-size">Size L</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">349.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">450.000₫</div>
+                  </td>
+                  <td class="fw-semibold">142</td>
+                  <td>
+                    <div class="fw-bold">512</div>
+                    <div class="small text-primary fw-semibold"><i class="bi bi-graph-up-arrow"></i> +14%</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1" title="Sửa"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1" title="Nhân bản"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1" title="Xóa"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr class="table-warning-soft">
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb"></div>
+                      <div>
+                        <div class="fw-bold nova-name">Áo Blazer Nữ Form Rộng Hàn Quốc 2 Lớp Dày Dặn Cao Cấp</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: BZ-KOREA-88</span> • Áo Khoác Nữ
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">Màu: Be Tây, Đen Tuyền</div>
+                    <div class="mt-1">
+                      <span class="badge nova-size">Size S</span>
+                      <span class="badge nova-size">Size M</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">580.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">720.000₫</div>
+                  </td>
+                  <td>
+                    <span class="badge rounded-pill bg-danger-subtle text-danger fs-6 fw-bold px-3">
+                      <i class="bi bi-exclamation-triangle"></i> 7 cái
+                    </span>
+                  </td>
+                  <td>
+                    <div class="fw-bold">329</div>
+                    <div class="small text-secondary">Bán chạy</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb"></div>
+                      <div>
+                        <div class="fw-bold nova-name">iPhone 16 Pro Max 256GB - Chính Hãng VN/A Titan Sa Mạc</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: AP-IP16PM-256</span> • Điện Thoại &amp; Tablet
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">Titan Tự Nhiên, Sa Mạc</div>
+                    <div class="mt-1">
+                      <span class="badge nova-size">256GB</span>
+                      <span class="badge nova-size">512GB</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">34.490.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">35.990.000₫</div>
+                  </td>
+                  <td class="fw-semibold">28 máy</td>
+                  <td>
+                    <div class="fw-bold">94</div>
+                    <div class="small text-primary fw-semibold"><i class="bi bi-graph-up-arrow"></i> +32%</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb"></div>
+                      <div>
+                        <div class="fw-bold nova-name">Set Đồ Công Sở Nữ Áo Gile Kèm Quần Tây Ống Suông Thanh Lịch</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: ST-OFFICE-03</span> • Thời Trang Thiết Kế
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">Xám Ghi, Đen Tuyền</div>
+                    <div class="mt-1">
+                      <span class="badge nova-size">S</span>
+                      <span class="badge nova-size">M</span>
+                      <span class="badge nova-size">L</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">489.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">650.000₫</div>
+                  </td>
+                  <td class="fw-semibold">86 bộ</td>
+                  <td>
+                    <div class="fw-bold">198</div>
+                    <div class="small text-secondary">Ổn định</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr class="table-warning-soft">
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb "></div>
+                      <div>
+                        <div class="fw-bold nova-name">Tai Nghe Không Dây Chống Ồn NovaSound ANC Pro X</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: AU-NS-ANCX</span> • Phụ kiện Âm thanh
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">Navy Blue, Shadow Black</div>
+                    <div class="small text-secondary mt-1">Bản Tiêu Chuẩn Hi-Res</div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">1.250.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">1.890.000₫</div>
+                  </td>
+                  <td>
+                    <span class="badge rounded-pill bg-danger-subtle text-danger fs-6 fw-bold px-3">0 chiếc</span>
+                  </td>
+                  <td>
+                    <div class="fw-bold">430</div>
+                    <div class="small text-secondary">Chờ nhập hàng</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch">
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><input class="form-check-input" type="checkbox"></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="nova-thumb"></div>
+                      <div>
+                        <div class="fw-bold nova-name">Túi Xách Nữ Đeo Chéo Da Mềm Phối Khóa Kim Loại Cao Cấp</div>
+                        <div class="small text-secondary mt-1">
+                          <span class="nova-sku">SKU: BG-NOVA-52</span> • Túi Ví &amp; Phụ Kiện
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="small">Kem Bơ, Nâu Cà Phê</div>
+                    <div class="small text-secondary mt-1">Kích cỡ 22cm x 15cm</div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-primary">285.000₫</div>
+                    <div class="small text-secondary text-decoration-line-through">390.000₫</div>
+                  </td>
+                  <td class="fw-semibold">63 cái</td>
+                  <td>
+                    <div class="fw-bold">175</div>
+                    <div class="small text-secondary">Đang chạy Ads</div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                  </td>
+                  <td class="text-end text-nowrap">
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
+                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Phân trang -->
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 px-3 py-3 nova-bulk small">
+            <div class="text-secondary">
+              Hiển thị <b class="text-dark">1 - 6</b> trên tổng số <b class="text-dark">254</b> sản phẩm
+            </div>
+
+            <nav>
+              <ul class="pagination pagination-sm mb-0 nova-pagination">
+                <li class="page-item disabled"><a class="page-link" href="#">‹ Trước</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item disabled"><span class="page-link">…</span></li>
+                <li class="page-item"><a class="page-link" href="#">26</a></li>
+                <li class="page-item"><a class="page-link" href="#">Sau ›</a></li>
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+
+        <!-- Chính sách -->
+        <div class="row g-3 mt-2">
+
+          <div class="col-12 col-md-4">
+            <div class="card border rounded-3 h-100">
+              <div class="card-body d-flex gap-3">
+                <div class="nova-icon">
+                  <i class="bi bi-shield-check text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold small mb-1">Chính Sách Người Bán Chuẩn Mall</h6>
+                  <p class="small text-secondary mb-0">
+                    Tỷ lệ hủy đơn do người bán &lt;1.5% để duy trì huy hiệu Shop Yêu Thích.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card border rounded-3 h-100">
+              <div class="card-body d-flex gap-3">
+                <div class="nova-icon">
+                  <i class="bi bi-pc-display text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold small mb-1">Đồng Bộ Đa Sàn Tự Động</h6>
+                  <p class="small text-secondary mb-0">
+                    Tồn kho biến thể đang được liên kết trực tiếp với hệ thống ERP kho tổng.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card border rounded-3 h-100">
+              <div class="card-body d-flex gap-3">
+                <div class="nova-icon orange">
+                  <i class="bi bi-headset"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold small mb-1">Hỗ Trợ Người Bán 24/7</h6>
+                  <p class="small text-secondary mb-0">
+                    Liên hệ trực tiếp Quản lý ngành hàng (KAM) qua hotline 1900-NOVA.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- JS -->
+  <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../access/js/seller_layout.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+/* =========================================================
+   NovaMall – Seller Product Management (bản tối giản)
+   ========================================================= */
+
+:root {
+    --bs-primary: #2563eb;
+    --bs-primary-rgb: 37, 99, 235;
+    --bs-body-bg: #f6f7fa;
+    --bs-body-color: #1f2937;
+    --bs-body-font-size: .875rem;
+    --bs-border-color: #e5e7eb;
+
+    --nova-primary: #2563eb;
+    --nova-primary-dark: #1d4ed8;
+    --nova-muted: #6b7280;
+    --nova-line: #e5e7eb;
+    --nova-bg-alt: #f9fafb;
+    --nova-danger: #dc2626;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ---------- Bootstrap ---------- */
+.btn-primary {
+    --bs-btn-bg: var(--nova-primary);
+    --bs-btn-border-color: var(--nova-primary);
+    --bs-btn-hover-bg: var(--nova-primary-dark);
+    --bs-btn-hover-border-color: var(--nova-primary-dark);
+    --bs-btn-active-bg: var(--nova-primary-dark);
+    --bs-btn-active-border-color: var(--nova-primary-dark);
+}
+
+.btn-light.border {
+    background: #fff;
+    border-color: #c9cdd6 !important;
+    color: #374151;
+}
+
+.btn-light.border:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af !important;
+}
+
+.text-primary {
+    color: var(--nova-primary-dark) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--nova-primary);
+    border-color: var(--nova-primary);
+}
+
+/* ---------- Header ---------- */
+.nova-tag {
+    font-size: .6875rem;
+    font-weight: 700;
+    color: var(--nova-primary);
+    letter-spacing: .5px;
+}
+
+/* ---------- Pill thông báo ---------- */
+.nova-pill-warn,
+.nova-pill-info {
+    background: #fff;
+    border: 1px solid var(--nova-line);
+    color: var(--bs-body-color);
+}
+
+.nova-pill-warn i {
+    color: #c2410c;
+}
+
+/* ---------- Tab ---------- */
+.nav-pills .nav-link {
+    background: #fff;
+    border: 1px solid #c9cdd6;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.nav-pills .nav-link:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .nav-link.active:hover {
+    background: var(--nova-primary);
+    border-color: var(--nova-primary);
+    color: #fff;
+}
+
+.nav-pills .nav-link.border-danger-subtle {
+    border-color: #f1b4b4 !important;
+}
+
+.nav-pills .nav-link.border-danger-subtle:hover {
+    background: #fef2f2 !important;
+    border-color: var(--nova-danger) !important;
+}
+
+.nova-main-tab {
+    color: var(--nova-muted);
+    font-weight: 600;
+    padding: .6rem 1.25rem;
+}
+
+.nova-main-tab.active {
+    background: #eff6ff !important;
+    color: var(--nova-primary-dark) !important;
+}
+
+.nova-count {
+    background: #eef0f4;
+    color: #374151;
+    font-weight: 600;
+}
+
+.nav-pills .nav-link.active .nova-count {
+    background: rgba(255, 255, 255, .25);
+    color: #fff;
+}
+
+/* ---------- Card ---------- */
+.seller-main .card {
+    --bs-card-bg: #fff;
+    background: #fff;
+    border: 1px solid #d9dce3;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.seller-main .form-control,
+.seller-main .form-select,
+.seller-main .input-group-text {
+    border-color: var(--nova-line);
+    background-color: #fff !important;
+}
+
+/* ---------- Thanh công cụ trên/dưới bảng ---------- */
+.nova-bulk {
+    background: #fff;
+}
+
+.nova-bulk:first-child {
+    border-bottom: 1px solid #d9dce3;
+}
+
+.nova-bulk:last-child {
+    border-top: 1px solid #d9dce3;
+}
+
+.nova-bulk button {
+    background: #fff !important;
+    color: #374151 !important;
+    border: 1px solid #c9cdd6 !important;
+    border-radius: 6px;
+    padding: .25rem .75rem !important;
+    font-weight: 600;
+}
+
+.nova-bulk button:hover {
+    background: #f3f4f6 !important;
+    border-color: #9ca3af !important;
+}
+
+.nova-bulk button.text-danger {
+    color: var(--nova-danger) !important;
+    border-color: #f1b4b4 !important;
+}
+
+.nova-bulk button.text-danger:hover {
+    background: #fef2f2 !important;
+    border-color: var(--nova-danger) !important;
+}
+
+/* ---------- Bảng ---------- */
+.nova-table thead th {
+    font-size: .6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    color: var(--nova-muted);
+    background: var(--nova-bg-alt);
+    padding: .75rem .625rem;
+}
+
+.nova-table tbody td {
+    padding: .875rem .625rem;
+}
+
+.nova-table tbody tr.table-warning-soft > * {
+    background-color: #fffaf5;
+}
+
+/* ---------- Ảnh sản phẩm (placeholder) ---------- */
+.nova-thumb {
+    position: relative;
+    flex: none;
+    width: 44px;
+    height: 56px;
+    border-radius: 4px;
+    background: #d6d3cd;
+}
+
+.nova-name {
+    max-width: 260px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.nova-sku {
+    font-family: Consolas, monospace;
+    font-size: .6875rem;
+    color: #4b5563;
+    background: #f1f2f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.nova-size {
+    background: #f1f2f5;
+    color: #374151;
+    font-size: .625rem;
+    font-weight: 600;
+}
+
+/* Cảnh báo tồn kho */
+.nova-table .badge.fs-6 {
+    font-size: .8125rem !important;
+    font-weight: 600 !important;
+}
+
+/* Nút hành động */
+.nova-table .btn-link {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0 !important;
+    margin-left: 2px;
+    background: #fff;
+    border: 1px solid #d9dce3;
+    border-radius: 6px;
+    color: var(--nova-muted) !important;
+    text-decoration: none;
+}
+
+.nova-table .btn-link:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: var(--bs-body-color) !important;
+}
+
+.nova-table .btn-link:has(.bi-trash):hover {
+    background: #fef2f2;
+    border-color: var(--nova-danger);
+    color: var(--nova-danger) !important;
+}
+
+/* ---------- Phân trang ---------- */
+.nova-pagination {
+    --bs-pagination-color: #374151;
+    --bs-pagination-active-bg: var(--nova-primary);
+    --bs-pagination-active-border-color: var(--nova-primary);
+}
+
+.nova-pagination .page-link {
+    border: 0;
+    border-radius: 4px;
+    margin: 0 2px;
+    background: transparent;
+    font-weight: 500;
+}
+
+.nova-pagination .active .page-link {
+    background: var(--nova-primary);
+    color: #fff;
+}
+
+/* ---------- Thẻ chính sách ---------- */
+.nova-icon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: #f1f2f5;
+}
+
+.nova-icon.orange {
+    background: #f1f2f5;
+    color: #c2410c;
+}
+/* Cột Phân loại / Biến thể và Giá: giữ độ rộng tối thiểu */
+.nova-table th:nth-child(3),
+.nova-table td:nth-child(3) {
+    min-width: 190px;
+}
+
+.nova-table th:nth-child(4),
+.nova-table td:nth-child(4) {
+    min-width: 130px;
+}
+
+.nova-table td:nth-child(3) > .small {
+    white-space: nowrap;
+}
+
+.nova-table td:nth-child(3) .badge {
+    white-space: nowrap;
+}
+/* Giữ độ rộng cho các cột bên phải, không cho chữ xuống dòng */
+.nova-table thead th {
+    white-space: nowrap;
+}
+
+.nova-table th:nth-child(5),
+.nova-table td:nth-child(5) {
+    min-width: 100px;
+}
+
+.nova-table th:nth-child(6),
+.nova-table td:nth-child(6) {
+    min-width: 120px;
+}
+
+.nova-table th:nth-child(7),
+.nova-table td:nth-child(7) {
+    min-width: 100px;
+}
+
+.nova-table th:nth-child(8),
+.nova-table td:nth-child(8) {
+    min-width: 130px;
+}
+
+.nova-table td:nth-child(5),
+.nova-table td:nth-child(6) {
+    white-space: nowrap;
+}

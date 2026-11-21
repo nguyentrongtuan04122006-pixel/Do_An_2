@@ -24,190 +24,17 @@
 
 <body class="seller-body">
 
-  <!-- ================= TOP NAVBAR ================= -->
-  <header class="seller-header">
-    <div class="seller-header__left">
-      <button class="btn border-0 p-1 me-2 d-lg-none" type="button" id="sellerMenuToggle" aria-label="Mở danh mục"
-        aria-expanded="false">
-        <span class="material-symbols-outlined" style="font-size: 28px; color: #334155;">
-          menu
-        </span>
-      </button>
-      <a href="../html/seller_home.html" class="seller-header__brand">
-        <img src="../access/picture/screen.png" alt="NovaMall" class="seller-header__logo-img">
-        <span class="seller-header__logo-divider"></span>
-        <div class="seller-header__brand-text">
-          <span class="seller-header__brand-title">KÊNH NGƯỜI BÁN</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="seller-header__right">
-      <a href="../html/index.html" class="seller-header__back-mall">
-        <span class="material-symbols-outlined">storefront</span>
-        <span>Về trang Mua Sắm NovaMall</span>
-      </a>
-
-      <div class="seller-header__divider"></div>
-
-      <!-- Icon Thông báo -->
-      <a href="#" class="seller-header__icon-btn" title="Thông báo">
-        <span class="material-symbols-outlined">notifications</span>
-      </a>
-
-      <!-- Icon Chat / Tin nhắn -->
-      <a href="#" class="seller-header__icon-btn" title="Tin nhắn">
-        <span class="material-symbols-outlined">forum</span>
-        <span class="seller-header__badge-count">12</span>
-      </a>
-
-      <!-- Trợ giúp -->
-      <a href="#" class="seller-header__help-btn">
-        <span class="material-symbols-outlined">help</span>
-        <span>Trợ Giúp</span>
-      </a>
-
-      <!-- Profile Nhà bán -->
-      <div class="seller-header__user-profile">
-        <div class="seller-header__user-info">
-          <div class="seller-header__user-name">
-            <span>NovaTech Official</span>
-            <span class="material-symbols-outlined seller-header__verified-icon">check_circle</span>
-          </div>
-
-        </div>
-        <span class="material-symbols-outlined" style="font-size: 18px; color: #94A3B8;">expand_more</span>
-      </div>
-    </div>
-  </header>
-
+  <div id="sellerHeader"></div>
   <!-- ================= LAYOUT WRAPPER ================= -->
   <div class="seller-layout">
 
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="seller-sidebar" id="sellerSidebar">
-
-      <!-- Nhóm 1: QUẢN LÝ GIAN HÀNG -->
-      <div class="seller-sidebar__group">
-        <div class="seller-sidebar__group-title">QUẢN LÝ GIAN HÀNG</div>
-        <ul class="seller-sidebar__menu">
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="seller-sidebar__link-text">Hồ sơ gian hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">settings</span>
-              <span class="seller-sidebar__link-text">Thiết lập shop</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">warehouse</span>
-              <span class="seller-sidebar__link-text">Quản lý kho hàng</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Nhóm 2: QUẢN LÝ SẢN PHẨM -->
-      <div class="seller-sidebar__group">
-        <div class="seller-sidebar__group-title">QUẢN LÝ SẢN PHẨM</div>
-        <ul class="seller-sidebar__menu">
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">inventory_2</span>
-              <span class="seller-sidebar__link-text">Quản lý sản phẩm</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Nhóm 3: QUẢN LÝ ĐƠN HÀNG -->
-      <div class="seller-sidebar__group">
-        <div class="seller-sidebar__group-title">QUẢN LÝ ĐƠN HÀNG</div>
-        <ul class="seller-sidebar__menu">
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">receipt_long</span>
-              <span class="seller-sidebar__link-text">Xem danh sách & Chi tiết đơn</span>
-              <span class="seller-sidebar__badge seller-sidebar__badge--neutral">186</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span class="seller-sidebar__link-text">Xác nhận đơn hàng</span>
-              <span class="seller-sidebar__badge seller-sidebar__badge--blue">12</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">local_shipping</span>
-              <span class="seller-sidebar__link-text">Bàn giao vận chuyển & In phiếu</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">cancel</span>
-              <span class="seller-sidebar__link-text">Từ chối / Hủy đơn hàng</span>
-              <span class="seller-sidebar__badge seller-sidebar__badge--red">3</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Nhóm 4: QUẢN LÝ KHUYẾN MÃI -->
-      <div class="seller-sidebar__group">
-        <div class="seller-sidebar__group-title">QUẢN LÝ KHUYẾN MÃI</div>
-        <ul class="seller-sidebar__menu">
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">sell</span>
-              <span class="seller-sidebar__link-text">Quản lý khuyến mãi</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Nhóm 5: QUẢN LÝ DOANH THU & BÁO CÁO -->
-      <div class="seller-sidebar__group">
-        <div class="seller-sidebar__group-title">
-          <span>QUẢN LÝ DOANH THU & BÁO CÁO</span>
-          <span class="seller-sidebar__group-dot"></span>
-        </div>
-        <ul class="seller-sidebar__menu">
-          <li>
-            <a href="#" class="seller-sidebar__link active">
-              <span class="material-symbols-outlined">trending_up</span>
-              <span class="seller-sidebar__link-text">Doanh thu bán hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">bar_chart</span>
-              <span class="seller-sidebar__link-text">Thống kê đơn hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="seller-sidebar__link">
-              <span class="material-symbols-outlined">warning</span>
-              <span class="seller-sidebar__link-text">Cảnh báo hàng tồn kho</span>
-              <span class="seller-sidebar__badge seller-sidebar__badge--orange">5</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-    </aside>
-
+    <div id="sellerSidebar"></div>
     <!-- ================= MAIN CONTENT ================= -->
     <main class="seller-main">
 
-      <!-- ================= CARD 1: DANH SÁCH CẦN LÀM ================= -->
+      <!-- ================= DANH SÁCH CẦN LÀM ================= -->
       <section class="seller-card">
+
         <div class="seller-card__header">
           <div class="seller-card__title-group">
             <div class="seller-card__title">
@@ -215,84 +42,97 @@
               <span class="seller-card__badge-realtime">Cập nhật tức thời</span>
             </div>
           </div>
+
           <div class="seller-card__subtitle">
             Những việc bạn cần hoàn thành ngay hôm nay để tránh phát sinh đơn hàng giao trễ hoặc phạt tỷ lệ hủy.
           </div>
         </div>
 
-        <div class="seller-todo__grid">
-          <!-- 1. Chờ Xác Nhận -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--blue">12</div>
-            <div class="seller-todo__label">Chờ Xác Nhận</div>
-            <div class="seller-todo__sublabel seller-todo__sublabel--alert">Xử lý ngay</div>
+        <!-- Bootstrap Grid: 2 / 4 / 8 cột -->
+        <div class="row g-3">
+
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--blue">12</div>
+              <div class="seller-todo__label">Chờ Xác Nhận</div>
+              <div class="seller-todo__sublabel seller-todo__sublabel--alert">Xử lý ngay</div>
+            </div>
           </div>
 
-          <!-- 2. Chờ Lấy Hàng -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--blue">38</div>
-            <div class="seller-todo__label">Chờ Lấy Hàng</div>
-            <div class="seller-todo__sublabel seller-todo__sublabel--warn">5 đơn sắp trễ</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--blue">38</div>
+              <div class="seller-todo__label">Chờ Lấy Hàng</div>
+              <div class="seller-todo__sublabel seller-todo__sublabel--warn">5 đơn sắp trễ</div>
+            </div>
           </div>
 
-          <!-- 3. Đã Đóng Gói -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--blue">24</div>
-            <div class="seller-todo__label">Đã Đóng Gói</div>
-            <div class="seller-todo__sublabel">Chờ bưu tá</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--blue">24</div>
+              <div class="seller-todo__label">Đã Đóng Gói</div>
+              <div class="seller-todo__sublabel">Chờ bưu tá</div>
+            </div>
           </div>
 
-          <!-- 4. Đơn Hủy Chờ Duyệt -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--red">3</div>
-            <div class="seller-todo__label">Đơn Hủy Chờ Duyệt</div>
-            <div class="seller-todo__sublabel seller-todo__sublabel--alert">Khách yêu cầu</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--red">3</div>
+              <div class="seller-todo__label">Đơn Hủy Chờ Duyệt</div>
+              <div class="seller-todo__sublabel seller-todo__sublabel--alert">Khách yêu cầu</div>
+            </div>
           </div>
 
-          <!-- 5. Trả Hàng / Khiếu Nại -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--red">2</div>
-            <div class="seller-todo__label">Trả Hàng / Khiếu Nại</div>
-            <div class="seller-todo__sublabel seller-todo__sublabel--alert">Cần phản hồi</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--red">2</div>
+              <div class="seller-todo__label">Trả Hàng / Khiếu Nại</div>
+              <div class="seller-todo__sublabel seller-todo__sublabel--alert">Cần phản hồi</div>
+            </div>
           </div>
 
-          <!-- 6. Hết Hàng Trong Kho -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--orange">5</div>
-            <div class="seller-todo__label">Hết Hàng Trong Kho</div>
-            <div class="seller-todo__sublabel seller-todo__sublabel--warn">Cần nhập thêm</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--orange">5</div>
+              <div class="seller-todo__label">Hết Hàng Trong Kho</div>
+              <div class="seller-todo__sublabel seller-todo__sublabel--warn">Cần nhập thêm</div>
+            </div>
           </div>
 
-          <!-- 7. Vi Phạm / Tạm Khóa -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--gray">0</div>
-            <div class="seller-todo__label">Vi Phạm / Tạm Khóa</div>
-            <div class="seller-todo__sublabel">Bình thường</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--gray">0</div>
+              <div class="seller-todo__label">Vi Phạm / Tạm Khóa</div>
+              <div class="seller-todo__sublabel">Bình thường</div>
+            </div>
           </div>
 
-          <!-- 8. Khuyến Mãi Chờ ĐK -->
-          <div class="seller-todo__item">
-            <div class="seller-todo__number seller-todo__number--blue">4</div>
-            <div class="seller-todo__label">Khuyến Mãi Chờ ĐK</div>
-            <div class="seller-todo__sublabel">Sự kiện sàn</div>
+          <div class="col-6 col-md-3 col-xl">
+            <div class="seller-todo__item">
+              <div class="seller-todo__number seller-todo__number--blue">4</div>
+              <div class="seller-todo__label">Khuyến Mãi Chờ ĐK</div>
+              <div class="seller-todo__sublabel">Sự kiện sàn</div>
+            </div>
           </div>
+
         </div>
       </section>
 
-      <!-- ================= CARD 2: PHÂN TÍCH BÁN HÀNG ================= -->
+      <!-- ================= PHÂN TÍCH BÁN HÀNG ================= -->
       <section class="seller-card">
+
         <div class="seller-card__header">
           <div class="seller-card__title-group">
             <div class="seller-card__title">
               <span>Phân Tích Bán Hàng</span>
               <span class="material-symbols-outlined seller-card__info-icon">info</span>
             </div>
+
             <div class="seller-card__subtitle">
               Tổng quan hiệu quả kinh doanh so với cùng kỳ trước đó
             </div>
           </div>
 
-          <!-- Filter Tabs -->
           <div class="seller-filter-tabs">
             <button type="button" class="seller-filter-tab active" data-period="today">Hôm nay (Tính đến 15:30)</button>
             <button type="button" class="seller-filter-tab" data-period="yesterday">Hôm qua</button>
@@ -301,122 +141,120 @@
           </div>
         </div>
 
-        <!-- 4 KPI Cards -->
-        <div class="seller-kpi__grid">
-          <!-- KPI 1 -->
-          <div class="seller-kpi__card">
-            <div class="seller-kpi__top">
-              <span class="seller-kpi__title">Doanh số (Đã thanh toán)</span>
-              <span class="material-symbols-outlined seller-kpi__icon">payments</span>
-            </div>
-            <div class="seller-kpi__value" id="kpiRevenue">148.650.000₫</div>
-            <div class="seller-kpi__trend">
-              <span class="material-symbols-outlined" style="font-size: 15px;">trending_up</span>
-              <span id="kpiRevenueTrend">↗ +18.4% so với hôm qua</span>
+        <!-- Bootstrap Grid: KPI 2 cột mobile, 4 cột desktop -->
+        <div class="row g-3 mb-4">
+
+          <div class="col-6 col-lg-3">
+            <div class="seller-kpi__card h-100">
+              <div class="seller-kpi__top">
+                <span class="seller-kpi__title">Doanh số (Đã thanh toán)</span>
+                <span class="material-symbols-outlined seller-kpi__icon">payments</span>
+              </div>
+              <div class="seller-kpi__value" id="kpiRevenue">148.650.000₫</div>
+              <div class="seller-kpi__trend">
+                <span class="material-symbols-outlined" style="font-size:15px;">trending_up</span>
+                <span id="kpiRevenueTrend">↗ +18.4% so với hôm qua</span>
+              </div>
             </div>
           </div>
 
-          <!-- KPI 2 -->
-          <div class="seller-kpi__card">
-            <div class="seller-kpi__top">
-              <span class="seller-kpi__title">Số lượng đơn hàng</span>
-              <span class="material-symbols-outlined seller-kpi__icon">shopping_cart</span>
-            </div>
-            <div class="seller-kpi__value" id="kpiOrders">186 đơn</div>
-            <div class="seller-kpi__trend">
-              <span class="material-symbols-outlined" style="font-size: 15px;">trending_up</span>
-              <span id="kpiOrdersTrend">↗ +12.5% so với hôm qua</span>
-            </div>
-          </div>
-
-          <!-- KPI 3 -->
-          <div class="seller-kpi__card">
-            <div class="seller-kpi__top">
-              <span class="seller-kpi__title">Tỷ lệ chuyển đổi Shop</span>
-              <span class="material-symbols-outlined seller-kpi__icon">alt_route</span>
-            </div>
-            <div class="seller-kpi__value" id="kpiConversion">4.32%</div>
-            <div class="seller-kpi__trend">
-              <span class="material-symbols-outlined" style="font-size: 15px;">trending_up</span>
-              <span id="kpiConversionTrend">↗ +0.6% so với hôm qua</span>
+          <div class="col-6 col-lg-3">
+            <div class="seller-kpi__card h-100">
+              <div class="seller-kpi__top">
+                <span class="seller-kpi__title">Số lượng đơn hàng</span>
+                <span class="material-symbols-outlined seller-kpi__icon">shopping_cart</span>
+              </div>
+              <div class="seller-kpi__value" id="kpiOrders">186 đơn</div>
+              <div class="seller-kpi__trend">
+                <span class="material-symbols-outlined" style="font-size:15px;">trending_up</span>
+                <span id="kpiOrdersTrend">↗ +12.5% so với hôm qua</span>
+              </div>
             </div>
           </div>
 
-          <!-- KPI 4 -->
-          <div class="seller-kpi__card">
-            <div class="seller-kpi__top">
-              <span class="seller-kpi__title">Lượt truy cập Shop</span>
-              <span class="material-symbols-outlined seller-kpi__icon">visibility</span>
-            </div>
-            <div class="seller-kpi__value" id="kpiTraffic">8.420 lượt</div>
-            <div class="seller-kpi__trend">
-              <span class="material-symbols-outlined" style="font-size: 15px;">trending_up</span>
-              <span id="kpiTrafficTrend">↗ +25.1% so với hôm qua</span>
+          <div class="col-6 col-lg-3">
+            <div class="seller-kpi__card h-100">
+              <div class="seller-kpi__top">
+                <span class="seller-kpi__title">Tỷ lệ chuyển đổi Shop</span>
+                <span class="material-symbols-outlined seller-kpi__icon">alt_route</span>
+              </div>
+              <div class="seller-kpi__value" id="kpiConversion">4.32%</div>
+              <div class="seller-kpi__trend">
+                <span class="material-symbols-outlined" style="font-size:15px;">trending_up</span>
+                <span id="kpiConversionTrend">↗ +0.6% so với hôm qua</span>
+              </div>
             </div>
           </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="seller-kpi__card h-100">
+              <div class="seller-kpi__top">
+                <span class="seller-kpi__title">Lượt truy cập Shop</span>
+                <span class="material-symbols-outlined seller-kpi__icon">visibility</span>
+              </div>
+              <div class="seller-kpi__value" id="kpiTraffic">8.420 lượt</div>
+              <div class="seller-kpi__trend">
+                <span class="material-symbols-outlined" style="font-size:15px;">trending_up</span>
+                <span id="kpiTrafficTrend">↗ +25.1% so với hôm qua</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Biểu đồ phân tích doanh thu -->
+        <!-- Biểu đồ -->
         <div class="seller-chart-container">
+
           <div class="seller-chart__header">
             <div class="seller-chart__legends">
               <div class="seller-chart__legend-item">
                 <span class="seller-chart__dot seller-chart__dot--primary"></span>
                 <span>Doanh thu hôm nay (Triệu VNĐ)</span>
               </div>
+
               <div class="seller-chart__legend-item">
                 <span class="seller-chart__dot seller-chart__dot--secondary"></span>
                 <span>Doanh thu hôm qua</span>
               </div>
             </div>
+
             <div class="seller-chart__unit">
               Đơn vị: VNĐ & Lượt xem
             </div>
           </div>
 
-          <!-- SVG Chart Curve -->
           <div class="seller-chart-wrapper">
             <svg class="seller-chart-svg" viewBox="0 0 950 220" preserveAspectRatio="none">
               <defs>
-                <!-- Gradient cho diện tích dưới đường biểu diễn hôm nay -->
                 <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.18" />
-                  <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.0" />
+                  <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0" />
                 </linearGradient>
               </defs>
 
-              <!-- Các đường lưới ngang mờ -->
               <line x1="30" y1="30" x2="920" y2="30" class="seller-chart__grid-line" />
               <line x1="30" y1="80" x2="920" y2="80" class="seller-chart__grid-line" />
               <line x1="30" y1="130" x2="920" y2="130" class="seller-chart__grid-line" />
               <line x1="30" y1="180" x2="920" y2="180" class="seller-chart__grid-line" />
 
-              <!-- Vùng diện tích mờ (Area fill) từ 00:00 đến 15:30 -->
               <path d="M 40 190 Q 200 185 360 160 T 600 125 T 780 75 L 780 180 L 40 180 Z" fill="url(#areaGradient)" />
 
-              <!-- Đường nét đứt màu xám cho phần tương lai sau 15:30 đến 24:00 -->
               <path d="M 780 75 Q 840 65 910 60" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,4" />
 
-              <!-- Đường biểu diễn Hôm qua (Đường phụ mờ) -->
               <path d="M 40 195 Q 200 190 360 175 T 600 155 T 780 130 T 910 120" fill="none" stroke="#93C5FD"
                 stroke-width="2" stroke-dasharray="3,3" />
 
-              <!-- Đường biểu diễn Hôm nay (Chính, đậm nét uốn cong mượt) -->
               <path d="M 40 190 Q 200 185 360 160 T 600 125 T 780 75" fill="none" stroke="#1D4ED8" stroke-width="3"
                 stroke-linecap="round" />
 
-              <!-- Các điểm nút dữ liệu hôm nay (Points) -->
               <circle cx="40" cy="190" r="4" fill="#1D4ED8" />
               <circle cx="160" cy="182" r="4" fill="#1D4ED8" />
               <circle cx="280" cy="172" r="4" fill="#1D4ED8" />
               <circle cx="400" cy="155" r="4" fill="#1D4ED8" />
               <circle cx="520" cy="138" r="4" fill="#1D4ED8" />
               <circle cx="650" cy="125" r="4" fill="#1D4ED8" />
-
-              <!-- Điểm 15:30 (Hiện tại) - Đỉnh tròn nổi bật -->
               <circle cx="780" cy="75" r="7" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="3.5" />
 
-              <!-- Nhãn trục X thời gian -->
               <text x="40" y="210" text-anchor="middle" class="seller-chart__axis-text">00:00</text>
               <text x="160" y="210" text-anchor="middle" class="seller-chart__axis-text">03:00</text>
               <text x="280" y="210" text-anchor="middle" class="seller-chart__axis-text">06:00</text>
@@ -429,74 +267,86 @@
               <text x="910" y="210" text-anchor="middle" class="seller-chart__axis-text">24:00</text>
             </svg>
           </div>
+
         </div>
       </section>
 
-      <!-- ================= SECTION 3: KÊNH MARKETING CỦA SHOP ================= -->
+      <!-- ================= KÊNH MARKETING ================= -->
       <section class="seller-marketing-section">
+
         <div class="seller-marketing__header">
           <div class="seller-marketing__title">
             <span>Kênh Marketing Của Shop</span>
             <span class="material-symbols-outlined">bolt</span>
           </div>
+
           <a href="#" class="seller-marketing__view-all">
             <span>Xem tất cả công cụ</span>
-            <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+            <span class="material-symbols-outlined" style="font-size:16px;">chevron_right</span>
           </a>
         </div>
 
-        <div class="seller-marketing__grid">
-          <!-- Card 1: Mã Giảm Giá Của Shop -->
-          <a href="#" class="seller-marketing__card">
-            <div class="seller-marketing__icon seller-marketing__icon--orange">
-              <span class="material-symbols-outlined">confirmation_number</span>
-            </div>
-            <div class="seller-marketing__content">
-              <div class="seller-marketing__card-title">Mã Giảm Giá Của Shop</div>
-              <div class="seller-marketing__card-desc">Tạo voucher riêng thu hút khách hàng chốt đơn nhanh hơn.</div>
-            </div>
-          </a>
+        <!-- Bootstrap Grid: 1 / 2 / 4 cột -->
+        <div class="row g-3">
 
-          <!-- Card 2: Flash Sale Của Shop -->
-          <a href="#" class="seller-marketing__card">
-            <div class="seller-marketing__icon seller-marketing__icon--blue">
-              <span class="material-symbols-outlined">electric_bolt</span>
-            </div>
-            <div class="seller-marketing__content">
-              <div class="seller-marketing__card-title">Flash Sale Của Shop</div>
-              <div class="seller-marketing__card-desc">Tạo các khung giờ giảm giá sốc kích thích mua sắm.</div>
-            </div>
-          </a>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <a href="#" class="seller-marketing__card h-100">
+              <div class="seller-marketing__icon seller-marketing__icon--orange">
+                <span class="material-symbols-outlined">confirmation_number</span>
+              </div>
+              <div class="seller-marketing__content">
+                <div class="seller-marketing__card-title">Mã Giảm Giá Của Shop</div>
+                <div class="seller-marketing__card-desc">Tạo voucher riêng thu hút khách hàng chốt đơn nhanh hơn.</div>
+              </div>
+            </a>
+          </div>
 
-          <!-- Card 3: Combo Khuyến Mãi -->
-          <a href="#" class="seller-marketing__card">
-            <div class="seller-marketing__icon seller-marketing__icon--green">
-              <span class="material-symbols-outlined">layers</span>
-            </div>
-            <div class="seller-marketing__content">
-              <div class="seller-marketing__card-title">Combo Khuyến Mãi</div>
-              <div class="seller-marketing__card-desc">Mua 2 giảm 5%, Mua kèm deal sốc tăng giá trị đơn hàng.</div>
-            </div>
-          </a>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <a href="#" class="seller-marketing__card h-100">
+              <div class="seller-marketing__icon seller-marketing__icon--blue">
+                <span class="material-symbols-outlined">electric_bolt</span>
+              </div>
+              <div class="seller-marketing__content">
+                <div class="seller-marketing__card-title">Flash Sale Của Shop</div>
+                <div class="seller-marketing__card-desc">Tạo các khung giờ giảm giá sốc kích thích mua sắm.</div>
+              </div>
+            </a>
+          </div>
 
-          <!-- Card 4: Tin Nhắn Quảng Bá -->
-          <a href="#" class="seller-marketing__card">
-            <div class="seller-marketing__icon seller-marketing__icon--purple">
-              <span class="material-symbols-outlined">mark_chat_unread</span>
-            </div>
-            <div class="seller-marketing__content">
-              <div class="seller-marketing__card-title">Tin Nhắn Quảng Bá</div>
-              <div class="seller-marketing__card-desc">Gửi thông báo ưu đãi trực tiếp đến khách hàng từng mua.</div>
-            </div>
-          </a>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <a href="#" class="seller-marketing__card h-100">
+              <div class="seller-marketing__icon seller-marketing__icon--green">
+                <span class="material-symbols-outlined">layers</span>
+              </div>
+              <div class="seller-marketing__content">
+                <div class="seller-marketing__card-title">Combo Khuyến Mãi</div>
+                <div class="seller-marketing__card-desc">Mua 2 giảm 5%, Mua kèm deal sốc tăng giá trị đơn hàng.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-3">
+            <a href="#" class="seller-marketing__card h-100">
+              <div class="seller-marketing__icon seller-marketing__icon--purple">
+                <span class="material-symbols-outlined">mark_chat_unread</span>
+              </div>
+              <div class="seller-marketing__content">
+                <div class="seller-marketing__card-title">Tin Nhắn Quảng Bá</div>
+                <div class="seller-marketing__card-desc">Gửi thông báo ưu đãi trực tiếp đến khách hàng từng mua.</div>
+              </div>
+            </a>
+          </div>
+
         </div>
       </section>
+
     </main>
   </div>
 
   <!-- JS -->
   <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../access/js/seller_home.js"></script>
+  <script src="../access/js/seller_layout.js"></script>
 </body>
 
 </html>

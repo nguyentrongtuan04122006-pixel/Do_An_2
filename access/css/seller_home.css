@@ -37,11 +37,17 @@ body.seller-body {
 }
 
 /* ================= HEADER ================= */
+#sellerHeader {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 .seller-header {
   height: 64px;
   background-color: #FFFFFF;
   border-bottom: 1px solid var(--seller-border);
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 100;
   display: flex;
@@ -219,21 +225,37 @@ body.seller-body {
 }
 
 /* ================= WRAPPER & SIDEBAR ================= */
+/* ================= WRAPPER & SIDEBAR ================= */
 .seller-layout {
   display: flex;
+  align-items: stretch;
   min-height: calc(100vh - 64px);
 }
 
+/* Sidebar cố định khi cuộn trang */
 .seller-sidebar {
-  width: var(--seller-sidebar-width);
-  background-color: #FFFFFF;
-  border-right: 1px solid var(--seller-border);
-  flex-shrink: 0;
-  padding: 16px 10px 40px;
-  overflow-y: auto;
-  max-height: calc(100vh - 64px);
   position: sticky;
   top: 64px;
+
+  width: var(--seller-sidebar-width);
+  height: calc(100vh - 64px);
+  flex-shrink: 0;
+
+  background-color: #FFFFFF;
+  border-right: 1px solid var(--seller-border);
+
+  padding: 16px 10px 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Nội dung bên phải */
+.seller-main {
+  flex: 1;
+  min-width: 0;
+  margin-left: 0;
+  padding: 20px 28px 60px;
+  background-color: #fff;
 }
 
 .seller-sidebar::-webkit-scrollbar {
@@ -273,6 +295,7 @@ body.seller-body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  padding-left: 0;
 }
 
 .seller-sidebar__link {
@@ -354,12 +377,7 @@ body.seller-body {
 }
 
 /* ================= MAIN CONTENT ================= */
-.seller-main {
-  flex: 1;
-  padding: 20px 28px 60px;
-  background-color: var(--seller-bg);
-  min-width: 0;
-}
+
 
 /* Announcement Banner */
 .seller-alert-banner {
@@ -890,36 +908,4 @@ body.seller-body {
   font-size: 12px;
   color: #64748B;
   line-height: 1.4;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 1200px) {
-  .seller-todo__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .seller-kpi__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .seller-marketing__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .seller-main {
-    padding: 16px;
-  }
-  .seller-todo__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .seller-alert-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .seller-alert-banner__actions {
-    margin-left: 0;
-    width: 100%;
-    justify-content: space-between;
-  }
 }

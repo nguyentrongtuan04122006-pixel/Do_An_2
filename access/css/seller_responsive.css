@@ -151,7 +151,7 @@
 
     .seller-header__right {
         gap: 0px;
-        margin-left: 0px;
+        margin-left: 50px;
     }
 
 
@@ -189,7 +189,7 @@
         display: none;
     }
 
-.register-terms {
+    .register-terms {
         width: 100%;
         max-width: 420px;
         margin: 0 auto;
@@ -210,9 +210,94 @@
         flex: 1;
         min-width: 0;
     }
+
+    /* product */
+    .seller-main .align-items-start>.d-flex>.btn {
+        flex-basis: 100%;
+    }
+
+    .nova-name {
+        max-width: 120px;
+    }
+
+    .nova-table {
+        min-width: 500px;
+    }
+
+    .nova-pill-warn,
+    .nova-pill-info {
+        display: none
+    }
+
+    .nav-pills {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: .5rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+        scrollbar-color: #cfd3dc transparent;
+    }
+
+    .nav-pills::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .nav-pills::-webkit-scrollbar-thumb {
+        background: #cfd3dc;
+        border-radius: 999px;
+    }
+
+    .nav-pills .nav-item {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+    }
+
+    .nav-pills .nav-link {
+        white-space: nowrap;
+    }
+    .nova-bulk:first-child > div:first-child {
+        flex-wrap: nowrap !important;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: .25rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nova-bulk:first-child > div:first-child::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nova-bulk:first-child > div:first-child > * {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
 }
 
 /* Tablet: từ 768px đến dưới 992px */
-@media (min-width: 768px) and (max-width: 992px) {}
+@media (min-width: 768px) and (max-width: 992px) {
+    .seller-main {
+        padding: 16px;
+    }
+
+    .seller-todo__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .seller-alert-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .seller-alert-banner__actions {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
 
 @media (max-width:1200px) {}
