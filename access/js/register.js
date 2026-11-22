@@ -1,10 +1,10 @@
 import { getUserList, saveUserList } from "./customer.js";
+
 function showError(id, message) {
     document.querySelector(`#${id}_error`).textContent = message;
 }
-function register() {
 
-    // Lấy form đăng ký
+function register() {
     const registerForm = document.querySelector(".register__form");
 
     registerForm.addEventListener("submit", function (e) {
@@ -13,6 +13,7 @@ function register() {
         // Lấy dữ liệu
         const fullname = document.querySelector("#fullname").value.trim();
         const account = document.querySelector("#account").value.trim();
+        const address = document.querySelector("#address").value.trim();   // MỚI
         const password = document.querySelector("#password").value;
         const repassword = document.querySelector("#repassword").value;
 
@@ -32,14 +33,23 @@ function register() {
             showError("account", "Vui lòng nhập số điện thoại hoặc email!");
             return;
         }
-        // Kiểm tra định dạng số điện thoại
-        const phoneRegex = /^(0[0-9]{9})$/;
 
-        // Kiểm tra định dạng email
+        const phoneRegex = /^(0[0-9]{9})$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!phoneRegex.test(account) && !emailRegex.test(account)) {
             showError("account", "Vui lòng nhập số điện thoại hoặc email hợp lệ!");
+            return;
+        }
+
+        // MỚI: kiểm tra địa chỉ
+        if (!address) {
+            showError("address", "Vui lòng nhập địa chỉ!");
+            return;
+        }
+
+        if (address.length < 10) {
+            showError("address", "Địa chỉ quá ngắn, vui lòng nhập đầy đủ!");
             return;
         }
 
@@ -83,17 +93,18 @@ function register() {
                 : 1,
             fullname: fullname,
             account: account,
+            address: address,          // MỚI
             password: password,
             role: "NGUOI_MUA",
             status: "HOAT_DONG"
         };
 
-        // Lưu tài khoản
         userList.push(newUser);
         saveUserList(userList);
 
         registerForm.reset();
         window.location.href = "./login.html";
-    })
+    });
 }
+
 register();
