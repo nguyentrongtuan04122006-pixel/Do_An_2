@@ -363,6 +363,11 @@ body.seller-login-page {
   transition: all 0.2s ease;
 }
 
+.seller-input-box:focus-within {
+  border-color: #1D4ED8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+}
+
 .seller-input-box--error {
   border-color: #EF4444 !important;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
@@ -378,10 +383,22 @@ body.seller-login-page {
 .seller-input-ctrl {
   width: 100%;
   border: none;
-  background-color: #F8FAFC;
+  background-color: transparent !important;
+  background: transparent !important;
   font-size: 13px;
   color: #0F172A;
   outline: none;
+}
+
+/* Đồng bộ hoàn toàn màu nền khi trình duyệt tự động điền (autofill) */
+.seller-input-ctrl:-webkit-autofill,
+.seller-input-ctrl:-webkit-autofill:hover, 
+.seller-input-ctrl:-webkit-autofill:focus, 
+.seller-input-ctrl:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #F8FAFC inset !important;
+  -webkit-text-fill-color: #0F172A !important;
+  box-shadow: 0 0 0 1000px #F8FAFC inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .seller-input-ctrl::placeholder {

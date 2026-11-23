@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kênh Marketing - NovaMall Seller Hub</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- CSS Giao diện Seller chung -->
+  <link rel="stylesheet" href="../access/css/seller_home.css">
+  <link rel="stylesheet" href="../access/css/seller_responsive.css">
+
+  <!-- CSS Riêng Trang Marketing -->
+  <link rel="stylesheet" href="../access/css/seller_marketing.css">
+</head>
+
+<body class="seller-body">
+
+  <!-- HEADER DÙNG CHUNG -->
+  <div id="sellerHeader"></div>
+
+  <div class="seller-layout">
+
+    <!-- SIDEBAR DÙNG CHUNG -->
+    <div id="sellerSidebar"></div>
+
+    <!-- NỘI DUNG CHÍNH TRANG KÊNH MARKETING -->
+    <main class="seller-main">
+      <div class="py-3 py-lg-4 px-2 px-md-3">
+
+        <!-- Breadcrumb & Top Bar -->
+        <div class="marketing-breadcrumb">
+          <span>Kênh Người Bán</span>
+          <span class="material-symbols-outlined separator">chevron_right</span>
+          <span class="text-dark fw-medium">Kênh Marketing</span>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+          <div class="d-flex align-items-baseline gap-2 flex-wrap">
+            <h1 class="marketing-header-title m-0">Kênh Marketing</h1>
+            <span class="marketing-header-subtitle">Trung tâm khuyến mãi NovaMall</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn-marketing-report">
+              <span class="material-symbols-outlined fs-5">description</span>
+              Báo cáo tiếp thị
+            </button>
+            <button type="button" class="btn-marketing-create">
+              <span class="material-symbols-outlined fs-5">add</span>
+              Tạo Khuyến Mãi Mới
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 1: Công Cụ Khuyến Mãi Của Shop -->
+        <div class="mb-4">
+          <div class="marketing-section-header">
+            <h2 class="marketing-section-title">Công Cụ Khuyến Mãi Của Shop</h2>
+            <p class="marketing-section-desc">Thiết lập các ưu đãi chủ động cho gian hàng của bạn</p>
+          </div>
+
+          <div class="row g-3">
+            <!-- Card 1: Mã Giảm Giá Shop -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="tool-card">
+                <div>
+                  <div class="tool-icon-box blue">
+                    <span class="material-symbols-outlined">confirmation_number</span>
+                  </div>
+                  <div class="tool-card-title">Mã Giảm Giá Shop</div>
+                  <div class="tool-card-desc">Voucher giảm giá theo đơn toàn shop hoặc sản phẩm</div>
+                </div>
+                <div>
+                  <div class="tool-card-status">4 mã đang chạy</div>
+                  <a href="#" class="tool-card-btn">Tạo Voucher</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Chương Trình Khuyến Mãi -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="tool-card">
+                <div>
+                  <div class="tool-icon-box blue">
+                    <span class="material-symbols-outlined">sell</span>
+                  </div>
+                  <div class="tool-card-title">Chương Trình Khuyến Mãi</div>
+                  <div class="tool-card-desc">Giảm giá trực tiếp theo % hoặc tiền mặt trên sản phẩm</div>
+                </div>
+                <div>
+                  <div class="tool-card-status">2 chiến dịch đang chạy</div>
+                  <a href="#" class="tool-card-btn">Tạo Giảm Giá</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Combo Khuyến Mãi -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="tool-card">
+                <div>
+                  <div class="tool-icon-box blue">
+                    <span class="material-symbols-outlined">layers</span>
+                  </div>
+                  <div class="tool-card-title">Combo Khuyến Mãi</div>
+                  <div class="tool-card-desc">Mua từ 2 sản phẩm trở lên giảm sâu % hoặc tiền mặt</div>
+                </div>
+                <div>
+                  <div class="tool-card-status">3 combo đang chạy</div>
+                  <a href="#" class="tool-card-btn">Tạo Combo</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Flash Sale Của Shop -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="tool-card">
+                <div>
+                  <div class="tool-icon-box orange">
+                    <span class="material-symbols-outlined">bolt</span>
+                  </div>
+                  <div class="tool-card-title">Flash Sale Của Shop</div>
+                  <div class="tool-card-desc">Giảm sốc theo khung giờ vàng trong ngày tại trang shop</div>
+                </div>
+                <div>
+                  <div class="tool-card-status">1 khung giờ hôm nay</div>
+                  <a href="#" class="tool-card-btn">Cài Đặt Flash Sale</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Danh Sách Chương Trình Khuyến Mãi -->
+        <div class="marketing-tabs-wrapper">
+
+          <!-- Tabs Header -->
+          <div class="marketing-tabs-header">
+            <ul class="marketing-nav-tabs">
+              <li>
+                <button type="button" class="marketing-nav-tab active" data-tab="all">
+                  Tất Cả <span class="marketing-tab-badge">12</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="marketing-nav-tab" data-tab="running">
+                  Đang Diễn Ra <span class="marketing-tab-badge">7</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="marketing-nav-tab" data-tab="upcoming">
+                  Sắp Diễn Ra <span class="marketing-tab-badge">3</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="marketing-nav-tab" data-tab="ended">
+                  Đã Kết Thúc <span class="marketing-tab-badge">2</span>
+                </button>
+              </li>
+            </ul>
+
+            <div class="marketing-update-info">
+              <span class="material-symbols-outlined fs-6">schedule</span>
+              Dữ liệu cập nhật tự động mỗi 15 phút
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="marketing-filter-bar">
+            <!-- Search Box -->
+            <div class="filter-search-box">
+              <span class="material-symbols-outlined search-icon">search</span>
+              <input type="text" class="filter-search-input" placeholder="Tìm theo tên chương trình, mã Voucher...">
+            </div>
+
+            <!-- Program Type Select -->
+            <div>
+              <select class="filter-select">
+                <option value="">Tất cả loại chương trình</option>
+                <option value="voucher">Mã Giảm Giá Shop</option>
+                <option value="discount">Chương Trình Khuyến Mãi</option>
+                <option value="combo">Combo Khuyến Mãi</option>
+                <option value="flash_sale">Flash Sale Của Shop</option>
+              </select>
+            </div>
+
+            <!-- Date Range -->
+            <div class="filter-date-box">
+              <span class="material-symbols-outlined calendar-icon">calendar_today</span>
+              <span>20/10/2024 - 15/11/2024</span>
+            </div>
+
+            <!-- Refresh Button -->
+            <button type="button" class="btn-filter-refresh" title="Làm mới">
+              <span class="material-symbols-outlined">refresh</span>
+            </button>
+          </div>
+
+          <!-- Promotions Table -->
+          <div class="marketing-table-container">
+            <table class="marketing-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 260px;">TÊN CHƯƠNG TRÌNH & LOẠI KHUYẾN MÃI</th>
+                  <th style="min-width: 190px;">MỨC ƯU ĐÃI / MÃ</th>
+                  <th style="min-width: 160px;">THỜI GIAN ÁP DỤNG</th>
+                  <th style="min-width: 160px;">SL VOUCHER / SẢN PHẨM</th>
+                  <th style="min-width: 150px;">DOANH SỐ MANG LẠI</th>
+                  <th style="min-width: 120px;">TRẠNG THÁI</th>
+                  <th style="min-width: 120px;">THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!-- Row 1: Tri Ân Khách Hàng VIP -->
+                <tr>
+                  <td>
+                    <div class="promo-title-group">
+                      <div class="promo-type-icon blue">
+                        <span class="material-symbols-outlined fs-5">confirmation_number</span>
+                      </div>
+                      <div>
+                        <div class="promo-name">Tri Ân Khách Hàng VIP - Giảm 50K</div>
+                        <div class="promo-tags">
+                          <span class="tag-badge blue">Voucher Toàn Shop</span>
+                          <span class="tag-badge muted">• Mã công khai</span>
+                          <span class="tag-badge outline">ID #VCH-202410-091</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-code-badge">
+                      <span>NOVAVIP50K</span>
+                      <span class="material-symbols-outlined copy-icon" title="Sao chép mã">content_copy</span>
+                    </div>
+                    <div class="promo-discount-text">Giảm 50.000đ cho đơn từ 500K</div>
+                    <div class="promo-subtext">Đơn tối thiểu 500.000đ</div>
+                  </td>
+                  <td>
+                    <div class="promo-time-range">20/10 - 31/10/2024</div>
+                    <div class="promo-countdown warning">
+                      <span class="material-symbols-outlined fs-6">schedule</span>
+                      Còn 3 ngày
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-progress-group">
+                      <div class="promo-progress-stats">
+                        <span>342/500</span>
+                        <span>68.4%</span>
+                      </div>
+                      <div class="promo-progress-bar">
+                        <div class="promo-progress-fill blue" style="width: 68.4%;"></div>
+                      </div>
+                      <div class="promo-subtext">Đã dùng: 342 voucher</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-dark fs-6">171.000.000đ</div>
+                    <div class="promo-subtext mt-1 d-flex align-items-center gap-1">
+                      <span class="material-symbols-outlined fs-6">shopping_bag</span>
+                      342 đơn hoàn tất
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-pill running">
+                      <span class="status-dot"></span>
+                      Đang diễn ra
+                    </span>
+                  </td>
+                  <td>
+                    <div class="action-links">
+                      <a href="#" class="action-link">Chỉnh sửa</a>
+                      <a href="#" class="action-link">Chia sẻ</a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Flash Sale Giờ Vàng Phụ Kiện -->
+                <tr>
+                  <td>
+                    <div class="promo-title-group">
+                      <div class="promo-type-icon orange">
+                        <span class="material-symbols-outlined fs-5">bolt</span>
+                      </div>
+                      <div>
+                        <div class="promo-name">Flash Sale Giờ Vàng Phụ Kiện Công Nghệ</div>
+                        <div class="promo-tags">
+                          <span class="tag-badge orange">Flash Sale Shop</span>
+                          <span class="tag-badge muted">• 3 sản phẩm tham gia</span>
+                          <span class="tag-badge outline">Khung giờ độc quyền</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-discount-text">Giảm đến 40%</div>
+                    <div class="promo-subtext">Cáp sạc, Củ sạc 30W</div>
+                    <div class="promo-subtext">Giới hạn 2 sp / đơn hàng</div>
+                  </td>
+                  <td>
+                    <div class="promo-time-range">12:00 - 14:00 Hôm nay</div>
+                    <div class="promo-countdown danger">
+                      <span class="material-symbols-outlined fs-6">schedule</span>
+                      Còn 1h 45p
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-progress-group">
+                      <div class="promo-progress-stats">
+                        <span>89/120 sp</span>
+                        <span>74.2%</span>
+                      </div>
+                      <div class="promo-progress-bar">
+                        <div class="promo-progress-fill orange" style="width: 74.2%;"></div>
+                      </div>
+                      <div class="promo-subtext">Còn lại: 31 sp</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-dark fs-6">28.450.000đ</div>
+                    <div class="promo-subtext mt-1 d-flex align-items-center gap-1 text-primary">
+                      <span class="material-symbols-outlined fs-6">bolt</span>
+                      89 đơn giao nhanh
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-pill running">
+                      <span class="status-dot"></span>
+                      Đang diễn ra
+                    </span>
+                  </td>
+                  <td>
+                    <a href="#" class="btn-table-action">Quản lý kho</a>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Mở Bán Siêu Phẩm iPhone 16 Pro Max -->
+                <tr>
+                  <td>
+                    <div class="promo-title-group">
+                      <div class="promo-type-icon blue">
+                        <span class="material-symbols-outlined fs-5">sell</span>
+                      </div>
+                      <div>
+                        <div class="promo-name">Mở Bán Siêu Phẩm iPhone 16 Pro Max</div>
+                        <div class="promo-tags">
+                          <span class="tag-badge blue">Chương Trình Giảm Giá</span>
+                          <span class="tag-badge muted">• 4 phiên bản</span>
+                          <span class="tag-badge outline">Đặc quyền đặt trước</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-discount-text">Giảm 2.000.000đ/máy</div>
+                    <div class="promo-subtext">Trừ thẳng giá niêm yết</div>
+                    <div class="promo-subtext">Áp dụng dòng iPhone 16 series</div>
+                  </td>
+                  <td>
+                    <div class="promo-time-range">15/10 - 05/11/2024</div>
+                    <div class="promo-countdown warning">
+                      <span class="material-symbols-outlined fs-6">schedule</span>
+                      Còn 8 ngày
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                      <span class="fw-bold text-dark">45 máy đã bán</span>
+                      <span class="tag-badge" style="background: #ecfdf5; color: #059669;">Đang bán chạy</span>
+                    </div>
+                    <div class="promo-subtext">Không giới hạn kho</div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-dark fs-6">1.574.550.000đ</div>
+                    <div class="promo-subtext mt-1 d-flex align-items-center gap-1 text-success">
+                      <span class="material-symbols-outlined fs-6">trending_up</span>
+                      Top 1 doanh thu shop
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-pill running">
+                      <span class="status-dot"></span>
+                      Đang diễn ra
+                    </span>
+                  </td>
+                  <td>
+                    <div class="action-links">
+                      <a href="#" class="action-link">Chỉnh sửa</a>
+                      <a href="#" class="action-link">Xem chi tiết</a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Mua iPhone Tặng Củ Sạc 30W Trị Giá 0đ -->
+                <tr>
+                  <td>
+                    <div class="promo-title-group">
+                      <div class="promo-type-icon blue">
+                        <span class="material-symbols-outlined fs-5">card_giftcard</span>
+                      </div>
+                      <div>
+                        <div class="promo-name">Mua iPhone Tặng Củ Sạc 30W Trị Giá 0đ</div>
+                        <div class="promo-tags">
+                          <span class="tag-badge blue">Mua Kèm Deal Sốc</span>
+                          <span class="tag-badge muted">• Quà tặng 0đ</span>
+                          <span class="tag-badge outline">Deal sốc 0đ</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-discount-text">Tặng quà 0đ (Trị giá 590K)</div>
+                    <div class="promo-subtext">Khi mua iPhone 16 series</div>
+                    <div class="promo-subtext">Áp dụng kèm iPhone 16 series</div>
+                  </td>
+                  <td>
+                    <div class="promo-time-range">01/10 - 31/10/2024</div>
+                    <div class="promo-countdown warning">
+                      <span class="material-symbols-outlined fs-6">schedule</span>
+                      Còn 3 ngày
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-progress-group">
+                      <div class="promo-progress-stats">
+                        <span>45 bộ quà đã tặng</span>
+                        <span>45.0%</span>
+                      </div>
+                      <div class="promo-progress-bar">
+                        <div class="promo-progress-fill blue" style="width: 45%;"></div>
+                      </div>
+                      <div class="promo-subtext">Còn lại: 55 bộ quà</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold text-dark fs-6">Đơn kèm deal</div>
+                    <div class="promo-subtext mt-1">Thúc đẩy tỷ lệ chốt 92%</div>
+                  </td>
+                  <td>
+                    <span class="status-pill running">
+                      <span class="status-dot"></span>
+                      Đang diễn ra
+                    </span>
+                  </td>
+                  <td>
+                    <div class="action-links">
+                      <a href="#" class="action-link">Chỉnh sửa</a>
+                      <a href="#" class="action-link">Xem chi tiết</a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 5: Siêu Sale 11.11 - Voucher Toàn Shop 100K -->
+                <tr>
+                  <td>
+                    <div class="promo-title-group">
+                      <div class="promo-type-icon purple">
+                        <span class="material-symbols-outlined fs-5">local_activity</span>
+                      </div>
+                      <div>
+                        <div class="promo-name">Siêu Sale 11.11 - Voucher Toàn Shop 100K</div>
+                        <div class="promo-tags">
+                          <span class="tag-badge blue">Voucher Shop</span>
+                          <span class="tag-badge muted">• Mega 11.11</span>
+                          <span class="tag-badge outline">Toàn bộ danh mục</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="promo-code-badge">
+                      <span>NOVA1111SALE</span>
+                      <span class="material-symbols-outlined copy-icon" title="Sao chép mã">content_copy</span>
+                    </div>
+                    <div class="promo-discount-text">Giảm 100.000đ cho đơn từ 1.000K</div>
+                    <div class="promo-subtext">Đơn tối thiểu 1.000.000đ</div>
+                  </td>
+                  <td>
+                    <div class="promo-time-range">10/11 - 12/11/2024</div>
+                    <div class="promo-countdown info">
+                      <span class="material-symbols-outlined fs-6">schedule</span>
+                      Bắt đầu sau 13 ngày
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                      <span class="fw-bold text-dark">1.000 voucher</span>
+                      <span class="tag-badge muted">Chưa mở phát</span>
+                    </div>
+                    <div class="promo-subtext">Ngân sách: 100 Triệu</div>
+                  </td>
+                  <td>
+                    <div class="fw-semibold text-muted">Chưa phát sinh</div>
+                    <div class="promo-subtext mt-1 text-primary">
+                      🎯 Mục tiêu: 1.2 Tỷ
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-pill upcoming">
+                      <span class="status-dot"></span>
+                      Sắp diễn ra
+                    </span>
+                  </td>
+                  <td>
+                    <div class="action-links">
+                      <a href="#" class="action-link">Chỉnh sửa</a>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Footer / Pagination -->
+          <div class="marketing-table-footer">
+            <div>
+              Hiển thị <strong>1 - 5</strong> trên tổng số <strong>12</strong> chương trình khuyến mãi
+            </div>
+            <div class="marketing-pagination">
+              <button class="marketing-page-btn" disabled>&lt;</button>
+              <button class="marketing-page-btn active">1</button>
+              <button class="marketing-page-btn">2</button>
+              <button class="marketing-page-btn">3</button>
+              <button class="marketing-page-btn">&gt;</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../access/js/seller_layout.js"></script>
+  <script>
+    // Tab switching interactivity
+    document.querySelectorAll('.marketing-nav-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.marketing-nav-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Copy code button feedback
+    document.querySelectorAll('.copy-icon').forEach(icon => {
+      icon.addEventListener('click', function() {
+        const code = this.previousElementSibling ? this.previousElementSibling.textContent : '';
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            const originalTitle = this.getAttribute('title');
+            this.textContent = 'check';
+            this.style.color = '#10b981';
+            setTimeout(() => {
+              this.textContent = 'content_copy';
+              this.style.color = '';
+            }, 1500);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
