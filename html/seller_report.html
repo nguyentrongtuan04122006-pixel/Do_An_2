@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Báo Cáo & Thống Kê - NovaMall Seller Hub</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- CSS Giao diện Seller chung -->
+  <link rel="stylesheet" href="../access/css/seller_home.css">
+  <link rel="stylesheet" href="../access/css/seller_responsive.css">
+
+  <!-- CSS Báo Cáo & Thống Kê (Bao gồm Doanh thu & Đơn hàng) -->
+  <link rel="stylesheet" href="../access/css/seller_report.css">
+</head>
+
+<body class="seller-body">
+
+  <!-- HEADER DÙNG CHUNG -->
+  <div id="sellerHeader"></div>
+
+  <div class="seller-layout">
+
+    <!-- SIDEBAR DÙNG CHUNG -->
+    <div id="sellerSidebar"></div>
+
+    <!-- NỘI DUNG CHÍNH TRANG BÁO CÁO THỐNG KÊ -->
+    <main class="seller-main">
+      <div class="py-3 py-lg-4 px-2 px-md-3">
+
+        <!-- Breadcrumb -->
+        <div class="report-breadcrumb">
+          <span>Kênh Người Bán</span>
+          <span class="material-symbols-outlined fs-6">chevron_right</span>
+          <span>Quản Lý Doanh Thu & Báo Cáo</span>
+          <span class="material-symbols-outlined fs-6">chevron_right</span>
+          <span class="text-dark fw-medium" id="reportBreadcrumbCurrent">Doanh Thu Bán Hàng</span>
+        </div>
+
+        <!-- Header & Bộ Chuyển Đổi Giao Diện (Doanh Thu vs Đơn Hàng) -->
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+          <div>
+            <h1 class="report-header-title m-0" id="reportMainTitle">Báo Cáo Doanh Thu Bán Hàng</h1>
+            <span class="report-header-subtitle" id="reportSubTitle">Phân tích chuyên sâu dòng tiền, chỉ số tài chính và biên lợi nhuận</span>
+          </div>
+
+          <!-- Bộ lọc thời gian & Thao tác xuất -->
+          <div class="report-filter-group">
+            <div class="report-time-tabs">
+              <button type="button" class="report-time-tab" data-period="today">Hôm nay</button>
+              <button type="button" class="report-time-tab" data-period="days7">7 ngày</button>
+              <button type="button" class="report-time-tab active" data-period="days30">30 ngày qua</button>
+              <button type="button" class="report-time-tab" data-period="month">Tháng này</button>
+            </div>
+
+            <div class="report-date-picker" title="Chọn khoảng thời gian tùy chỉnh">
+              <span class="material-symbols-outlined fs-5 text-secondary">calendar_today</span>
+              <span id="dateRangeText">01/11/2024 - 30/11/2024</span>
+            </div>
+
+            <button type="button" class="btn-report-export" onclick="window.print()">
+              <span class="material-symbols-outlined fs-5">download</span>
+              Xuất Báo Cáo
+            </button>
+          </div>
+        </div>
+
+        <!-- THANH CHUYỂN ĐỔI CHẾ ĐỘ XEM TRÊN TRANG (Doanh Thu <-> Đơn Hàng) -->
+        <div class="mb-4">
+          <div class="report-view-switcher">
+            <button type="button" class="report-view-btn active" id="btnViewRevenue" onclick="switchReportView('doanh_thu')">
+              <span class="material-symbols-outlined fs-5">trending_up</span>
+              Doanh Thu Bán Hàng
+            </button>
+            <button type="button" class="report-view-btn" id="btnViewOrders" onclick="switchReportView('don_hang')">
+              <span class="material-symbols-outlined fs-5">bar_chart</span>
+              Thống Kê Đơn Hàng
+            </button>
+          </div>
+        </div>
+
+        <!-- =========================================================================
+             GIAO DIỆN 1: DOANH THU BÁN HÀNG (#viewRevenue)
+             ========================================================================= -->
+        <div id="viewRevenue" class="report-view-container active">
+
+          <!-- KPI 4 Card Tài Chính -->
+          <div class="row g-3 mb-4">
+            <!-- KPI 1: Doanh Thu Gộp -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card blue">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tổng Doanh Thu (Đã thanh toán)</span>
+                  <div class="report-kpi-icon-box blue">
+                    <span class="material-symbols-outlined">payments</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value" id="kpiRevenue">2.485.600.000₫</div>
+                <div class="report-kpi-trend up" id="kpiRevenueTrend">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+24.8% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Doanh thu thuần: <strong id="kpiNetRevenue">2.390.000.000₫</strong></span>
+                  <span>Hoàn tiền: <strong class="text-danger" id="kpiRefund">95.6 Tr</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- KPI 2: Lợi Nhuận Ước Tính -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card green">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Lợi Nhuận Gộp Ước Tính</span>
+                  <div class="report-kpi-icon-box green">
+                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value text-success" id="kpiProfit">620.450.000₫</div>
+                <div class="report-kpi-trend up" id="kpiProfitTrend">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+18.2% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Tỷ suất lợi nhuận ròng:</span>
+                  <strong class="text-success" id="kpiMargin">24.9%</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- KPI 3: Tổng Số Đơn Hàng -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card purple">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tổng Đơn Hàng Hoàn Tất</span>
+                  <div class="report-kpi-icon-box purple">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value" id="kpiOrders">3.240 đơn</div>
+                <div class="report-kpi-trend up" id="kpiOrdersTrend">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+15.6% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Giá trị TB/đơn (AOV):</span>
+                  <strong id="kpiAOV">767.160₫</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- KPI 4: Tỷ Lệ Giao Hàng Thành Công -->
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card orange">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tỷ Lệ Giao Thành Công</span>
+                  <div class="report-kpi-icon-box orange">
+                    <span class="material-symbols-outlined">verified</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value" id="kpiSuccessRate">97.2%</div>
+                <div class="report-kpi-trend up" id="kpiSuccessTrend">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+1.4% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Đơn hủy: <strong class="text-danger" id="kpiCancelRate">1.8%</strong></span>
+                  <span>Trả hàng: <strong class="text-warning" id="kpiReturnRate">1.0%</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row: Biểu Đồ Doanh Thu & Cơ Cấu Danh Mục -->
+          <div class="row g-4 mb-4">
+            <div class="col-12 col-xl-8">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <h2 class="report-panel-title">
+                    <span class="material-symbols-outlined text-primary">analytics</span>
+                    Xu Hướng Tăng Trưởng Doanh Thu
+                  </h2>
+
+                  <div class="report-metric-buttons">
+                    <button type="button" class="report-metric-btn active">Doanh Thu (VNĐ)</button>
+                    <button type="button" class="report-metric-btn">Số Lượng Đơn</button>
+                    <button type="button" class="report-metric-btn">Lợi Nhuận</button>
+                  </div>
+                </div>
+
+                <div class="report-chart-legends">
+                  <div class="report-chart-legend">
+                    <span class="report-legend-dot current"></span>
+                    <span class="fw-semibold text-dark">Kỳ này (Tháng 11/2024)</span>
+                  </div>
+                  <div class="report-chart-legend">
+                    <span class="report-legend-dot previous"></span>
+                    <span>Kỳ trước (Tháng 10/2024)</span>
+                  </div>
+                  <div class="ms-auto text-secondary fst-italic" style="font-size: 11.5px;">
+                    Đơn vị: Triệu VNĐ
+                  </div>
+                </div>
+
+                <div class="report-chart-box">
+                  <svg class="report-chart-svg" viewBox="0 0 850 250" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartGradientRev" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25" />
+                        <stop offset="100%" stop-color="#2563eb" stop-opacity="0.0" />
+                      </linearGradient>
+                    </defs>
+
+                    <line x1="40" y1="30" x2="820" y2="30" class="report-chart-grid" />
+                    <line x1="40" y1="80" x2="820" y2="80" class="report-chart-grid" />
+                    <line x1="40" y1="130" x2="820" y2="130" class="report-chart-grid" />
+                    <line x1="40" y1="180" x2="820" y2="180" class="report-chart-grid" />
+
+                    <text x="32" y="34" text-anchor="end" class="report-chart-axis-text">120M</text>
+                    <text x="32" y="84" text-anchor="end" class="report-chart-axis-text">80M</text>
+                    <text x="32" y="134" text-anchor="end" class="report-chart-axis-text">40M</text>
+                    <text x="32" y="184" text-anchor="end" class="report-chart-axis-text">0</text>
+
+                    <path d="M 50 160 Q 150 145 230 110 T 400 130 T 560 65 T 720 50 L 800 40 L 800 180 L 50 180 Z" fill="url(#chartGradientRev)" />
+                    <path d="M 50 170 Q 150 160 230 140 T 400 150 T 560 110 T 720 95 L 800 85" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+                    <path d="M 50 160 Q 150 145 230 110 T 400 130 T 560 65 T 720 50 L 800 40" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+
+                    <circle cx="50" cy="160" r="4.5" fill="#2563eb" />
+                    <circle cx="150" cy="148" r="4.5" fill="#2563eb" />
+                    <circle cx="230" cy="110" r="4.5" fill="#2563eb" />
+                    <circle cx="310" cy="125" r="4.5" fill="#2563eb" />
+                    <circle cx="400" cy="130" r="4.5" fill="#2563eb" />
+                    <circle cx="480" cy="95" r="4.5" fill="#2563eb" />
+                    <circle cx="560" cy="65" r="4.5" fill="#2563eb" />
+                    <circle cx="640" cy="58" r="4.5" fill="#2563eb" />
+                    <circle cx="720" cy="50" r="4.5" fill="#2563eb" />
+                    <circle cx="800" cy="40" r="6" fill="#ffffff" stroke="#2563eb" stroke-width="3.5" />
+
+                    <text x="50" y="210" text-anchor="middle" class="report-chart-axis-text">01/11</text>
+                    <text x="150" y="210" text-anchor="middle" class="report-chart-axis-text">05/11</text>
+                    <text x="230" y="210" text-anchor="middle" class="report-chart-axis-text">09/11</text>
+                    <text x="310" y="210" text-anchor="middle" class="report-chart-axis-text">12/11</text>
+                    <text x="400" y="210" text-anchor="middle" class="report-chart-axis-text">15/11</text>
+                    <text x="480" y="210" text-anchor="middle" class="report-chart-axis-text">19/11</text>
+                    <text x="560" y="210" text-anchor="middle" class="report-chart-axis-text">23/11</text>
+                    <text x="640" y="210" text-anchor="middle" class="report-chart-axis-text">26/11</text>
+                    <text x="720" y="210" text-anchor="middle" class="report-chart-axis-text">28/11</text>
+                    <text x="800" y="210" text-anchor="middle" class="report-chart-axis-text fw-bold" fill="#2563eb">30/11 (Hôm nay)</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cột Phải: Cơ Cấu Ngành Hàng -->
+            <div class="col-12 col-xl-4">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <h2 class="report-panel-title">
+                    <span class="material-symbols-outlined text-info">pie_chart</span>
+                    Cơ Cấu Danh Mục
+                  </h2>
+                  <span class="text-secondary" style="font-size: 12px;">Theo doanh số</span>
+                </div>
+
+                <div class="category-progress-item">
+                  <div class="category-progress-info">
+                    <span class="category-progress-name"><span class="material-symbols-outlined fs-6 text-primary">smartphone</span> Điện Thoại & Tablet</span>
+                    <span class="category-progress-val">1.118 Tr (45%)</span>
+                  </div>
+                  <div class="category-progress-bar"><div class="category-progress-fill c1" style="width: 45%;"></div></div>
+                </div>
+
+                <div class="category-progress-item">
+                  <div class="category-progress-info">
+                    <span class="category-progress-name"><span class="material-symbols-outlined fs-6 text-info">headphones</span> Phụ Kiện Công Nghệ</span>
+                    <span class="category-progress-val">696 Tr (28%)</span>
+                  </div>
+                  <div class="category-progress-bar"><div class="category-progress-fill c2" style="width: 28%;"></div></div>
+                </div>
+
+                <div class="category-progress-item">
+                  <div class="category-progress-info">
+                    <span class="category-progress-name"><span class="material-symbols-outlined fs-6 text-purple" style="color:#8b5cf6;">speaker</span> Thiết Bị Âm Thanh</span>
+                    <span class="category-progress-val">422 Tr (17%)</span>
+                  </div>
+                  <div class="category-progress-bar"><div class="category-progress-fill c3" style="width: 17%;"></div></div>
+                </div>
+
+                <div class="category-progress-item">
+                  <div class="category-progress-info">
+                    <span class="category-progress-name"><span class="material-symbols-outlined fs-6 text-warning">devices_other</span> Đồ Chơi & Thiết Bị Khác</span>
+                    <span class="category-progress-val">248 Tr (10%)</span>
+                  </div>
+                  <div class="category-progress-bar"><div class="category-progress-fill c4" style="width: 10%;"></div></div>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 mt-4">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="fw-semibold text-dark" style="font-size: 13px;">Tỷ trọng mua trên App NovaMall</span>
+                    <span class="fw-bold text-primary" style="font-size: 13px;">78.5%</span>
+                  </div>
+                  <div class="text-secondary" style="font-size: 12px;">Khách hàng mua hàng chủ yếu qua thiết bị di động</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bảng Kê Dòng Tiền & Chi Phí Sàn -->
+          <div class="report-panel mb-4">
+            <div class="report-panel-header">
+              <h2 class="report-panel-title">
+                <span class="material-symbols-outlined text-success">receipt_long</span>
+                Bảng Kê Dòng Tiền & Chi Phí Sàn
+              </h2>
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                Đã đối soát
+              </span>
+            </div>
+
+            <div class="statement-item">
+              <span class="statement-label"><span class="material-symbols-outlined fs-6 text-secondary">add_circle</span> Doanh số bán hàng gộp (Tổng giá trị giỏ hàng)</span>
+              <span class="statement-value positive">+2.485.600.000₫</span>
+            </div>
+            <div class="statement-item">
+              <span class="statement-label"><span class="material-symbols-outlined fs-6 text-danger">local_offer</span> Khuyến mãi Voucher / Giảm giá do Shop tài trợ</span>
+              <span class="statement-value negative">-124.280.000₫</span>
+            </div>
+            <div class="statement-item">
+              <span class="statement-label"><span class="material-symbols-outlined fs-6 text-danger">storefront</span> Phí cố định nền tảng NovaMall (3.0%)</span>
+              <span class="statement-value negative">-74.568.000₫</span>
+            </div>
+            <div class="statement-item">
+              <span class="statement-label"><span class="material-symbols-outlined fs-6 text-danger">credit_card</span> Phí xử lý giao dịch thanh toán (2.5%)</span>
+              <span class="statement-value negative">-62.140.000₫</span>
+            </div>
+            <div class="statement-item">
+              <span class="statement-label"><span class="material-symbols-outlined fs-6 text-danger">local_shipping</span> Trợ giá phí vận chuyển & Đóng gói</span>
+              <span class="statement-value negative">-18.400.000₫</span>
+            </div>
+
+            <div class="statement-total-box">
+              <div>
+                <div class="statement-total-label">Thực Nhận Về Ví Người Bán</div>
+                <div class="text-secondary" style="font-size: 12px;">Số dư khả dụng cộng trực tiếp vào Số Dư Ví Shop</div>
+              </div>
+              <div class="statement-total-amount">+2.206.212.000₫</div>
+            </div>
+          </div>
+
+          <!-- Top Sản Phẩm Bán Chạy Nhất -->
+          <div class="report-panel mb-0">
+            <div class="report-panel-header">
+              <div>
+                <h2 class="report-panel-title">
+                  <span class="material-symbols-outlined text-danger">military_tech</span>
+                  Top Sản Phẩm Đóng Góp Doanh Thu Cao Nhất
+                </h2>
+                <span class="text-secondary" style="font-size: 12.5px;">Xếp hạng dựa trên doanh số thực thu trong kỳ</span>
+              </div>
+              <a href="seller_product.html" class="btn btn-sm btn-outline-primary fw-semibold">Xem Tồn Kho</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>HẠNG</th>
+                    <th>SẢN PHẨM & SKU</th>
+                    <th>GIÁ BÁN</th>
+                    <th>ĐÃ BÁN</th>
+                    <th>DOANH THU MANG LẠI</th>
+                    <th>TỶ TRỌNG</th>
+                    <th>TRẠNG THÁI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="rank-badge gold">1</span></td>
+                    <td>
+                      <div class="product-cell">
+                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=100&q=80" alt="iPhone 16 Pro Max" class="product-img">
+                        <div>
+                          <div class="product-info-name">iPhone 16 Pro Max 256GB Titan Tự Nhiên</div>
+                          <div class="product-info-sku">SKU: IP16PM-256-NAT • Màu: Titan Sa Mạc</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong class="text-dark">34.990.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">45</span> máy</td>
+                    <td><strong class="text-primary fs-6">1.574.550.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">63.3%</span></td>
+                    <td><span class="badge bg-success-subtle text-success">Còn hàng</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge silver">2</span></td>
+                    <td>
+                      <div class="product-cell">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=100&q=80" alt="Apple Watch" class="product-img">
+                        <div>
+                          <div class="product-info-name">Apple Watch Series 10 GPS 46mm Nhôm</div>
+                          <div class="product-info-sku">SKU: AW10-46-BLK • Màu: Đen bóng</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong class="text-dark">11.490.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">32</span> chiếc</td>
+                    <td><strong class="text-primary fs-6">367.680.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">14.8%</span></td>
+                    <td><span class="badge bg-success-subtle text-success">Còn hàng</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge bronze">3</span></td>
+                    <td>
+                      <div class="product-cell">
+                        <img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=100&q=80" alt="AirPods Pro" class="product-img">
+                        <div>
+                          <div class="product-info-name">Tai Nghe Bluetooth AirPods Pro 2 USB-C</div>
+                          <div class="product-info-sku">SKU: APP2-USBC • Trắng</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><strong class="text-dark">5.690.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">48</span> bộ</td>
+                    <td><strong class="text-primary fs-6">273.120.000₫</strong></td>
+                    <td><span class="fw-bold text-dark">11.0%</span></td>
+                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Sắp hết</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- =========================================================================
+             GIAO DIỆN 2: THỐNG KÊ ĐƠN HÀNG & VẬN HÀNH (#viewOrders)
+             ========================================================================= -->
+        <div id="viewOrders" class="report-view-container">
+
+          <!-- KPI 4 Card Vận Hành -->
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card blue">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tổng Đơn Hàng Phát Sinh</span>
+                  <div class="report-kpi-icon-box blue">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value" id="kpiTotalOrders">3.240 đơn</div>
+                <div class="report-kpi-trend up">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+15.6% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Giao thành công: <strong class="text-success">3.150</strong></span>
+                  <span>Đang giao: <strong class="text-primary">65</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card green">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tỷ Lệ Giao Đúng Hạn (SLA)</span>
+                  <div class="report-kpi-icon-box green">
+                    <span class="material-symbols-outlined">schedule</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value text-success" id="kpiSLA">98.6%</div>
+                <div class="report-kpi-trend up">
+                  <span class="material-symbols-outlined fs-6">trending_up</span>
+                  <span>+0.8% (Chuẩn sàn: &gt;= 95%)</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Đánh giá vận hành:</span>
+                  <strong class="text-success">Shop Yêu Thích+</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card purple">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tốc Độ Bàn Giao Bưu Tá TB</span>
+                  <div class="report-kpi-icon-box purple">
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value text-purple" style="color: #7c3aed;" id="kpiLeadTime">4.2 giờ</div>
+                <div class="report-kpi-trend up">
+                  <span class="material-symbols-outlined fs-6">trending_down</span>
+                  <span>-1.1h nhanh hơn trung bình</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Bàn giao trong ngày:</span>
+                  <strong>92.4% đơn</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+              <div class="report-kpi-card orange">
+                <div class="report-kpi-header">
+                  <span class="report-kpi-title">Tỷ Lệ Hủy & Bom Hàng</span>
+                  <div class="report-kpi-icon-box orange">
+                    <span class="material-symbols-outlined">cancel</span>
+                  </div>
+                </div>
+                <div class="report-kpi-value text-danger" id="kpiCancelRateOrders">1.8%</div>
+                <div class="report-kpi-trend up">
+                  <span class="material-symbols-outlined fs-6">trending_down</span>
+                  <span>-0.4% so với kỳ trước</span>
+                </div>
+                <div class="report-kpi-details">
+                  <span>Khách hủy: <strong>1.5%</strong></span>
+                  <span>Shop hủy do hết hàng: <strong class="text-success">0.3%</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row: Khung Giờ Đặt Hàng & Đơn Vị Vận Chuyển -->
+          <div class="row g-4 mb-4">
+            <!-- Cột Trái: Biểu Đồ Khung Giờ Đặt Hàng -->
+            <div class="col-12 col-xl-8">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <div>
+                    <h2 class="report-panel-title">
+                      <span class="material-symbols-outlined text-primary">equalizer</span>
+                      Khung Giờ Đặt Hàng Cao Điểm Trong Ngày
+                    </h2>
+                    <span class="text-secondary" style="font-size: 12.5px;">Phân tích mật độ đơn hàng theo 24 giờ để tối ưu hóa ca trực và đóng gói</span>
+                  </div>
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">
+                    Peak: 12h & 21h
+                  </span>
+                </div>
+
+                <div class="hourly-bar-chart">
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 15%;"></div><span class="hourly-label">0h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 10%;"></div><span class="hourly-label">2h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 6%;"></div><span class="hourly-label">4h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 12%;"></div><span class="hourly-label">6h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 38%;"></div><span class="hourly-label">8h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 62%;"></div><span class="hourly-label">10h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar peak" style="height: 94%;"></div><span class="hourly-label fw-bold text-primary">12h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 68%;"></div><span class="hourly-label">14h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 52%;"></div><span class="hourly-label">16h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 58%;"></div><span class="hourly-label">18h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 82%;"></div><span class="hourly-label">20h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar peak" style="height: 98%;"></div><span class="hourly-label fw-bold text-primary">21h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 75%;"></div><span class="hourly-label">22h</span></div>
+                  <div class="hourly-col"><div class="hourly-bar" style="height: 35%;"></div><span class="hourly-label">23h</span></div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 text-secondary" style="font-size: 12px;">
+                  <span>💡 <strong>Gợi ý vận hành:</strong> Bố trí nhân sự đóng gói vào ca trưa (12h - 14h) và ca tối (20h - 22h) để đạt tỷ lệ bàn giao trong ngày &gt;95%.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cột Phải: Phân Bổ Đơn Vị Vận Chuyển -->
+            <div class="col-12 col-xl-4">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <h2 class="report-panel-title">
+                    <span class="material-symbols-outlined text-info">local_shipping</span>
+                    Đối Tác Giao Hàng
+                  </h2>
+                  <span class="text-secondary" style="font-size: 12px;">Theo thị phần</span>
+                </div>
+
+                <div class="carrier-item">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="carrier-logo spx">SPX</div>
+                    <div>
+                      <div class="fw-bold text-dark" style="font-size: 13.5px;">SPX Express</div>
+                      <div class="text-secondary" style="font-size: 11.5px;">Giao đúng hạn: 99.1%</div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-dark">1.555 đơn</div>
+                    <div class="text-primary fw-semibold" style="font-size: 11.5px;">48.0%</div>
+                  </div>
+                </div>
+
+                <div class="carrier-item">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="carrier-logo ghn">GHN</div>
+                    <div>
+                      <div class="fw-bold text-dark" style="font-size: 13.5px;">Giao Hàng Nhanh</div>
+                      <div class="text-secondary" style="font-size: 11.5px;">Giao đúng hạn: 98.4%</div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-dark">842 đơn</div>
+                    <div class="text-primary fw-semibold" style="font-size: 11.5px;">26.0%</div>
+                  </div>
+                </div>
+
+                <div class="carrier-item">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="carrier-logo vtp">VTP</div>
+                    <div>
+                      <div class="fw-bold text-dark" style="font-size: 13.5px;">Viettel Post</div>
+                      <div class="text-secondary" style="font-size: 11.5px;">Giao đúng hạn: 97.9%</div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-dark">518 đơn</div>
+                    <div class="text-primary fw-semibold" style="font-size: 11.5px;">16.0%</div>
+                  </div>
+                </div>
+
+                <div class="carrier-item">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="carrier-logo jnt">J&T</div>
+                    <div>
+                      <div class="fw-bold text-dark" style="font-size: 13.5px;">J&T Express</div>
+                      <div class="text-secondary" style="font-size: 11.5px;">Giao đúng hạn: 96.8%</div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-dark">325 đơn</div>
+                    <div class="text-primary fw-semibold" style="font-size: 11.5px;">10.0%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row: Phân Bổ Địa Lý & Lý Do Hủy Đơn -->
+          <div class="row g-4 mb-4">
+            <div class="col-12 col-lg-7">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <h2 class="report-panel-title">
+                    <span class="material-symbols-outlined text-success">map</span>
+                    Thị Trường & Địa Lý Nhận Hàng Lớn Nhất
+                  </h2>
+                  <span class="text-secondary" style="font-size: 12px;">Top 5 khu vực phát sinh đơn</span>
+                </div>
+
+                <div class="geo-item">
+                  <span class="geo-name">TP. Hồ Chí Minh</span>
+                  <div class="geo-bar-wrapper">
+                    <div class="geo-bar"><div class="geo-bar-fill" style="width: 42%;"></div></div>
+                  </div>
+                  <span class="geo-count">1.360 đơn (42%)</span>
+                </div>
+
+                <div class="geo-item">
+                  <span class="geo-name">Hà Nội</span>
+                  <div class="geo-bar-wrapper">
+                    <div class="geo-bar"><div class="geo-bar-fill" style="width: 31%;"></div></div>
+                  </div>
+                  <span class="geo-count">1.004 đơn (31%)</span>
+                </div>
+
+                <div class="geo-item">
+                  <span class="geo-name">Đà Nẵng</span>
+                  <div class="geo-bar-wrapper">
+                    <div class="geo-bar"><div class="geo-bar-fill" style="width: 11%;"></div></div>
+                  </div>
+                  <span class="geo-count">356 đơn (11%)</span>
+                </div>
+
+                <div class="geo-item">
+                  <span class="geo-name">Bình Dương</span>
+                  <div class="geo-bar-wrapper">
+                    <div class="geo-bar"><div class="geo-bar-fill" style="width: 9%;"></div></div>
+                  </div>
+                  <span class="geo-count">292 đơn (9%)</span>
+                </div>
+
+                <div class="geo-item">
+                  <span class="geo-name">Cần Thơ & Tỉnh khác</span>
+                  <div class="geo-bar-wrapper">
+                    <div class="geo-bar"><div class="geo-bar-fill" style="width: 7%;"></div></div>
+                  </div>
+                  <span class="geo-count">228 đơn (7%)</span>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 mt-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold text-dark" style="font-size: 13px;">Giao Hỏa Tốc 2H / Giao Nhanh:</span>
+                    <span class="fw-bold text-success" style="font-size: 13px;">38.5% (Tại HN & TP.HCM)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-5">
+              <div class="report-panel h-100 mb-0">
+                <div class="report-panel-header">
+                  <h2 class="report-panel-title">
+                    <span class="material-symbols-outlined text-danger">crisis_alert</span>
+                    Nguyên Nhân Hủy & Hoàn Đơn
+                  </h2>
+                  <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">Tổng 58 đơn</span>
+                </div>
+
+                <div class="reason-item">
+                  <span class="reason-name"><span class="material-symbols-outlined fs-6 text-danger">sentiment_dissatisfied</span> Khách đổi ý không muốn mua nữa</span>
+                  <span class="reason-pct">45% (26 đơn)</span>
+                </div>
+                <div class="reason-item">
+                  <span class="reason-name"><span class="material-symbols-outlined fs-6 text-warning">price_change</span> Tìm thấy sản phẩm giá rẻ hơn</span>
+                  <span class="reason-pct text-warning-emphasis">22% (13 đơn)</span>
+                </div>
+                <div class="reason-item">
+                  <span class="reason-name"><span class="material-symbols-outlined fs-6 text-secondary">hourglass_bottom</span> Thời gian giao hàng dự kiến lâu</span>
+                  <span class="reason-pct text-secondary">18% (10 đơn)</span>
+                </div>
+                <div class="reason-item">
+                  <span class="reason-name"><span class="material-symbols-outlined fs-6 text-info">style</span> Khách đặt nhầm phân loại / màu sắc</span>
+                  <span class="reason-pct text-info">10% (6 đơn)</span>
+                </div>
+                <div class="reason-item">
+                  <span class="reason-name"><span class="material-symbols-outlined fs-6 text-danger">production_quantity_limits</span> Shop hết hàng / Hủy tự động</span>
+                  <span class="reason-pct text-danger">5% (3 đơn)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bảng Hiệu Suất Đơn Theo Nhóm Ngành Hàng -->
+          <div class="report-panel mb-0">
+            <div class="report-panel-header">
+              <div>
+                <h2 class="report-panel-title">
+                  <span class="material-symbols-outlined text-primary">category</span>
+                  Hiệu Suất Xử Lý Đơn Theo Nhóm Sản Phẩm
+                </h2>
+                <span class="text-secondary" style="font-size: 12.5px;">Thống kê chi tiết tỷ lệ thành công và thời gian xử lý</span>
+              </div>
+              <a href="seller_bill.html" class="btn btn-sm btn-outline-primary fw-semibold">Quản Lý Đơn Hàng</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>NHÓM NGÀNH HÀNG</th>
+                    <th>TỔNG ĐƠN</th>
+                    <th>SL BÁN</th>
+                    <th>GIAO THÀNH CÔNG</th>
+                    <th>TỶ LỆ HỦY</th>
+                    <th>THỜI GIAN ĐÓNG GÓI</th>
+                    <th>ĐÁNH GIÁ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div class="d-flex align-items-center gap-2 fw-bold text-dark"><span class="material-symbols-outlined text-primary fs-5">smartphone</span> Điện Thoại & Tablet</div></td>
+                    <td><strong class="text-dark">1.450</strong> đơn</td>
+                    <td>1.520 máy</td>
+                    <td><span class="text-success fw-bold">98.2%</span></td>
+                    <td><span class="text-danger fw-semibold">1.2%</span></td>
+                    <td><strong>3.5 giờ</strong></td>
+                    <td><span class="badge bg-success-subtle text-success">Xuất sắc</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="d-flex align-items-center gap-2 fw-bold text-dark"><span class="material-symbols-outlined text-info fs-5">headphones</span> Phụ Kiện Công Nghệ</div></td>
+                    <td><strong class="text-dark">1.120</strong> đơn</td>
+                    <td>1.850 cái</td>
+                    <td><span class="text-success fw-bold">97.0%</span></td>
+                    <td><span class="text-danger fw-semibold">2.1%</span></td>
+                    <td><strong>4.2 giờ</strong></td>
+                    <td><span class="badge bg-success-subtle text-success">Rất tốt</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="d-flex align-items-center gap-2 fw-bold text-dark"><span class="material-symbols-outlined text-purple fs-5" style="color:#7c3aed;">speaker</span> Thiết Bị Âm Thanh</div></td>
+                    <td><strong class="text-dark">420</strong> đơn</td>
+                    <td>435 bộ</td>
+                    <td><span class="text-success fw-bold">96.4%</span></td>
+                    <td><span class="text-danger fw-semibold">2.4%</span></td>
+                    <td><strong>4.8 giờ</strong></td>
+                    <td><span class="badge bg-primary-subtle text-primary">Tốt</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../access/js/seller_layout.js"></script>
+  <script>
+    // Hàm chuyển đổi chế độ xem Doanh Thu / Đơn Hàng trên cùng 1 trang
+    function switchReportView(mode) {
+      const viewRevenue = document.getElementById('viewRevenue');
+      const viewOrders = document.getElementById('viewOrders');
+      const btnViewRevenue = document.getElementById('btnViewRevenue');
+      const btnViewOrders = document.getElementById('btnViewOrders');
+      const reportBreadcrumb = document.getElementById('reportBreadcrumbCurrent');
+      const reportMainTitle = document.getElementById('reportMainTitle');
+      const reportSubTitle = document.getElementById('reportSubTitle');
+
+      if (mode === 'don_hang') {
+        viewRevenue.classList.remove('active');
+        viewOrders.classList.add('active');
+
+        btnViewRevenue.classList.remove('active');
+        btnViewOrders.classList.add('active');
+
+        if (reportBreadcrumb) reportBreadcrumb.textContent = 'Thống Kê Đơn Hàng';
+        if (reportMainTitle) reportMainTitle.textContent = 'Thống Kê Đơn Hàng & Vận Hành';
+        if (reportSubTitle) reportSubTitle.textContent = 'Đo lường sản lượng đơn hàng, tốc độ giao vận, khung giờ vàng và chất lượng xử lý';
+
+        // Cập nhật URL mà không reload trang
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('status', 'don_hang');
+        window.history.replaceState({}, '', newUrl);
+
+        // Đồng bộ class active trong sidebar
+        syncSidebarActive('don_hang');
+      } else {
+        viewOrders.classList.remove('active');
+        viewRevenue.classList.add('active');
+
+        btnViewOrders.classList.remove('active');
+        btnViewRevenue.classList.add('active');
+
+        if (reportBreadcrumb) reportBreadcrumb.textContent = 'Doanh Thu Bán Hàng';
+        if (reportMainTitle) reportMainTitle.textContent = 'Báo Cáo Doanh Thu Bán Hàng';
+        if (reportSubTitle) reportSubTitle.textContent = 'Phân tích chuyên sâu dòng tiền, chỉ số tài chính và biên lợi nhuận';
+
+        // Cập nhật URL
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('status', 'doanh_thu');
+        window.history.replaceState({}, '', newUrl);
+
+        // Đồng bộ class active trong sidebar
+        syncSidebarActive('doanh_thu');
+      }
+    }
+
+    // Đồng bộ menu active trong sidebar khi chuyển tab
+    function syncSidebarActive(statusVal) {
+      const sidebarLinks = document.querySelectorAll('.seller-sidebar__link');
+      sidebarLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.includes('seller_report.html')) {
+          if (href.includes('status=' + statusVal)) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    // Khởi tạo theo query param trên URL khi load trang
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const statusParam = urlParams.get('status');
+
+      if (statusParam === 'don_hang') {
+        switchReportView('don_hang');
+      } else {
+        switchReportView('doanh_thu');
+      }
+    });
+
+    // Xử lý chuyển tab thời gian
+    const reportData = {
+      today: { dateText: 'Hôm nay (Tính đến hiện tại)', revenue: '148.650.000₫', profit: '37.150.000₫', orders: '186 đơn', rate: '98.5%' },
+      days7: { dateText: '24/11/2024 - 30/11/2024', revenue: '942.300.000₫', profit: '235.500.000₫', orders: '1.240 đơn', rate: '97.8%' },
+      days30: { dateText: '01/11/2024 - 30/11/2024', revenue: '2.485.600.000₫', profit: '620.450.000₫', orders: '3.240 đơn', rate: '97.2%' },
+      month: { dateText: '01/11/2024 - 30/11/2024', revenue: '2.485.600.000₫', profit: '620.450.000₫', orders: '3.240 đơn', rate: '97.2%' }
+    };
+
+    document.querySelectorAll('.report-time-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.report-time-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+
+        const period = this.getAttribute('data-period');
+        const data = reportData[period];
+        if (data) {
+          document.getElementById('dateRangeText').textContent = data.dateText;
+          if (document.getElementById('kpiRevenue')) document.getElementById('kpiRevenue').textContent = data.revenue;
+          if (document.getElementById('kpiProfit')) document.getElementById('kpiProfit').textContent = data.profit;
+          if (document.getElementById('kpiOrders')) document.getElementById('kpiOrders').textContent = data.orders;
+          if (document.getElementById('kpiTotalOrders')) document.getElementById('kpiTotalOrders').textContent = data.orders;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

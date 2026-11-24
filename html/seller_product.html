@@ -537,6 +537,21 @@
   <!-- JS -->
   <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../access/js/seller_layout.js"></script>
+  <script>
+    // Xử lý khi truy cập từ menu "Cảnh báo hàng tồn kho" (?status=canh_bao_kho)
+    const productStatus = new URLSearchParams(window.location.search).get('status');
+    if (productStatus === 'canh_bao_kho') {
+      const navLinks = document.querySelectorAll('.nav-pills .nav-link');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.textContent.includes('Hết hàng')) {
+          link.classList.add('active');
+          link.classList.remove('bg-white');
+          link.classList.add('bg-danger', 'text-white');
+        }
+      });
+    }
+  </script>
 
 </body>
 

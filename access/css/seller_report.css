@@ -1,0 +1,689 @@
+/* ==========================================================================
+   CSS DÀNH CHO TRANG BÁO CÁO & THỐNG KÊ (SELLER REPORT - DOANH THU & ĐƠN HÀNG)
+   ========================================================================== */
+
+/* Breadcrumb & Header */
+.report-breadcrumb {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.report-breadcrumb a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.report-breadcrumb a:hover {
+  color: #2563eb;
+}
+
+.report-header-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.report-header-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Tab Switcher giữa Doanh Thu và Thống Kê Đơn Hàng */
+.report-view-switcher {
+  display: inline-flex;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: 10px;
+  gap: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.report-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.report-view-btn:hover {
+  color: #1e293b;
+}
+
+.report-view-btn.active {
+  background: #ffffff;
+  color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Time Filter Tabs */
+.report-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.report-time-tabs {
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.report-time-tab {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.report-time-tab:hover {
+  color: #0f172a;
+}
+
+.report-time-tab.active {
+  background: #ffffff;
+  color: #2563eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.report-date-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+}
+
+.btn-report-export {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-report-export:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* KPI Cards */
+.report-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.report-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.report-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #e2e8f0;
+}
+
+.report-kpi-card.blue::before { background: #2563eb; }
+.report-kpi-card.green::before { background: #10b981; }
+.report-kpi-card.purple::before { background: #8b5cf6; }
+.report-kpi-card.orange::before { background: #f59e0b; }
+
+.report-kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.report-kpi-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.report-kpi-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-kpi-icon-box.blue { background: #eff6ff; color: #2563eb; }
+.report-kpi-icon-box.green { background: #ecfdf5; color: #059669; }
+.report-kpi-icon-box.purple { background: #f5f3ff; color: #7c3aed; }
+.report-kpi-icon-box.orange { background: #fffbeb; color: #d97706; }
+
+.report-kpi-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.report-kpi-trend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.report-kpi-trend.up { color: #16a34a; }
+.report-kpi-trend.down { color: #dc2626; }
+
+.report-kpi-details {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.report-kpi-details strong {
+  color: #1e293b;
+}
+
+/* Card Section Containers */
+.report-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.report-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.report-panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.report-metric-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.report-metric-btn {
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.report-metric-btn.active {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+/* SVG Chart Box */
+.report-chart-box {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.report-chart-legends {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12.5px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.report-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.report-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.report-legend-dot.current { background-color: #2563eb; }
+.report-legend-dot.previous { background-color: #94a3b8; }
+
+.report-chart-svg {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+.report-chart-grid {
+  stroke: #f1f5f9;
+  stroke-width: 1;
+}
+
+.report-chart-axis-text {
+  font-size: 11px;
+  fill: #94a3b8;
+  font-family: inherit;
+}
+
+/* Category Progress Bars */
+.category-progress-item {
+  margin-bottom: 16px;
+}
+
+.category-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.category-progress-name {
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-progress-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.category-progress-bar {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.category-progress-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.category-progress-fill.c1 { background: #2563eb; }
+.category-progress-fill.c2 { background: #38bdf8; }
+.category-progress-fill.c3 { background: #8b5cf6; }
+.category-progress-fill.c4 { background: #f59e0b; }
+
+/* Financial Breakdown Statement */
+.statement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 13.5px;
+}
+
+.statement-item:last-child {
+  border-bottom: none;
+}
+
+.statement-label {
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statement-value {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.statement-value.negative { color: #dc2626; }
+.statement-value.positive { color: #16a34a; }
+
+.statement-total-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statement-total-label {
+  font-weight: 700;
+  color: #166534;
+  font-size: 14px;
+}
+
+.statement-total-amount {
+  font-size: 20px;
+  font-weight: 800;
+  color: #15803d;
+}
+
+/* Top Products Table */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-table thead th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.report-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  font-size: 13px;
+  color: #334155;
+}
+
+.report-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.product-info-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-info-sku {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.rank-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.rank-badge.gold { background: #fef3c7; color: #b45309; }
+.rank-badge.silver { background: #f1f5f9; color: #475569; }
+.rank-badge.bronze { background: #ffedd5; color: #c2410c; }
+.rank-badge.normal { background: #f8fafc; color: #94a3b8; }
+
+/* ==========================================================================
+   CSS CHO GIAO DIỆN THỐNG KÊ ĐƠN HÀNG (ORDER VIEW)
+   ========================================================================== */
+
+/* Peak Hours Chart */
+.hourly-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 190px;
+  padding-top: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.hourly-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.hourly-bar {
+  width: 100%;
+  background: #dbeafe;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.hourly-bar:hover {
+  background: #2563eb;
+}
+
+.hourly-bar.peak {
+  background: #2563eb;
+}
+
+.hourly-bar.peak::before {
+  content: "Peak";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.hourly-label {
+  font-size: 10.5px;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+/* Logistics Carrier Badges */
+.carrier-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.carrier-item:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.carrier-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.carrier-logo.spx { background: #ffedd5; color: #ea580c; }
+.carrier-logo.ghn { background: #dbeafe; color: #1e40af; }
+.carrier-logo.vtp { background: #fee2e2; color: #dc2626; }
+.carrier-logo.jnt { background: #fef3c7; color: #b45309; }
+
+/* Geo Distribution Progress */
+.geo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.geo-name {
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 120px;
+}
+
+.geo-bar-wrapper {
+  flex: 1;
+  margin: 0 14px;
+}
+
+.geo-bar {
+  height: 7px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.geo-bar-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 10px;
+}
+
+.geo-count {
+  font-weight: 700;
+  color: #0f172a;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Reason List */
+.reason-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 13px;
+}
+
+.reason-item:last-child {
+  border-bottom: none;
+}
+
+.reason-name {
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reason-pct {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+/* Hide / Show View Containers */
+.report-view-container {
+  display: none;
+  animation: fadeInReport 0.25s ease-in-out;
+}
+
+.report-view-container.active {
+  display: block;
+}
+
+@keyframes fadeInReport {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
