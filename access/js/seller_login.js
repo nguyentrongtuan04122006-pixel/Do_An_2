@@ -1,6 +1,3 @@
-// ========================================================
-// JAVASCRIPT XỬ LÝ ĐĂNG NHẬP KÊNH NGƯỜI BÁN NOVAMALL
-// ========================================================
 
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("sellerLoginForm");

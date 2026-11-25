@@ -628,3 +628,34 @@ i {
 .register-login a:hover {
     text-decoration: underline;
 }
+
+/* Thông báo lỗi */
+.error_phone,
+.error_email,
+.error_pw,
+.error_pw2,
+.error_phone2,
+.error_name-shop,
+.error_name,
+.error_cccd,
+.error_category,
+.error_warehouse,
+.error_manager,
+.error_city,
+.error_ward,
+.error_address,
+.error_carrier {
+    display: block;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.input.input-error {
+    border: 1px solid #dc3545;
+}
+
+.input.input-error:focus-within {
+    border-color: #dc3545;
+}

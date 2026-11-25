@@ -42,7 +42,6 @@
 
         <!-- PHẦN 01: THÔNG TIN TÀI KHOẢN -->
         <section class="card">
-
             <header class="card-head">
                 <div class="head-left">
                     <span class="icon-box">
@@ -94,7 +93,6 @@
 
             <!-- Số điện thoại và Email: 2 cột -->
             <div class="row g-3">
-
                 <div class="col-12 col-md-6">
                     <div class="field">
                         <div class="label-row">
@@ -111,7 +109,7 @@
                                 placeholder="Ví dụ: 0988 686 929">
                         </div>
 
-                        <p class="hint">Số điện thoại chính dùng để kích hoạt ví thanh toán và phục hồi tài khoản.</p>
+                        <p class="error_phone"></p>
                     </div>
                 </div>
 
@@ -127,7 +125,7 @@
                                 placeholder="seller@novamall.vn">
                         </div>
 
-                        <p class="hint">Dùng nhận sao kê dòng tiền đối soát và văn bản thuế định kỳ hằng tháng.</p>
+                        <p class="error_email"></p>
                     </div>
                 </div>
 
@@ -147,6 +145,7 @@
                             <input id="pw" name="password" type="password" autocomplete="new-password"
                                 placeholder="Nhập mật khẩu">
                         </div>
+                        <p class="error_pw"></p>
                     </div>
                 </div>
 
@@ -161,6 +160,7 @@
                             <input id="pw2" name="password_confirm" type="password" autocomplete="new-password"
                                 placeholder="Nhập lại mật khẩu">
                         </div>
+                        <p class="error_pw2"></p>
                     </div>
                 </div>
 
@@ -171,7 +171,6 @@
 
         <!-- PHẦN 02: THÔNG TIN GIAN HÀNG -->
         <section class="card accent">
-
             <header class="card-head">
                 <div class="head-left">
                     <span class="icon-box solid">
@@ -203,10 +202,7 @@
                                 placeholder="Ví dụ: Linh Modern Style">
                         </div>
 
-                        <div class="hint split">
-                            <span>Đường dẫn gian hàng: novamall.vn/shop-linh-modern</span>
-                            <span>25/30 ký tự</span>
-                        </div>
+                        <p class="error_name-shop"></p>
                     </div>
                 </div>
 
@@ -228,8 +224,7 @@
 
                             <span class="material-symbols-outlined select-arrow">expand_more</span>
                         </div>
-
-                        <p class="hint">Bạn vẫn có thể thêm danh mục phụ sau khi gian hàng được kích hoạt.</p>
+                        <p class="error_category"></p>
                     </div>
                 </div>
 
@@ -250,8 +245,8 @@
                                 placeholder="Ví dụ: Nguyễn Văn A">
                         </div>
 
-                        <p class="hint">Phải trùng khớp hoàn toàn với tên chủ tài khoản ngân hàng nhận tiền đối soát.
-                        </p>
+
+                        <p class="error_name"></p>
                     </div>
                 </div>
 
@@ -268,8 +263,7 @@
                                 autocomplete="off" placeholder="Nhập 12 số CCCD">
                         </div>
 
-                        <p class="hint">NovaMall tự động liên kết cơ sở dữ liệu thuế quốc gia để xuất hóa đơn điện tử tự
-                            động.</p>
+                        <p class="error_cccd"></p>
                     </div>
                 </div>
 
@@ -311,6 +305,7 @@
                         <div class="input">
                             <input id="w1" name="warehouse_name" type="text" placeholder="Ví dụ: Kho Tổng TP.HCM">
                         </div>
+                        <p class="error_warehouse"></p>
                     </div>
                 </div>
 
@@ -320,6 +315,7 @@
                         <div class="input">
                             <input id="w2" name="warehouse_contact" type="text" placeholder="Họ tên người phụ trách">
                         </div>
+                        <p class="error_manager"></p>
                     </div>
                 </div>
 
@@ -329,6 +325,7 @@
                         <div class="input">
                             <input id="w3" name="warehouse_phone" type="tel" placeholder="Ví dụ: 0912 345 678">
                         </div>
+                        <p class="error_phone2"></p>
                     </div>
                 </div>
 
@@ -337,7 +334,7 @@
             <!-- Địa chỉ kho: 4 cột -->
             <div class="row g-3">
 
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <div class="field">
                         <label class="label-row" for="p">Tỉnh / Thành phố <i>*</i></label>
 
@@ -349,25 +346,12 @@
                             </select>
                             <span class="material-symbols-outlined select-arrow">expand_more</span>
                         </div>
+                        <p class="error_city"></p>
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="field">
-                        <label class="label-row" for="d">Quận / Huyện <i>*</i></label>
 
-                        <div class="input select">
-                            <select id="d" name="district" required>
-                                <option value="" selected disabled hidden>Chọn quận / huyện</option>
-                                <option>Quận Bình Thạnh</option>
-                                <option>Quận 1</option>
-                            </select>
-                            <span class="material-symbols-outlined select-arrow">expand_more</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <div class="field">
                         <label class="label-row" for="w">Phường / Xã <i>*</i></label>
 
@@ -379,15 +363,17 @@
                             </select>
                             <span class="material-symbols-outlined select-arrow">expand_more</span>
                         </div>
+                        <p class="error_ward"></p>
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <div class="field">
                         <label class="label-row" for="s">Số nhà &amp; Tên đường <i>*</i></label>
                         <div class="input">
                             <input id="s" name="street" type="text" placeholder="Số nhà, tên đường">
                         </div>
+                        <p class="error_address"></p>
                     </div>
                 </div>
 
@@ -406,7 +392,7 @@
                     <label class="carrier locked">
                         <span class="dot" style="background:#2F5BEA"></span>
                         <b>NovaExpress</b>
-                        <input type="checkbox" checked disabled>
+                        <input type="checkbox" checked>
                         <small>Giao hỏa tốc 2 giờ &amp; giao nhanh trong ngày.</small>
                     </label>
                 </div>
@@ -425,7 +411,7 @@
                         <span class="dot" style="background:#D63B3B"></span>
                         <b>Viettel Post</b>
                         <input type="checkbox" checked>
-                        <small>Phủ sóng 63 tỉnh thành đến tận vùng sâu vùng xa.</small>
+                        <small>Phủ sóng 34 tỉnh thành đến tận vùng sâu vùng xa.</small>
                     </label>
                 </div>
 
@@ -437,7 +423,7 @@
                         <small>Chiết khấu cước vận chuyển cho người bán lớn.</small>
                     </label>
                 </div>
-
+                <p class="error_carrier"></p>
             </div>
 
         </section>
@@ -472,5 +458,5 @@
     </div>
 </body>
 <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-
+<script type="module" src="../access/js/seller_register.js"></script>
 </html>
