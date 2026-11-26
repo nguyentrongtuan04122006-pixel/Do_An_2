@@ -22,6 +22,14 @@
                 loadPart("#footer", footerUrl)
             ]);
             initLogin();
+            updateHeaderCartBadge();
+            try {
+                const searchModuleUrl = new URL("./search.js", scriptUrl);
+                const { initSearch } = await import(searchModuleUrl.href);
+                initSearch();
+            } catch (err) {
+                console.warn("Không thể tải search.js:", err);
+            }
             userMobile();
             if (typeof window.initHomeFeatures === "function") {
                 window.initHomeFeatures();
@@ -67,23 +75,51 @@ function initLogin() {
         logout.style.display = "none";
     }
 
-   logout.onclick = function () {
-        localStorage.removeItem("currentUser");
-        window.location.href = "/html/index.html";
+    if (logout) {
+        logout.onclick = function () {
+            localStorage.removeItem("currentUser");
+            updateHeaderCartBadge();
+            window.location.href = "/html/index.html";
+        };
+    }
+
+    document.onclick = function (e) {
+        console.log("Click document:", e.target);
+
+        if (
+            !userLink.contains(e.target) &&
+            !userAuth.contains(e.target)
+        ) {
+            userAuth.classList.remove("show");
+            console.log("Đã đóng dropdown");
+        }
     };
 
+    updateHeaderCartBadge();
+}
 
-document.onclick = function (e) {
-    console.log("Click document:", e.target);
+function updateHeaderCartBadge() {
+    try {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (!currentUser) {
+            document.querySelectorAll(".navbar__cart-count").forEach(badge => {
+                badge.textContent = 0;
+                badge.style.display = "none";
+            });
+            return;
+        }
 
-    if (
-        !userLink.contains(e.target) &&
-        !userAuth.contains(e.target)
-    ) {
-        userAuth.classList.remove("show");
-        console.log("Đã đóng dropdown");
+        const cartKey = `cart_user_${currentUser.id || currentUser.account}`;
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        const totalCount = cart.reduce((total, item) => total + (Number(item.quantity) || 1), 0);
+
+        document.querySelectorAll(".navbar__cart-count").forEach(badge => {
+            badge.textContent = totalCount;
+            badge.style.display = totalCount > 0 ? "inline-block" : "none";
+        });
+    } catch (e) {
+        console.error("Lỗi cập nhật giỏ hàng trên header:", e);
     }
-};
 }
 function userMobile() {
      const userLink = document.querySelector(".navbar__user-link");

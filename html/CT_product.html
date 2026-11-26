@@ -90,7 +90,117 @@
                     </div>
                 </div>
             </div>
-            <div id="footer"></div>
+
+            <!-- KHỐI 1: THÔNG TIN GIAN HÀNG / SHOP INFO -->
+            <div class="shop_profile_section">
+                <div class="row align-items-center g-3">
+                    <div class="col-lg-5 col-12">
+                        <div class="shop_main_info">
+                            <div class="shop_avatar_wrapper">
+                                <img id="shop_avatar" src="" alt="Shop Avatar" class="shop_avatar">
+                                <span class="shop_online_dot" title="Đang online"></span>
+                            </div>
+                            <div class="shop_name_box">
+                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                    <h3 class="shop_title" id="shop_name"></h3>
+                                    <span class="shop_badge" id="shop_badge">Chính Hãng</span>
+                                </div>
+                                <div class="shop_online_status" id="shop_online">Online 2 phút trước</div>
+                                <div class="shop_actions">
+                                    <button type="button" class="btn_shop_action btn_chat">
+                                        <span class="material-symbols-outlined fs-6">chat</span>
+                                        Chat Ngay
+                                    </button>
+                                    <button type="button" class="btn_shop_action btn_view_shop">
+                                        <span class="material-symbols-outlined fs-6">storefront</span>
+                                        Xem Shop
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <div class="shop_stats_grid">
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Đánh Giá</span>
+                                <span class="stat_value" id="shop_rating">4.9 <small class="text-secondary">(28.6k Đánh giá)</small></span>
+                            </div>
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Tỉ Lệ Phản Hồi</span>
+                                <span class="stat_value" id="shop_response_rate">99%</span>
+                            </div>
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Sản Phẩm</span>
+                                <span class="stat_value" id="shop_product_count">156</span>
+                            </div>
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Thời Gian Phản Hồi</span>
+                                <span class="stat_value" id="shop_response_time">Trong vài phút</span>
+                            </div>
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Tham Gia</span>
+                                <span class="stat_value" id="shop_joined">3 năm trước</span>
+                            </div>
+                            <div class="shop_stat_item">
+                                <span class="stat_label">Người Theo Dõi</span>
+                                <span class="stat_value" id="shop_followers">128.5k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KHỐI 2: CHI TIẾT & MÔ TẢ SẢN PHẨM -->
+            <div class="product_desc_section">
+                <!-- Thông số chi tiết -->
+                <div class="desc_block mb-4">
+                    <h2 class="section_heading">CHI TIẾT SẢN PHẨM</h2>
+                    <div class="product_specs_table" id="product_specs_table">
+                        <!-- Render dynamic từ JS -->
+                    </div>
+                </div>
+
+                <!-- Mô tả chi tiết -->
+                <div class="desc_block">
+                    <h2 class="section_heading">MÔ TẢ SẢN PHẨM</h2>
+                    <div class="product_desc_content" id="product_desc_content">
+                        <!-- Render dynamic từ JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- KHỐI 3: ĐÁNH GIÁ SẢN PHẨM -->
+            <div class="product_reviews_section">
+                <h2 class="section_heading">ĐÁNH GIÁ SẢN PHẨM</h2>
+
+                <!-- Hộp tổng quan đánh giá -->
+                <div class="review_summary_box">
+                    <div class="review_score_box">
+                        <div class="big_score" id="review_big_score">4.9</div>
+                        <div class="score_stars" id="review_score_stars">
+                            <!-- Render từ JS -->
+                        </div>
+                        <div class="score_text">trên 5 sao</div>
+                    </div>
+
+                    <div class="review_filter_tags" id="review_filter_tags">
+                        <button type="button" class="filter_tag active" data-filter="all">Tất Cả (<span id="count_all">3</span>)</button>
+                        <button type="button" class="filter_tag" data-filter="5">5 Sao (<span id="count_5">2</span>)</button>
+                        <button type="button" class="filter_tag" data-filter="4">4 Sao (<span id="count_4">1</span>)</button>
+                        <button type="button" class="filter_tag" data-filter="3">3 Sao (0)</button>
+                        <button type="button" class="filter_tag" data-filter="media">Có Hình Ảnh / Video (<span id="count_media">2</span>)</button>
+                    </div>
+                </div>
+
+                <!-- Danh sách nhận xét của khách -->
+                <div class="reviews_list" id="reviews_list">
+                    <!-- Render dynamic từ JS -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer"></div>
 </body>
 <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 <script type="module" src="../access/js/CT_product.js"></script>

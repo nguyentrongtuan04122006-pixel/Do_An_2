@@ -21,7 +21,7 @@
     <div class="body">
         <div class="container-sm">
             <div class="d-grid gap-2">
-                <div class="cart-box px-3 py-3">
+                <div class="cart-box px-3 py-3" id="cart_header_row">
                     <div class="row align-items-center text-center text-muted">
                         <div class="col-md-5 text-start">
                             <div class="form-check d-inline-flex align-items-center gap-2 text-dark fw-medium">
@@ -34,172 +34,20 @@
                         <div class="col-md-1 d-none d-md-block">Thao Tác</div>
                     </div>
                 </div>
-                <!-- Shop 1 -->
-                <section class="cart-box">
-                    <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-1">
-                        <input class="form-check-input mt-0" type="checkbox" checked>
-                        <span class="badge cart-badge-mall">Mall</span>
-                        <strong class="cart-shop-name">Apple Flagship Authorized Store</strong>
-                        <span class="material-symbols-outlined cart-verified">verified</span>
-                        <a href="#" class="cart-link small ms-1"><span class="material-symbols-outlined">
-                                chat
-                            </span>Chat ngay</a>
-                        <a href="#" class="cart-link small ms-auto">Xem Shop ›</a>
-                    </div>
+                <!-- Dynamic Cart Items Container -->
+                <div id="cart_items_wrapper"></div>
 
-                    <div class="row align-items-center g-2 px-3 py-3">
-                        <div class="col-12 col-md-5 d-flex align-items-center gap-3">
-                            <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" checked>
-                            <div class="cart-thumb cart-thumb-phone flex-shrink-0">
-                                <img src="../access/picture/iphone-17-pro-3d-model-high-quality-smartphone-visualization-3d-model-0a7abf25d0.jpg" alt="">
-                               
-                            </div>
-                            <div class="d-flex flex-column align-items-start gap-1 min-w-0">
-                                <p class="cart-name mb-0">iPhone 16 Pro Max 256GB - Titan Sa Mạc (Chính Hãng VN/A)</p>
-                                <button class="btn btn-sm cart-variant">Phân loại: Titan Sa Mạc, 256GB ▾</button>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-price">
-                            <del class="d-block">34.990.000₫</del>
-                            <span>31.490.000₫</span>
-                        </div>
-                        <div class="col-4 col-md-2 d-flex justify-content-md-center">
-                            <div class="input-group input-group-sm cart-qty">
-                                <button class="btn btn-outline-secondary">−</button>
-                                <input type="text" class="form-control text-center" value="1">
-                                <button class="btn btn-outline-secondary">+</button>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-total">31.490.000₫</div>
-                        <div class="col-12 col-md-1 text-md-center small cart-actions">
-                            <a href="#" class="d-block">Xóa</a>
-                            <a href="#" class="d-block text-muted">Tìm tương tự ▾</a>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-wrap align-items-center gap-2 mx-3 py-2 small cart-voucher">
-                        <span class="material-symbols-outlined text-muted">confirmation_number</span>
-                        <span class="text-muted">Voucher của Shop:</span>
-                        <span class="cart-chip">Giảm 50k đơn từ 500k</span>
-                        <span class="cart-chip">Giảm 200k đơn từ 15tr</span>
-                        <a href="#" class="cart-link ms-auto">Xem thêm voucher ›</a>
-                    </div>
-                </section>
-
-                <!-- Shop 2 -->
-                <section class="cart-box">
-                    <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-1">
-                        <input class="form-check-input mt-0" type="checkbox" checked>
-                        <span class="badge cart-badge-mall">Mall</span>
-                        <strong class="cart-shop-name">Philips Official Home Living</strong>
-                        <span class="material-symbols-outlined cart-verified">verified</span>
-                        <a href="#" class="cart-link small ms-1">Chat ngay</a>
-                        <a href="#" class="cart-link small ms-auto">Xem Shop ›</a>
-                    </div>
-
-                    <div class="row align-items-center g-2 px-3 py-3">
-                        <div class="col-12 col-md-5 d-flex align-items-center gap-3">
-                            <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" checked>
-                            <div class="cart-thumb cart-thumb-fryer flex-shrink-0">
-                               <img src="../access/picture/camera.webp" alt="">
-                            </div>
-                            <div class="d-flex flex-column align-items-start gap-1 min-w-0">
-                                <p class="cart-name mb-0">Camera</p>
-                                <button class="btn btn-sm cart-variant">Phân loại: Dung tích 7.2L, Đen Nhám ▾</button>
-
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-price">
-                            <del class="d-block">4.200.000₫</del>
-                            <span>2.890.000₫</span>
-                        </div>
-                        <div class="col-4 col-md-2 d-flex justify-content-md-center">
-                            <div class="input-group input-group-sm cart-qty">
-                                <button class="btn btn-outline-secondary">−</button>
-                                <input type="text" class="form-control text-center" value="1">
-                                <button class="btn btn-outline-secondary">+</button>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-total">2.890.000₫</div>
-                        <div class="col-12 col-md-1 text-md-center small cart-actions">
-                            <a href="#" class="d-block">Xóa</a>
-                            <a href="#" class="d-block text-muted">Tìm tương tự ▾</a>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-wrap align-items-center gap-2 mx-3 py-2 small cart-voucher">
-                        <span class="material-symbols-outlined text-muted">confirmation_number</span>
-                        <span class="text-muted">Voucher của Shop:</span>
-                        <span class="cart-chip">Giảm 100k đơn từ 2.5tr</span>
-                        <a href="#" class="cart-link ms-auto">Xem thêm voucher ›</a>
-                    </div>
-                </section>
-
-                <!-- Shop 3 -->
-                <section class="cart-box">
-                    <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-1">
-                        <input class="form-check-input mt-0" type="checkbox" checked>
-                        <span class="badge cart-badge-fav">Yêu Thích+</span>
-                        <strong class="cart-shop-name">Thời Trang Urban Studio Flagship</strong>
-                        <a href="#" class="cart-link small ms-1">Chat ngay</a>
-                        <a href="#" class="cart-link small ms-auto">Xem Shop ›</a>
-                    </div>
-
-                    <div class="row align-items-center g-2 px-3 py-3">
-                        <div class="col-12 col-md-5 d-flex align-items-center gap-3">
-                            <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" checked>
-                            <div class="cart-thumb cart-thumb-blazer flex-shrink-0"></div>
-                            <div class="d-flex flex-column align-items-start gap-1 min-w-0">
-                                <p class="cart-name mb-0">Áo Khoác Blazer Form Rộng Phong Cách Hàn Quốc Urban Chic
-                                    Premium</p>
-                                <button class="btn btn-sm cart-variant">Phân loại: Be Cát, Size L ▾</button>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-price">
-                            <del class="d-block">650.000₫</del>
-                            <span>450.000₫</span>
-                        </div>
-                        <div class="col-4 col-md-2 d-flex justify-content-md-center">
-                            <div class="input-group input-group-sm cart-qty">
-                                <button class="btn btn-outline-secondary">−</button>
-                                <input type="text" class="form-control text-center" value="1">
-                                <button class="btn btn-outline-secondary">+</button>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-2 text-md-center cart-total">450.000₫</div>
-                        <div class="col-12 col-md-1 text-md-center small cart-actions">
-                            <a href="#" class="d-block">Xóa</a>
-                            <a href="#" class="d-block text-muted">Tìm tương tự ▾</a>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-wrap align-items-center gap-2 mx-3 py-2 small cart-voucher">
-                        <span class="material-symbols-outlined text-muted">confirmation_number</span>
-                        <span class="text-muted">Voucher của Shop:</span>
-                        <span class="cart-chip">Giảm 25k đơn từ 300k</span>
-                        <a href="#" class="cart-link ms-auto">Xem thêm voucher ›</a>
-                    </div>
-                </section>
-
-                <!-- Voucher sàn + xu -->
-                <section class="cart-box px-3">
+                <!-- Voucher sàn -->
+                <section class="cart-box px-3" id="cart_voucher_section">
                     <div class="d-flex flex-wrap align-items-center gap-3 py-3">
                         <span class="fw-medium text-brown">NovaMall Voucher</span>
                         <span class="cart-plat-chip">Giảm 500.000đ (NOVAVIP500K) + Miễn phí vận chuyển</span>
                         <a href="#" class="cart-link fw-semibold ms-auto">Chọn Hoặc Nhập Mã ›</a>
                     </div>
-                    <div class="d-flex flex-wrap align-items-center gap-2 py-3 border-top">
-                        <span class="cart-coin">$</span>
-                        <span class="fw-medium">NovaXu</span>
-                        <span>Dùng 34.800 NovaXu</span>
-                        <span class="text-muted small">(Số dư hiện tại: 34.800 Xu)</span>
-                        <span class="ms-auto text-muted">-34.800đ</span>
-                        <input class="form-check-input mt-0" type="checkbox" checked>
-                    </div>
                 </section>
 
                 <!-- Thanh thanh toán (dính đáy khi cuộn) -->
-                <div class="cart-checkout">
+                <div class="cart-checkout" id="cart_checkout_bar">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                         <div class="d-flex flex-wrap align-items-center gap-3 small">
                             <div class="form-check d-flex align-items-center gap-2 mb-0">
@@ -238,4 +86,5 @@
 <script src="../access/js/home.js"></script>
 <script type="module" src="../access/js/product.js"></script>
 <script src="../access/js/layout.js"></script>
+<script type="module" src="../access/js/cart.js"></script>
 </html>

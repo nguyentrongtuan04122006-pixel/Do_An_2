@@ -36,11 +36,25 @@
             loadComponent("#sellerSidebar", sidebarUrl)
         ]);
 
+        if (results[0]) {
+            initHeader();   
+        }
+
         if (results[1]) {
             initSidebar();
         }
     }
+    function initHeader() {
+        const nameEl = document.querySelector("#shopName");
+        if (!nameEl) return;
 
+        const raw = sessionStorage.getItem("currentSeller") || localStorage.getItem("currentSeller");
+        const current = raw ? JSON.parse(raw) : null;
+
+        if (current) {
+            nameEl.textContent = current.shopName || current.name;
+        }
+    }
     // Xử lý Sidebar
     function initSidebar() {
         const menuBtn = document.querySelector("#sellerMenuToggle");
@@ -103,6 +117,5 @@
             if (event.key === "Escape") closeSidebar();
         });
     }
-
     initLayout();
 })();

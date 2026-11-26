@@ -427,7 +427,7 @@ body.seller-login-page {
 }
 
 .seller-field-error {
-  display: none;
+  display: block;
   color: #EF4444;
   font-size: 11px;
   font-weight: 500;

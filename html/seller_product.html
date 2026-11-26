@@ -7,14 +7,14 @@
   <title>Quản Lý Sản Phẩm - NovaMall</title>
 
   <!-- Bootstrap -->
-     <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- CSS giao diện Seller -->
   <link rel="stylesheet" href="../access/css/seller_home.css">
   <link rel="stylesheet" href="../access/css/seller_responsive.css">
- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
@@ -64,7 +64,7 @@
             <button class="btn btn-light border btn-sm fw-semibold">
               <i class="bi bi-list-check me-1"></i>Cập nhật hàng loạt
             </button>
-            <button class="btn btn-primary btn-sm fw-semibold">
+            <button class="btn btn-primary btn-sm fw-semibold" id="btnAddProduc">
               <i class="bi bi-plus-circle me-1"></i>Thêm Sản Phẩm Mới
             </button>
           </div>
@@ -75,7 +75,7 @@
           <div class="d-flex flex-wrap gap-2">
             <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-warn">
               <i class="bi bi-exclamation-triangle me-1"></i>
-              5 sản phẩm sắp cạn kho (&lt;10 đơn vị)
+              0 sản phẩm sắp cạn kho (&lt;10 đơn vị)
             </div>
             <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-info">
               <i class="bi bi-speedometer2 me-1"></i>
@@ -85,31 +85,32 @@
         </div>
 
         <!-- Tab trạng thái -->
-        <ul class="nav nav-pills gap-2 mb-3 small">
+        <ul class="nav nav-pills gap-2 mb-3 small" id="statusTabs">
           <li class="nav-item">
-            <a class="nav-link active py-1 px-3" href="#">
-              Tất cả <span class="badge rounded-pill bg-light text-primary ms-1">254</span>
+            <a class="nav-link active py-1 px-3" href="#" data-filter="all">
+              Tất cả <span class="badge rounded-pill bg-light text-primary ms-1" id="countAll">0</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link py-1 px-3 text-dark" href="#">
-              Đang hoạt động <span class="badge rounded-pill nova-count ms-1">236</span>
+            <a class="nav-link py-1 px-3 text-dark" href="#" data-filter="active">
+              Đang hoạt động <span class="badge rounded-pill nova-count ms-1" id="countActive">0</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link py-1 px-3 bg-white border border-danger-subtle text-danger" href="#">
+            <a class="nav-link py-1 px-3 bg-white border border-danger-subtle text-danger" href="#" data-filter="out">
               <i class="bi bi-exclamation-triangle me-1"></i>Hết hàng
-              <span class="badge rounded-pill bg-danger-subtle text-danger ms-1">5</span>
+              <span class="badge rounded-pill bg-danger-subtle text-danger ms-1" id="countOut">0</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link py-1 px-3 text-dark" href="#">
-              Chờ duyệt <span class="badge rounded-pill nova-count ms-1">9</span>
+            <a class="nav-link py-1 px-3 text-dark" href="#" data-filter="pending">
+              <i class="bi bi-hourglass-split me-1"></i>Chờ duyệt
+              <span class="badge rounded-pill nova-count ms-1" id="countPending">0</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link py-1 px-3 text-dark" href="#">
-              Đã ẩn / Tạm khóa <span class="badge rounded-pill nova-count ms-1">4</span>
+            <a class="nav-link py-1 px-3 text-dark" href="#" data-filter="hidden">
+              Đã ẩn / Tạm khóa <span class="badge rounded-pill nova-count ms-1" id="countHidden">0</span>
             </a>
           </li>
         </ul>
@@ -203,254 +204,7 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb"></div>
-                      <div>
-                        <div class="fw-bold nova-name">Đầm Maxi Hoa Nhí Dáng Xòe Tiểu Thư Cổ Vuông Dạo Phố</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: DR-MAXI-091</span> • Thời trang Nữ
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">3 Màu sắc: Vàng, Tím, Trắng</div>
-                    <div class="mt-1">
-                      <span class="badge nova-size">Size S</span>
-                      <span class="badge nova-size">Size M</span>
-                      <span class="badge nova-size">Size L</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">349.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">450.000₫</div>
-                  </td>
-                  <td class="fw-semibold">142</td>
-                  <td>
-                    <div class="fw-bold">512</div>
-                    <div class="small text-primary fw-semibold"><i class="bi bi-graph-up-arrow"></i> +14%</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1" title="Sửa"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1" title="Nhân bản"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1" title="Xóa"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-
-                <tr class="table-warning-soft">
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb"></div>
-                      <div>
-                        <div class="fw-bold nova-name">Áo Blazer Nữ Form Rộng Hàn Quốc 2 Lớp Dày Dặn Cao Cấp</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: BZ-KOREA-88</span> • Áo Khoác Nữ
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">Màu: Be Tây, Đen Tuyền</div>
-                    <div class="mt-1">
-                      <span class="badge nova-size">Size S</span>
-                      <span class="badge nova-size">Size M</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">580.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">720.000₫</div>
-                  </td>
-                  <td>
-                    <span class="badge rounded-pill bg-danger-subtle text-danger fs-6 fw-bold px-3">
-                      <i class="bi bi-exclamation-triangle"></i> 7 cái
-                    </span>
-                  </td>
-                  <td>
-                    <div class="fw-bold">329</div>
-                    <div class="small text-secondary">Bán chạy</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb"></div>
-                      <div>
-                        <div class="fw-bold nova-name">iPhone 16 Pro Max 256GB - Chính Hãng VN/A Titan Sa Mạc</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: AP-IP16PM-256</span> • Điện Thoại &amp; Tablet
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">Titan Tự Nhiên, Sa Mạc</div>
-                    <div class="mt-1">
-                      <span class="badge nova-size">256GB</span>
-                      <span class="badge nova-size">512GB</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">34.490.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">35.990.000₫</div>
-                  </td>
-                  <td class="fw-semibold">28 máy</td>
-                  <td>
-                    <div class="fw-bold">94</div>
-                    <div class="small text-primary fw-semibold"><i class="bi bi-graph-up-arrow"></i> +32%</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb"></div>
-                      <div>
-                        <div class="fw-bold nova-name">Set Đồ Công Sở Nữ Áo Gile Kèm Quần Tây Ống Suông Thanh Lịch</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: ST-OFFICE-03</span> • Thời Trang Thiết Kế
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">Xám Ghi, Đen Tuyền</div>
-                    <div class="mt-1">
-                      <span class="badge nova-size">S</span>
-                      <span class="badge nova-size">M</span>
-                      <span class="badge nova-size">L</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">489.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">650.000₫</div>
-                  </td>
-                  <td class="fw-semibold">86 bộ</td>
-                  <td>
-                    <div class="fw-bold">198</div>
-                    <div class="small text-secondary">Ổn định</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-
-                <tr class="table-warning-soft">
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb "></div>
-                      <div>
-                        <div class="fw-bold nova-name">Tai Nghe Không Dây Chống Ồn NovaSound ANC Pro X</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: AU-NS-ANCX</span> • Phụ kiện Âm thanh
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">Navy Blue, Shadow Black</div>
-                    <div class="small text-secondary mt-1">Bản Tiêu Chuẩn Hi-Res</div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">1.250.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">1.890.000₫</div>
-                  </td>
-                  <td>
-                    <span class="badge rounded-pill bg-danger-subtle text-danger fs-6 fw-bold px-3">0 chiếc</span>
-                  </td>
-                  <td>
-                    <div class="fw-bold">430</div>
-                    <div class="small text-secondary">Chờ nhập hàng</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch">
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="nova-thumb"></div>
-                      <div>
-                        <div class="fw-bold nova-name">Túi Xách Nữ Đeo Chéo Da Mềm Phối Khóa Kim Loại Cao Cấp</div>
-                        <div class="small text-secondary mt-1">
-                          <span class="nova-sku">SKU: BG-NOVA-52</span> • Túi Ví &amp; Phụ Kiện
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="small">Kem Bơ, Nâu Cà Phê</div>
-                    <div class="small text-secondary mt-1">Kích cỡ 22cm x 15cm</div>
-                  </td>
-                  <td>
-                    <div class="fw-bold text-primary">285.000₫</div>
-                    <div class="small text-secondary text-decoration-line-through">390.000₫</div>
-                  </td>
-                  <td class="fw-semibold">63 cái</td>
-                  <td>
-                    <div class="fw-bold">175</div>
-                    <div class="small text-secondary">Đang chạy Ads</div>
-                  </td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                  </td>
-                  <td class="text-end text-nowrap">
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-copy"></i></button>
-                    <button class="btn btn-link text-dark p-1"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
+              <tbody id="productTableBody">
 
               </tbody>
             </table>

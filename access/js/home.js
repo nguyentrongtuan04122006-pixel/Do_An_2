@@ -2,10 +2,17 @@ function show_closeSearch() {
     const search_input = document.querySelector('.navbar__search-input-text');
     const search_icon = document.querySelector('.navbar__search-icon');
     const search = document.querySelector('.navbar__search');
+    if (!search_icon || !search_input || !search) return;
+
     search_icon.addEventListener('click', function () {
-        search_input.classList.toggle('active');
-        search.classList.toggle('navbar__search-color')
-    })
+        if (window.innerWidth <= 992 && !search_input.value.trim()) {
+            search_input.classList.toggle('active');
+            search.classList.toggle('navbar__search-color');
+            if (search_input.classList.contains('active')) {
+                search_input.focus();
+            }
+        }
+    });
 }
 
 function show_Menu() {

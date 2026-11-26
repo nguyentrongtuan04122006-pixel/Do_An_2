@@ -1,14 +1,14 @@
-
+import { getSellerList, getShopList } from "./seller.js";
 document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("sellerLoginForm");
   const accountInput = document.getElementById("sellerAccount");
   const passwordInput = document.getElementById("sellerPassword");
   const accountError = document.getElementById("accountError");
   const passwordError = document.getElementById("passwordError");
   const togglePasswordBtn = document.getElementById("togglePasswordBtn");
   const togglePasswordIcon = document.getElementById("togglePasswordIcon");
-  const smsLoginBtn = document.getElementById("smsLoginBtn");
   const forgotPwBtn = document.getElementById("forgotPwBtn");
+  const loginForm = document.getElementById("sellerLoginForm");
+
 
   // 1. Ẩn / Hiện Mật khẩu
   if (togglePasswordBtn && passwordInput && togglePasswordIcon) {
@@ -23,81 +23,27 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  // 2. Xóa lỗi khi người dùng gõ
-  if (accountInput) {
-    accountInput.addEventListener("input", function () {
-      accountError.style.display = "none";
-      const box = accountInput.closest(".seller-input-box") || accountInput.closest(".seller-input-wrapper");
-      if (box) box.classList.remove("seller-input-box--error", "seller-input-wrapper--error");
-    });
-  }
-
-  if (passwordInput) {
-    passwordInput.addEventListener("input", function () {
-      passwordError.style.display = "none";
-      const box = passwordInput.closest(".seller-input-box") || passwordInput.closest(".seller-input-wrapper");
-      if (box) box.classList.remove("seller-input-box--error", "seller-input-wrapper--error");
-    });
-  }
-
-  // 3. Xử lý Submit Đăng Nhập
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const accountValue = accountInput.value.trim();
-      const passwordValue = passwordInput.value.trim();
-      let isValid = true;
-
-      // Validate Tài khoản
-      if (!accountValue) {
-        accountError.textContent = "Vui lòng nhập Email, Số điện thoại hoặc Tên shop.";
-        accountError.style.display = "block";
-        const box = accountInput.closest(".seller-input-box") || accountInput.closest(".seller-input-wrapper");
-        if (box) box.classList.add("seller-input-box--error");
-        isValid = false;
-      }
-
-      // Validate Mật khẩu
-      if (!passwordValue) {
-        passwordError.textContent = "Vui lòng nhập mật khẩu gian hàng.";
-        passwordError.style.display = "block";
-        const box = passwordInput.closest(".seller-input-box") || passwordInput.closest(".seller-input-wrapper");
-        if (box) box.classList.add("seller-input-box--error");
-        isValid = false;
-      } else if (passwordValue.length < 6) {
-        passwordError.textContent = "Mật khẩu phải từ 6 ký tự trở lên.";
-        passwordError.style.display = "block";
-        const box = passwordInput.closest(".seller-input-box") || passwordInput.closest(".seller-input-wrapper");
-        if (box) box.classList.add("seller-input-box--error");
-        isValid = false;
-      }
-
-      if (isValid) {
-        // Lưu thông tin gian hàng đang hoạt động vào localStorage
-        const sellerInfo = {
-          shopName: "NovaTech Official",
-          account: accountValue,
-          role: "seller",
-          isLoggedIn: true,
-          loginAt: new Date().toISOString()
-        };
-        localStorage.setItem("currentSeller", JSON.stringify(sellerInfo));
-
-        // Nút hiển thị trạng thái đang xử lý
-        const submitBtn = loginForm.querySelector(".seller-btn-submit");
-        submitBtn.innerHTML = `
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span>Đang đăng nhập...</span>
-        `;
-        submitBtn.disabled = true;
-
-        // Chuyển hướng vào trang chủ Kênh Người Bán sau 600ms
-        setTimeout(() => {
-          window.location.href = "../html/seller_home.html";
-        }, 600);
-      }
-    });
-  }
+  const userList = getSellerList();
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log("Đã chạy submit!");
+    accountError.textContent = "";
+    passwordError.textContent = "";
+    const seller = userList.find(user => user.email === accountInput.value.trim()
+      || user.phone === accountInput.value.trim());
+    if (!seller) {
+      accountError.textContent = "Tài khoản không tồn tại";
+      return
+    }
+    if (seller.password !== passwordInput.value.trim()) {
+      passwordError.textContent = "Mật khẩu không chính xác";
+      return
+    }
+    const { password, ...sellerInfo } = seller;
+    const shop = (getShopList() || []).find(s => s.sellerId === seller.id);
+    sellerInfo.shopName = shop ? shop.name : "";
+    console.log("sellerInfo:", sellerInfo);
+    localStorage.setItem("currentSeller", JSON.stringify(sellerInfo));
+    window.location.href = "./seller_home.html";
+  })
 });

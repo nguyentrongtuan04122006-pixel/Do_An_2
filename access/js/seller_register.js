@@ -235,7 +235,6 @@ function sellerRegsiter() {
             category: product.value,
             ownerName: name.value.trim(),
             cccd: cccd.value.trim(),
-
             warehouse: {
                 name: name_warehouse.value.trim(),
                 manager: name_manager.value.trim(),
