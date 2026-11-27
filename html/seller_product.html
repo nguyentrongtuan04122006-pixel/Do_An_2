@@ -45,7 +45,7 @@
         <div class="nova-tag mb-1">
           SELLER HUB V3.4
           <small class="text-secondary fw-normal ms-1">
-            Cập nhật thời gian thực: 2 phút trước
+            <span id="productUpdatedAt">Chưa có cập nhật</span>
           </small>
         </div>
 
@@ -58,24 +58,26 @@
           </div>
 
           <div class="d-flex flex-wrap gap-2">
-            <button class="btn btn-light border btn-sm fw-semibold">
-              <i class="bi bi-download me-1"></i>Xuất Excel
+            <button type="button" class="btn btn-light border btn-sm fw-semibold" id="btnExportProducts" title="Tính năng mô phỏng">
+              <i class="bi bi-download me-1"></i>Xuất danh sách
             </button>
-            <button class="btn btn-light border btn-sm fw-semibold">
+            <button type="button" class="btn btn-light border btn-sm fw-semibold" id="btnBulkUpdate">
               <i class="bi bi-list-check me-1"></i>Cập nhật hàng loạt
             </button>
-            <button class="btn btn-primary btn-sm fw-semibold" id="btnAddProduc">
+            <button type="button" class="btn btn-primary btn-sm fw-semibold" id="btnAddProduct">
               <i class="bi bi-plus-circle me-1"></i>Thêm Sản Phẩm Mới
             </button>
           </div>
         </div>
+
+        <div class="alert mb-3" id="productNotice" role="alert" hidden></div>
 
         <!-- Tab chính + thông báo -->
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
           <div class="d-flex flex-wrap gap-2">
             <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-warn">
               <i class="bi bi-exclamation-triangle me-1"></i>
-              0 sản phẩm sắp cạn kho (&lt;10 đơn vị)
+              <span id="inventoryWarningCount">0</span> sản phẩm sắp cạn kho (&lt;10 đơn vị)
             </div>
             <div class="px-3 py-2 rounded-3 small fw-semibold nova-pill-info">
               <i class="bi bi-speedometer2 me-1"></i>
@@ -116,41 +118,38 @@
         </ul>
 
         <!-- Bộ lọc -->
-        <form class="card border rounded-3 mb-3">
+        <form class="card border rounded-3 mb-3" id="productFilterForm">
           <div class="card-body">
             <div class="row g-3 align-items-end">
 
               <div class="col-12 col-lg">
-                <label class="form-label small fw-bold">Tìm kiếm sản phẩm</label>
+                <label class="form-label small fw-bold" for="productSearch">Tìm kiếm sản phẩm</label>
                 <div class="input-group">
                   <span class="input-group-text bg-light">
                     <i class="bi bi-search"></i>
                   </span>
-                  <input type="text" class="form-control bg-light" placeholder="Tên sản phẩm, Mã SKU, Barcode...">
+                  <input type="search" class="form-control bg-light" id="productSearch" placeholder="Tìm kiếm (chưa hỗ trợ)" disabled title="Tính năng tìm kiếm chưa hỗ trợ">
                 </div>
               </div>
 
               <div class="col-6 col-lg-3">
-                <label class="form-label small fw-bold">Ngành hàng</label>
-                <select class="form-select bg-light">
-                  <option>Tất cả ngành hàng</option>
-                  <option>Thời trang Nữ</option>
-                  <option>Điện Thoại &amp; Tablet</option>
-                  <option>Phụ kiện Âm thanh</option>
+                <label class="form-label small fw-bold" for="categoryFilter">Ngành hàng</label>
+                <select class="form-select bg-light" id="categoryFilter">
+                  <option value="all">Tất cả ngành hàng</option>
                 </select>
               </div>
 
               <div class="col-6 col-lg-2">
-                <label class="form-label small fw-bold">Tồn kho</label>
-                <select class="form-select bg-light">
-                  <option>Tất cả số lượng</option>
-                  <option>Sắp hết hàng</option>
-                  <option>Hết hàng</option>
+                <label class="form-label small fw-bold" for="stockFilter">Tồn kho</label>
+                <select class="form-select bg-light" id="stockFilter">
+                  <option value="all">Tất cả số lượng</option>
+                  <option value="low">Sắp hết hàng (&lt;10 đơn vị)</option>
+                  <option value="out">Hết hàng</option>
                 </select>
               </div>
 
               <div class="col-12 col-lg-auto d-flex gap-2">
-                <button type="button" class="btn btn-primary fw-bold px-4">
+                <button type="submit" class="btn btn-primary fw-bold px-4">
                   <i class="bi bi-funnel me-1"></i>Áp dụng bộ lọc
                 </button>
                 <button type="reset" class="btn btn-light border" title="Đặt lại">
@@ -169,23 +168,31 @@
             <div class="d-flex flex-wrap align-items-center gap-2">
               <div class="form-check mb-0">
                 <input class="form-check-input" type="checkbox" id="checkAll">
-                <label class="form-check-label" for="checkAll">
-                  Chọn tất cả (Trang này: 6)
+                <label class="form-check-label" for="checkAll" id="checkAllLabel">
+                  Chọn tất cả (Trang này: 0)
                 </label>
               </div>
               <span class="text-secondary">|</span>
-              <button type="button" class="btn btn-secondary-subtle btn-sm py-0 px-2 fw-semibold bg-secondary-subtle">
+              <button type="button" class="btn btn-secondary-subtle btn-sm py-0 px-2 fw-semibold bg-secondary-subtle" id="btnBulkHide">
                 Ẩn hàng loạt
               </button>
-              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-secondary-subtle">
+              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-secondary-subtle" id="btnBulkPrice">
                 Đổi giá nhanh
               </button>
-              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-danger-subtle text-danger">
+              <button type="button" class="btn btn-sm py-0 px-2 fw-semibold bg-danger-subtle text-danger" id="btnBulkDelete">
                 Xóa
               </button>
+              <span class="text-secondary" id="selectedProductCount" aria-live="polite">Đã chọn 0 sản phẩm</span>
             </div>
-            <div class="text-secondary">
-              Sắp xếp theo: <b class="text-dark">Mới cập nhật <i class="bi bi-caret-down-fill small"></i></b>
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <label class="text-nowrap" for="productSort">Sắp xếp theo:</label>
+              <select class="form-select form-select-sm" id="productSort" disabled title="Chưa hỗ trợ sắp xếp">
+                <option value="updated">Mới cập nhật</option>
+                <option value="name">Tên sản phẩm A–Z</option>
+                <option value="priceAsc">Giá tăng dần</option>
+                <option value="priceDesc">Giá giảm dần</option>
+                <option value="stockAsc">Tồn kho tăng dần</option>
+              </select>
             </div>
           </div>
 
@@ -198,7 +205,7 @@
                   <th>Phân loại / Biến thể</th>
                   <th>Giá niêm yết / Khuyến mãi</th>
                   <th>Tồn kho</th>
-                  <th>Doanh số (30D)</th>
+                  <th>Đã bán</th>
                   <th>Trạng thái</th>
                   <th class="text-end">Hành động</th>
                 </tr>
@@ -212,20 +219,12 @@
 
           <!-- Phân trang -->
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 px-3 py-3 nova-bulk small">
-            <div class="text-secondary">
-              Hiển thị <b class="text-dark">1 - 6</b> trên tổng số <b class="text-dark">254</b> sản phẩm
+            <div class="text-secondary" id="productResultCount" aria-live="polite">
+              Hiển thị 0 trên tổng số 0 sản phẩm
             </div>
 
-            <nav>
-              <ul class="pagination pagination-sm mb-0 nova-pagination">
-                <li class="page-item disabled"><a class="page-link" href="#">‹ Trước</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item disabled"><span class="page-link">…</span></li>
-                <li class="page-item"><a class="page-link" href="#">26</a></li>
-                <li class="page-item"><a class="page-link" href="#">Sau ›</a></li>
-              </ul>
+            <nav aria-label="Phân trang sản phẩm">
+              <ul class="pagination pagination-sm mb-0 nova-pagination" id="productPagination"></ul>
             </nav>
           </div>
 
@@ -288,24 +287,118 @@
     </main>
   </div>
 
+  <!-- Thêm / chỉnh sửa sản phẩm -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <form id="productForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title fs-5 fw-bold" id="productModalTitle">Thêm sản phẩm mới</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" id="productFormError" role="alert" hidden></div>
+            <input type="hidden" id="productId" name="productId">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="productName">Tên sản phẩm <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="productName" name="productName" required maxlength="200">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productSku">Mã SKU <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="productSku" name="productSku" required maxlength="60">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productBarcode">Barcode</label>
+                <input type="text" class="form-control" id="productBarcode" name="productBarcode" maxlength="60">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="productCategory">Ngành hàng <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="productCategory" name="productCategory" list="productCategories" required maxlength="100" placeholder="Chọn hoặc nhập ngành hàng">
+                <datalist id="productCategories"></datalist>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productOldPrice">Giá niêm yết (đ) <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="productOldPrice" name="productOldPrice" required min="1" step="1" max="9007199254740991" inputmode="numeric">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productNewPrice">Giá khuyến mãi (đ)</label>
+                <input type="number" class="form-control" id="productNewPrice" name="productNewPrice" min="1" step="1" max="9007199254740991" inputmode="numeric" aria-describedby="productNewPriceHelp">
+                <div class="form-text" id="productNewPriceHelp">Để trống để sử dụng giá niêm yết.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productStock">Tồn kho <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="productStock" name="productStock" required min="0" step="1" max="9007199254740991" inputmode="numeric">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label fw-semibold" for="productStatus">Trạng thái</label>
+                <select class="form-select" id="productStatus" name="productStatus">
+                  <option value="DANG_BAN">Đang hoạt động</option>
+                  <option value="CHO_DUYET">Chờ duyệt</option>
+                  <option value="DA_AN">Đã ẩn</option>
+                  <option value="TAM_KHOA" disabled>Tạm khóa</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="productImage">Ảnh sản phẩm <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="productImage" name="productImage" required maxlength="2000" placeholder="https://... hoặc ../access/picture/anh-san-pham.jpg" aria-describedby="productImageHelp">
+                <div class="form-text" id="productImageHelp">Nhập URL ảnh hoặc đường dẫn ảnh có sẵn trong dự án.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="productDescription">Mô tả sản phẩm</label>
+                <textarea class="form-control" id="productDescription" name="productDescription" rows="4" maxlength="5000"></textarea>
+              </div>
+            </div>
+            <p class="small text-secondary mt-3 mb-0">Các phân loại / biến thể hiện có được giữ nguyên khi chỉnh sửa sản phẩm.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary" id="btnSaveProduct">Lưu sản phẩm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cập nhật sản phẩm đã chọn -->
+  <div class="modal fade" id="bulkProductModal" tabindex="-1" aria-labelledby="bulkProductModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="bulkProductForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title fs-5 fw-bold" id="bulkProductModalTitle">Cập nhật hàng loạt</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" id="bulkFormError" role="alert" hidden></div>
+            <p>Đã chọn <strong id="bulkSelectedCount">0</strong> sản phẩm.</p>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" for="bulkAction">Thao tác</label>
+              <select class="form-select" id="bulkAction" name="bulkAction">
+                <option value="hide">Ẩn sản phẩm</option>
+                <option value="show">Hiển thị sản phẩm</option>
+                <option value="price">Đổi giá bán</option>
+                <option value="stock">Cập nhật tồn kho</option>
+              </select>
+            </div>
+            <div id="bulkValueGroup" hidden>
+              <label class="form-label fw-semibold" id="bulkValueLabel" for="bulkValue">Giá bán mới (đ)</label>
+              <input type="number" class="form-control" id="bulkValue" name="bulkValue" min="0" step="1" max="9007199254740991" inputmode="numeric">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary" id="btnApplyBulk" disabled>Áp dụng</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- JS -->
   <script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../access/js/seller_layout.js"></script>
-  <script>
-    // Xử lý khi truy cập từ menu "Cảnh báo hàng tồn kho" (?status=canh_bao_kho)
-    const productStatus = new URLSearchParams(window.location.search).get('status');
-    if (productStatus === 'canh_bao_kho') {
-      const navLinks = document.querySelectorAll('.nav-pills .nav-link');
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.textContent.includes('Hết hàng')) {
-          link.classList.add('active');
-          link.classList.remove('bg-white');
-          link.classList.add('bg-danger', 'text-white');
-        }
-      });
-    }
-  </script>
+  <script type="module" src="../access/js/seller_product.js"></script>
 
 </body>
 

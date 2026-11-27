@@ -53,6 +53,7 @@ function initLogin() {
     const login = document.querySelector(".navbar__user-login");
     const register = document.querySelector(".navbar__user-resgister");
     const logout = document.querySelector("#logout_btn");
+    const userDropdown = document.querySelector("#user_dropdown");
 
     if (!userLink || !userName || !userAuth) return;
 
@@ -65,14 +66,16 @@ function initLogin() {
         if (userIcon) userIcon.style.display = "none";
         login.style.display = "none";
         register.style.display = "none";
-        logout.style.display = "";
+        // Hiện dropdown menu (chứa cả đơn mua + đăng xuất)
+        if (userDropdown) userDropdown.style.display = "";
     } else {
         userName.textContent = "";
         if (userNameMobile) userNameMobile.textContent = "";
         if (userIcon) userIcon.style.display = "";
         login.style.display = "inline-block";
         register.style.display = "inline-block";
-        logout.style.display = "none";
+        // Ẩn dropdown menu
+        if (userDropdown) userDropdown.style.display = "none";
     }
 
     if (logout) {
@@ -84,14 +87,11 @@ function initLogin() {
     }
 
     document.onclick = function (e) {
-        console.log("Click document:", e.target);
-
         if (
             !userLink.contains(e.target) &&
             !userAuth.contains(e.target)
         ) {
             userAuth.classList.remove("show");
-            console.log("Đã đóng dropdown");
         }
     };
 

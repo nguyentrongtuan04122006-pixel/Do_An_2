@@ -1,4 +1,4 @@
-import { productList } from "../js/product.js";
+import { productList, escapeProductHtml } from "../js/product.js";
 import { getShopList } from "./seller.js";
 import { addToCart, showAddToCartSuccessToast } from "./cart.js";
 
@@ -23,17 +23,17 @@ function showMedia(type, src) {
 }
 
 function renderGallery() {
-    const images = product.gallery?.images ?? [product.image];
+    const images = product.gallery?.images?.length ? product.gallery.images : [product.image];
     const video = product.gallery?.video;
 
     thumbs.innerHTML =
         (video ? `
-        <div class="product_gallery-item" data-type="video" data-src="${video}">
-            <video src="${video}" muted preload="metadata"></video>
+        <div class="product_gallery-item" data-type="video" data-src="${escapeProductHtml(video)}">
+            <video src="${escapeProductHtml(video)}" muted preload="metadata"></video>
         </div>` : "") +
         images.map(src => `
-        <div class="product_gallery-item" data-type="image" data-src="${src}">
-            <img src="${src}" alt="">
+        <div class="product_gallery-item" data-type="image" data-src="${escapeProductHtml(src)}">
+            <img src="${escapeProductHtml(src)}" alt="">
         </div>`).join("");
 
     thumbs.addEventListener("click", e => {
@@ -87,14 +87,14 @@ function renderOption() {
 
     colorContainer.innerHTML = colors.map(c => `
         <button type="button" class="option_item ${c.disabled ? "disabled" : ""}"
-                data-value="${c.value}" data-image="${c.image}" ${c.disabled ? "disabled" : ""}>
-            <img src="${c.image}" alt=""><span>${c.name}</span>
+                data-value="${escapeProductHtml(c.value)}" data-image="${escapeProductHtml(c.image || product.image)}" ${c.disabled ? "disabled" : ""}>
+            <img src="${escapeProductHtml(c.image || product.image)}" alt=""><span>${escapeProductHtml(c.name)}</span>
         </button>`).join("");
 
     typeContainer.innerHTML = types.map(t => `
         <button type="button" class="option_item ${t.disabled ? "disabled" : ""}"
-                data-value="${t.value}" ${t.disabled ? "disabled" : ""}>
-            <span>${t.name}</span>
+                data-value="${escapeProductHtml(t.value)}" ${t.disabled ? "disabled" : ""}>
+            <span>${escapeProductHtml(t.name)}</span>
         </button>`).join("");
 
     document.querySelectorAll(".option_list").forEach(list => {
@@ -123,17 +123,11 @@ function getActiveShop() {
     // 1. Lấy danh sách gian hàng từ Kênh Người Bán (localStorage qua seller.js)
     const registeredShops = getShopList();
 
-    // 2. Tìm kiếm gian hàng trùng khớp theo shopId, sellerId hoặc tên shop
+    // 2. Tìm gian hàng theo mã chủ sở hữu; tên gian hàng không xác định quyền sở hữu.
     let matched = registeredShops.find(s => 
-        (product.shopId && s.id === product.shopId) || 
-        (product.sellerId && s.sellerId === product.sellerId) ||
-        (s.name && product.shopName && s.name.trim().toLowerCase() === product.shopName.trim().toLowerCase())
+        (product.shopId && String(s.id) === String(product.shopId)) ||
+        (product.sellerId && String(s.sellerId) === String(product.sellerId))
     );
-
-    // 3. Nếu chưa khớp chính xác nhưng hệ thống có shop đăng ký mới nhất từ Kênh Người Bán
-    if (!matched && registeredShops.length > 0) {
-        matched = registeredShops[registeredShops.length - 1];
-    }
 
     // 4. Nếu tìm thấy Shop từ Kênh Người Bán: Sử dụng dữ liệu thực tế do Seller tạo
     if (matched) {
@@ -239,17 +233,22 @@ function renderDescription() {
     if (specsContainer) {
         specsContainer.innerHTML = specs.map(s => `
             <div class="spec_row">
-                <span class="spec_label">${s.label}</span>
-                <span class="spec_value">${s.value}</span>
+                <span class="spec_label">${escapeProductHtml(s.label)}</span>
+                <span class="spec_value">${escapeProductHtml(s.value)}</span>
             </div>
         `).join("");
     }
 
     const descContainer = document.getElementById("product_desc_content");
     if (descContainer) {
-        descContainer.innerHTML = product.description || `
-            <h3>Mô tả sản phẩm ${product.name}</h3>
-            <p>Sản phẩm chính hãng chất lượng cao, phân phối bởi <strong>${shop.name}</strong> tại hệ thống NovaMall. Cam kết bảo hành chính hãng 12 tháng, đổi trả 1-1 trong vòng 30 ngày nếu phát sinh lỗi từ nhà sản xuất.</p>
+        if (product.description) {
+            descContainer.textContent = product.description;
+            descContainer.style.whiteSpace = "pre-line";
+            return;
+        }
+        descContainer.innerHTML = `
+            <h3>Mô tả sản phẩm ${escapeProductHtml(product.name)}</h3>
+            <p>Sản phẩm chính hãng chất lượng cao, phân phối bởi <strong>${escapeProductHtml(shop.name)}</strong> tại hệ thống NovaMall. Cam kết bảo hành chính hãng 12 tháng, đổi trả 1-1 trong vòng 30 ngày nếu phát sinh lỗi từ nhà sản xuất.</p>
             <ul>
                 <li>Thiết kế hiện đại, bền đẹp và tối ưu trải nghiệm người dùng.</li>
                 <li>Được kiểm định chất lượng nghiêm ngặt trước khi xuất xưởng.</li>
@@ -319,17 +318,17 @@ function renderReviews() {
 
         listEl.innerHTML = filteredList.map(r => `
             <div class="review_item">
-                <img src="${r.avatar}" alt="${r.author}" class="review_avatar">
+                <img src="${escapeProductHtml(r.avatar)}" alt="${escapeProductHtml(r.author)}" class="review_avatar">
                 <div class="review_body">
-                    <div class="review_author">${r.author}</div>
+                    <div class="review_author">${escapeProductHtml(r.author)}</div>
                     <div class="review_item_stars">
                         ${renderStars(r.rating)}
                     </div>
-                    <div class="review_meta">${r.date} | ${r.variant}</div>
-                    <div class="review_comment">${r.comment}</div>
+                    <div class="review_meta">${escapeProductHtml(r.date)} | ${escapeProductHtml(r.variant)}</div>
+                    <div class="review_comment">${escapeProductHtml(r.comment)}</div>
                     ${r.images && r.images.length ? `
                         <div class="review_media_list">
-                            ${r.images.map(img => `<img src="${img}" alt="feedback" class="review_media_thumb">`).join("")}
+                            ${r.images.map(img => `<img src="${escapeProductHtml(img)}" alt="feedback" class="review_media_thumb">`).join("")}
                         </div>
                     ` : ""}
                     <div class="review_actions">
@@ -437,5 +436,8 @@ if (product) {
     renderReviews();
     initCartActions();
 } else {
-    document.querySelector(".product_detail").innerHTML = "<p>Không tìm thấy sản phẩm.</p>";
+    const details = document.querySelector(".product_detail");
+    if (details) details.innerHTML = '<p class="py-4 text-center" role="status">Sản phẩm không tồn tại, đã ngừng bán hoặc đã hết hàng. <a href="index.html">Tiếp tục mua sắm</a></p>';
+    document.querySelectorAll(".shop_profile_section, .product_desc_section, .product_reviews_section")
+        .forEach(section => { section.hidden = true; });
 }

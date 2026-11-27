@@ -2,7 +2,7 @@
 // SEARCH.JS - XỬ LÝ TÌM KIẾM SẢN PHẨM TOÀN SÀN & GỢI Ý TÌM KIẾM
 // ==========================================================================
 
-import { productList } from "./product.js";
+import { productList, escapeProductHtml } from "./product.js";
 
 /**
  * Loại bỏ dấu tiếng Việt để tìm kiếm không dấu chính xác
@@ -174,7 +174,7 @@ function renderSuggestions(query, container) {
     if (matches.length === 0) {
         container.innerHTML = `
             <div class="search-suggestion-header">
-                Không có kết quả khớp với "${query}"
+                Không có kết quả khớp với "${escapeProductHtml(query)}"
             </div>
             <a href="javascript:void(0)" class="search-suggestion-footer search-for-all">
                 Tìm kiếm với Google / Xem tất cả sản phẩm ›
@@ -197,19 +197,19 @@ function renderSuggestions(query, container) {
 
     container.innerHTML = `
         <div class="search-suggestion-header">
-            Gợi ý sản phẩm cho "${query}" (${matches.length})
+            Gợi ý sản phẩm cho "${escapeProductHtml(query)}" (${matches.length})
         </div>
         ${matches.map(p => `
             <a href="${productDetailPrefix}${p.id}" class="search-suggestion-item">
-                <img src="${p.image}" alt="${p.name}" class="search-suggestion-thumb">
+                <img src="${escapeProductHtml(p.image)}" alt="${escapeProductHtml(p.name)}" class="search-suggestion-thumb">
                 <div class="search-suggestion-info">
-                    <p class="search-suggestion-name">${p.name}</p>
+                    <p class="search-suggestion-name">${escapeProductHtml(p.name)}</p>
                     <p class="search-suggestion-price">${p.newPrice.toLocaleString("vi-VN")}₫</p>
                 </div>
             </a>
         `).join("")}
         <a href="javascript:void(0)" class="search-suggestion-footer search-view-all">
-            Xem tất cả kết quả cho "${query}" ›
+            Xem tất cả kết quả cho "${escapeProductHtml(query)}" ›
         </a>
     `;
 

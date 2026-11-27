@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn Mua — NovaMall</title>
+    <link href="../access/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../access/css/main.css">
+    <link rel="stylesheet" href="../access/css/base.css">
+    <link rel="stylesheet" href="../access/css/responsive.css">
+    <link rel="stylesheet" href="../access/css/order.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,wght,GRAD,opsz@0..1,100..700,0..200,20..48" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- NỘI DUNG TRANG ĐƠN MUA -->
+<div class="order-page-wrapper">
+    <div class="container-sm">
+
+        <!-- Tiêu đề -->
+        <h2 class="order-page-title">
+            <span class="material-symbols-outlined">receipt_long</span>
+            Đơn Mua Của Tôi
+        </h2>
+
+        <!-- Tab lọc trạng thái -->
+        <div class="order-tabs mb-3" id="order_tabs">
+            <button class="order-tab-btn active" data-status="all">Tất cả</button>
+            <button class="order-tab-btn" data-status="Chờ xác nhận">Chờ xác nhận</button>
+            <button class="order-tab-btn" data-status="Đang giao hàng">Đang giao hàng</button>
+            <button class="order-tab-btn" data-status="Đã giao hàng">Đã giao hàng</button>
+            <button class="order-tab-btn" data-status="Đã hủy">Đã hủy</button>
+        </div>
+
+        <!-- Danh sách đơn hàng -->
+        <div id="order_items_wrapper"></div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<script src="../access/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../access/js/layout.js"></script>
+<script type="module">
+    import { renderOrderPage, getOrders } from "../access/js/order.js";
+
+    // Render ban đầu (tất cả)
+    renderOrderPage();
+
+    // Tab lọc
+    const tabs = document.querySelectorAll(".order-tab-btn");
+    tabs.forEach(btn => {
+        btn.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            btn.classList.add("active");
+            filterOrders(btn.dataset.status);
+        });
+    });
+
+    function formatPrice(num) {
+        return Number(num).toLocaleString("vi-VN") + "đ";
+    }
+
+    function getStatusBadge(status) {
+        const map = {
+            "Chờ xác nhận":  { cls: "order-status-pending",   icon: "schedule" },
+            "Đang giao hàng":{ cls: "order-status-shipping",  icon: "local_shipping" },
+            "Đã giao hàng":  { cls: "order-status-delivered", icon: "check_circle" },
+            "Đã hủy":        { cls: "order-status-cancelled", icon: "cancel" }
+        };
+        const s = map[status] || { cls: "order-status-unknown", icon: "help" };
+        return `<span class="badge ${s.cls} order-status-badge">
+            <span class="material-symbols-outlined">${s.icon}</span>
+            ${status}
+        </span>`;
+    }
+
+    function renderOrders(orders) {
+        const wrapper = document.getElementById("order_items_wrapper");
+        if (!wrapper) return;
+
+        if (orders.length === 0) {
+            wrapper.innerHTML = `
+                <div class="order-empty-state text-center">
+                    <span class="material-symbols-outlined order-empty-symbol">inbox</span>
+                    <h5 class="text-muted mt-3">Không có đơn hàng nào</h5>
+                    <a href="/html/catalog_product.html" class="btn order-shop-btn mt-3 px-5">Mua sắm ngay</a>
+                </div>`;
+            return;
+        }
+
+        wrapper.innerHTML = orders.map(order => `
+            <div class="order-card mb-4">
+                <div class="order-card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <div class="order-card-meta">
+                        <span class="material-symbols-outlined order-receipt-icon me-1">receipt_long</span>
+                        <span class="order-id fw-semibold">Đơn hàng #${order.orderId}</span>
+                        <span class="order-date text-muted small ms-3">${order.date}</span>
+                    </div>
+                    ${getStatusBadge(order.status)}
+                </div>
+                <div class="order-card-body">
+                    ${order.items.map(item => `
+                        <div class="order-item d-flex align-items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="order-item-img">
+                            <div class="order-item-details flex-grow-1">
+                                <div class="order-item-name">${item.name}</div>
+                                ${item.variant ? `<div class="order-item-variant text-muted small">Phân loại: ${item.variant}</div>` : ""}
+                                <div class="order-item-shop text-muted small">
+                                    <span class="material-symbols-outlined order-shop-icon">store</span>
+                                    ${item.shopName}
+                                </div>
+                            </div>
+                            <div class="order-item-amount text-end">
+                                <div class="order-item-price">${formatPrice(item.price)}</div>
+                                <div class="order-item-qty text-muted small">x${item.quantity}</div>
+                            </div>
+                        </div>
+                    `).join("")}
+                </div>
+                <div class="order-card-footer d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <span class="order-item-count text-muted small">${order.items.reduce((s,i) => s + i.quantity, 0)} sản phẩm</span>
+                    <div class="order-total-row">
+                        <span class="text-muted me-2">Thành tiền:</span>
+                        <span class="order-total">${formatPrice(order.totalAmount)}</span>
+                    </div>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    function filterOrders(status) {
+        const allOrders = getOrders();
+        const filtered = status === "all" ? allOrders : allOrders.filter(o => o.status === status);
+        renderOrders(filtered);
+    }
+</script>
+
+</body>
+</html>

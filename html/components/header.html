@@ -153,12 +153,25 @@
                     <span id="user_name_mobile" class="navbar__user-name"></span>
                 </button>
                 <div id="user_auth" class="navbar__user-auth">
+                    <!-- Chưa đăng nhập -->
                     <a href="/html\login.html" class="navbar__user-login">Đăng nhập</a>
                     <a href="/html\register.html" class="navbar__user-resgister">Đăng ký</a>
+
+                    <!-- Đã đăng nhập: tên + dropdown -->
                     <span id="user_name"></span>
-                    <button id="logout_btn"><span class="material-symbols-outlined">
-                            logout
-                        </span>Đăng xuất</button>
+
+                    <!-- Dropdown menu khi đã đăng nhập -->
+                    <div id="user_dropdown" class="navbar__user-dropdown">
+                        <!-- mũi tên -->
+                        <div class="navbar__user-dropdown-arrow"></div>
+                        <a href="/html/order.html" id="orders_link" class="navbar__dropdown-item">
+                            <span class="material-symbols-outlined">receipt_long</span>Đơn mua
+                        </a>
+                        <div class="navbar__dropdown-divider"></div>
+                        <button id="logout_btn" class="navbar__dropdown-item navbar__dropdown-logout">
+                            <span class="material-symbols-outlined">logout</span>Đăng xuất
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

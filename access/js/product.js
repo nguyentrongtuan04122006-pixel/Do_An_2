@@ -1,4 +1,4 @@
-export const productList = [
+const defaultProductList = [
     {
         id: 1,
         shopId: 1795656372087,
@@ -154,7 +154,113 @@ export const productList = [
         },
     },
 
-]
+];
+
+export const PRODUCT_STORAGE_KEY = "productList";
+
+// Dùng chung dữ liệu giữa kênh người bán và các trang mua sắm.
+function isValidProductAsset(value, folder) {
+    if (typeof value !== "string" || !value.trim() || /[\u0000-\u001f\u007f]/.test(value)) return false;
+    try {
+        const url = new URL(value, "https://novamall.invalid/html/");
+        if (/^https?:\/\//i.test(value)) {
+            return (url.protocol === "http:" || url.protocol === "https:") && !!url.hostname;
+        }
+        return value.startsWith(`../access/${folder}/`) &&
+            url.origin === "https://novamall.invalid" && url.pathname.startsWith(`/access/${folder}/`);
+    } catch {
+        return false;
+    }
+}
+
+export function isValidProductImage(value) {
+    return isValidProductAsset(value, "picture");
+}
+
+export function escapeProductHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[character]));
+}
+
+function validateProductList(products) {
+    if (!Array.isArray(products)) {
+        throw new Error("Dữ liệu sản phẩm không hợp lệ: danh sách phải là một mảng.");
+    }
+    const ids = new Set();
+    const validOwnerId = value => (typeof value === "string" && value.trim() !== "") ||
+        (Number.isSafeInteger(value) && value > 0);
+    const statuses = ["DANG_BAN", "CHO_DUYET", "DA_AN", "TAM_KHOA"];
+    products.forEach((product, index) => {
+        const invalid = () => {
+            throw new Error(`Dữ liệu sản phẩm thứ ${index + 1} không hợp lệ. Vui lòng kiểm tra dữ liệu đã lưu.`);
+        };
+        if (!product || typeof product !== "object" || Array.isArray(product) ||
+            !Number.isSafeInteger(product.id) || product.id <= 0 || ids.has(product.id) ||
+            !validOwnerId(product.sellerId) || !validOwnerId(product.shopId) ||
+            !["name", "category", "image"].every(key => typeof product[key] === "string" && product[key].trim()) ||
+            !isValidProductImage(product.image) || !statuses.includes(product.status) ||
+            !["oldPrice", "newPrice", "stock", "sold"].every(key => Number.isSafeInteger(product[key]) && product[key] >= 0) ||
+            product.newPrice > product.oldPrice) invalid();
+        if (product.rate !== undefined && (!Number.isFinite(product.rate) || product.rate < 0 || product.rate > 5)) invalid();
+        for (const key of ["sku", "barcode", "description", "shopName"]) {
+            if (product[key] !== undefined && typeof product[key] !== "string") invalid();
+        }
+        if (product.gallery !== undefined) {
+            if (!product.gallery || typeof product.gallery !== "object" || Array.isArray(product.gallery) ||
+                (product.gallery.images !== undefined && (!Array.isArray(product.gallery.images) ||
+                    !product.gallery.images.every(isValidProductImage))) ||
+                (product.gallery.video !== undefined && !isValidProductAsset(product.gallery.video, "video"))) invalid();
+        }
+        if (product.options !== undefined) {
+            if (!product.options || typeof product.options !== "object" || Array.isArray(product.options)) invalid();
+            for (const key of ["color", "type"]) {
+                const options = product.options[key];
+                if (options !== undefined && (!Array.isArray(options) || options.some(option =>
+                    !option || typeof option.name !== "string" || typeof option.value !== "string" ||
+                    (option.image !== undefined && !isValidProductImage(option.image))))) invalid();
+            }
+        }
+        ids.add(product.id);
+    });
+    return products;
+}
+
+export function getProductList() {
+    let raw;
+    try {
+        raw = localStorage.getItem(PRODUCT_STORAGE_KEY);
+    } catch {
+        throw new Error("Không thể đọc bộ nhớ sản phẩm. Vui lòng cho phép trình duyệt lưu dữ liệu.");
+    }
+    if (raw === null) return JSON.parse(JSON.stringify(defaultProductList));
+    let products;
+    try {
+        products = JSON.parse(raw);
+    } catch {
+        throw new Error("Dữ liệu sản phẩm đã lưu bị lỗi định dạng JSON. Chưa có dữ liệu nào bị ghi đè.");
+    }
+    return validateProductList(products);
+}
+
+export function saveProductList(products) {
+    validateProductList(products);
+    try {
+        localStorage.setItem(PRODUCT_STORAGE_KEY, JSON.stringify(products));
+    } catch {
+        throw new Error("Không thể lưu sản phẩm. Bộ nhớ trình duyệt có thể đã đầy hoặc bị chặn.");
+    }
+}
+
+// Các trang người mua chỉ nhận sản phẩm đang bán và còn hàng.
+export const productList = (() => {
+    try {
+        return getProductList();
+    } catch (error) {
+        console.warn(error.message);
+        return JSON.parse(JSON.stringify(defaultProductList));
+    }
+})().filter(product => product.status === "DANG_BAN" && product.stock > 0);
 
 
 function renderProduct(containerId, productList) {
@@ -170,7 +276,7 @@ function renderProduct(containerId, productList) {
                     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);">
 
             <div class="flashsale__product-img">
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${escapeProductHtml(product.image)}" alt="${escapeProductHtml(product.name)}">
             </div>
             <!-- Đánh giá sản phẩm -->
             <div class="body__product-rating">
@@ -211,7 +317,7 @@ function renderProduct(containerId, productList) {
             </div>
             <!-- Tên sản phẩm -->
             <p class="flashsale__product-name">
-                ${product.name}
+                ${escapeProductHtml(product.name)}
             </p>
             <!-- Giá sản phẩm -->
             <div class="flashsale__product-footer">
@@ -257,7 +363,7 @@ function renderCatalog(containerId, productList) {
                     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);">
 
             <div class="flashsale__product-img">
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${escapeProductHtml(product.image)}" alt="${escapeProductHtml(product.name)}">
             </div>
             <!-- Đánh giá sản phẩm -->
             <div class="body__product-rating">
@@ -299,7 +405,7 @@ function renderCatalog(containerId, productList) {
             </div>
             <!-- Tên sản phẩm -->
             <p class="flashsale__product-name">
-                ${product.name}
+                ${escapeProductHtml(product.name)}
             </p>
             <!-- Giá sản phẩm -->
             <div class="flashsale__product-footer">

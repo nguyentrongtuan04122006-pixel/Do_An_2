@@ -396,47 +396,105 @@
     position: relative;
 }
 
-.navbar__user-auth:hover #logout_btn {
+/* =========================================
+   DROPDOWN MENU KHI ĐÃ ĐĂNG NHẬP
+   ========================================= */
+
+/* Hộp dropdown — ẩn mặc định, layout.js show khi đã đăng nhập */
+#user_dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.13);
+    z-index: 1000;
+    min-width: 170px;
+    overflow: visible;
+    padding-top: 8px;
+}
+
+/* Hiện dropdown khi hover vào khu vực user (tên + hộp dropdown) */
+.navbar__user-auth:hover #user_dropdown {
     display: block;
 }
 
-#logout_btn {
-    display: none;
-    text-align: center;
+/* Bridge vô hình để không mất hover khi di chuột từ tên xuống dropdown */
+#user_dropdown::before {
+    content: "";
     position: absolute;
-   top: calc(100% + 10px);
-    right: -18%;
-    padding: 10px 15px;
-    background: white;
+    top: -14px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: transparent;
+}
+
+/* Mũi tên tam giác nhỏ */
+.navbar__user-dropdown-arrow {
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+/* Mỗi item trong dropdown — KHÔNG dùng !important để tránh xung đột */
+#user_dropdown .navbar__dropdown-item {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 1.4rem;
+    color: #333;
+    text-decoration: none;
+    background: none;
     border: none;
     cursor: pointer;
     white-space: nowrap;
-    border: 1px solid #ddd;
-    z-index: 999;
+    transition: background .15s, color .15s;
+    text-align: left;
+    box-sizing: border-box;
 }
-.navbar__user-auth:hover #logout_btn {
-    display: flex;
+
+#user_dropdown .navbar__dropdown-item .material-symbols-outlined {
+    font-size: 1.8rem;
+    color: #666;
+    transition: color .15s;
 }
-#logout_btn::after {
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: white;
-    border-left: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    top: -8px;
-    left: 20px;
-    transform: rotate(45deg);
+
+#user_dropdown .navbar__dropdown-item:hover {
+    background: #fff5f3;
+    color: #ee4d2d;
 }
-#logout_btn::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 12px;
-    background: transparent;
-    top: -12px;
-    left: 0;
+
+#user_dropdown .navbar__dropdown-item:hover .material-symbols-outlined {
+    color: #ee4d2d;
+}
+
+/* Nút đăng xuất — màu đỏ nhẹ khi hover */
+#user_dropdown .navbar__dropdown-logout:hover {
+    background: #fff0f0;
+    color: #d32f2f;
+}
+
+#user_dropdown .navbar__dropdown-logout:hover .material-symbols-outlined {
+    color: #d32f2f;
+}
+
+/* Đường kẻ ngăn cách */
+.navbar__dropdown-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 0;
 }
 
 /* Slide */

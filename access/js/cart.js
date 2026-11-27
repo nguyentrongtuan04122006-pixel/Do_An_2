@@ -1,3 +1,5 @@
+import { escapeProductHtml } from "./product.js";
+
 // ==========================================================================
 // CART.JS - QUẢN LÝ GIỎ HÀNG PHÂN BIỆT THEO TỪNG TÀI KHOẢN NGƯỜI DÙNG
 // ==========================================================================
@@ -173,7 +175,7 @@ export function showAddToCartSuccessToast(productName, quantity) {
         <span class="material-symbols-outlined" style="color: #22c55e; font-size: 26px;">check_circle</span>
         <div>
             <div style="font-weight: 700; color: #0f172a; margin-bottom: 2px;">Thêm vào giỏ hàng thành công!</div>
-            <div style="color: #64748b; font-size: 13px;">Đã thêm ${quantity}x <strong>${productName}</strong></div>
+            <div style="color: #64748b; font-size: 13px;">Đã thêm ${escapeProductHtml(quantity)}x <strong>${escapeProductHtml(productName)}</strong></div>
         </div>
     `;
 
@@ -267,7 +269,7 @@ export function renderCartPage() {
             <section class="cart-box mb-3">
                 <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-1 border-bottom">
                     <span class="badge cart-badge-mall">Mall</span>
-                    <strong class="cart-shop-name">${shop.name}</strong>
+                    <strong class="cart-shop-name">${escapeProductHtml(shop.name)}</strong>
                     <span class="material-symbols-outlined cart-verified text-primary" style="font-size: 18px;">verified</span>
                     <a href="#" class="cart-link small ms-auto text-decoration-none text-secondary">Xem Shop ›</a>
                 </div>
@@ -278,14 +280,14 @@ export function renderCartPage() {
                             <input class="form-check-input mt-0 flex-shrink-0 item-checkbox" type="checkbox" 
                                    ${item.selected !== false ? "checked" : ""} data-index="${item.originalIndex}">
                             <div class="cart-thumb cart-thumb-phone flex-shrink-0" style="width: 90px; height: 90px;">
-                                <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                                <img src="${escapeProductHtml(item.image)}" alt="${escapeProductHtml(item.name)}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
                             </div>
                             <div class="d-flex flex-column align-items-start gap-1 min-w-0">
-                                <a href="CT_product.html?id=${item.productId}" class="cart-name mb-0 text-dark text-decoration-none fw-medium" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                     ${item.name}
+                                <a href="CT_product.html?id=${encodeURIComponent(item.productId)}" class="cart-name mb-0 text-dark text-decoration-none fw-medium" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                     ${escapeProductHtml(item.name)}
                                 </a>
                                 <span class="text-secondary small">
-                                    Phân loại: ${item.color || "Tiêu chuẩn"}${item.type ? `, ${item.type}` : ""}
+                                    Phân loại: ${escapeProductHtml(item.color || "Tiêu chuẩn")}${item.type ? `, ${escapeProductHtml(item.type)}` : ""}
                                 </span>
                             </div>
                         </div>
@@ -402,6 +404,12 @@ function bindCartEvents() {
             renderCartPage();
         });
     }
+
+    // Nút MUA HÀNG
+    const buyBtn = document.querySelector(".cart-buy");
+    if (buyBtn) {
+        buyBtn.addEventListener("click", handleCheckout);
+    }
 }
 
 /**
@@ -451,3 +459,46 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCartPage();
     }
 });
+
+/**
+ * Xử lý nút MUA HÀNG — tạo đơn hàng và chuyển sang trang đơn mua
+ */
+export async function handleCheckout() {
+    const user = getCurrentUser();
+    if (!user) {
+        if (confirm("Bạn cần đăng nhập để mua hàng. Chuyển tới trang đăng nhập?")) {
+            window.location.href = "/html/login.html";
+        }
+        return;
+    }
+
+    const cart = getCart();
+    const selectedItems = cart.filter(item => item.selected !== false);
+
+    if (selectedItems.length === 0) {
+        alert("Vui lòng chọn ít nhất một sản phẩm để mua!");
+        return;
+    }
+
+    // Tính tổng tiền
+    let total = 0;
+    selectedItems.forEach(item => {
+        total += (Number(item.price) || 0) * (Number(item.quantity) || 1);
+    });
+
+    // Import order.js và tạo đơn
+    try {
+        const orderModuleUrl = new URL("./order.js", import.meta.url);
+        const { saveOrder } = await import(orderModuleUrl.href);
+        const order = saveOrder(selectedItems, total);
+        if (order) {
+            // Làm mới giỏ hàng (đã xóa trong saveOrder)
+            renderCartPage();
+            // Chuyển sang trang đơn mua
+            window.location.href = "/html/order.html";
+        }
+    } catch (err) {
+        console.error("Lỗi khi tạo đơn hàng:", err);
+        alert("Có lỗi xảy ra, vui lòng thử lại!");
+    }
+}
