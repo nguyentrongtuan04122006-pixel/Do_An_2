@@ -50,7 +50,7 @@ const defaultProductList = [
         shopId: 1795656372087,
         sellerId: 1795656372086,
         shopName: "Local Store",
-        category: "Phụ kiện máy tính",
+        category: "Laptop & Thiết Bị",
         stock: 100,
         status: "DANG_BAN",
         name: "Chuột chơi game VXE ATK A9 | A9 SE | A9 UltraMax | A9 Ultimate | A9 Air Wireless hỗ trợ 8000Hz - QMTECH STORE",
@@ -99,7 +99,7 @@ const defaultProductList = [
         shopId: 1795656372087,
         sellerId: 1795656372086,
         shopName: "Local Store",
-        category: "Phụ kiện máy tính",
+        category: "Laptop & Thiết Bị",
         stock: 100,
         status: "DANG_BAN",
         name: "Bàn Phím Gaming Rapid Trigger ATK RS7 Air Esports / LAYOUT 75 % / Phím Rappid Trigger / Hàng NEWSEAL",
@@ -158,6 +158,29 @@ const defaultProductList = [
 
 export const PRODUCT_STORAGE_KEY = "productList";
 
+const categoryAliases = new Map([
+    ["Phụ kiện máy tính", "Laptop & Thiết Bị"]
+]);
+
+function migrateProductCategories(products) {
+    let changed = false;
+    const normalized = products.map(product => {
+        const category = categoryAliases.get(product.category);
+        if (!category) return product;
+        changed = true;
+        return { ...product, category };
+    });
+
+    if (changed) {
+        try {
+            localStorage.setItem(PRODUCT_STORAGE_KEY, JSON.stringify(normalized));
+        } catch {
+            // Lần lưu tiếp theo sẽ ghi lại dữ liệu đã chuẩn hóa.
+        }
+    }
+    return normalized;
+}
+
 // Dùng chung dữ liệu giữa kênh người bán và các trang mua sắm.
 function isValidProductAsset(value, folder) {
     if (typeof value !== "string" || !value.trim() || /[\u0000-\u001f\u007f]/.test(value)) return false;
@@ -185,43 +208,25 @@ export function escapeProductHtml(value) {
 
 function validateProductList(products) {
     if (!Array.isArray(products)) {
-        throw new Error("Dữ liệu sản phẩm không hợp lệ: danh sách phải là một mảng.");
+        throw new Error("Danh sách sản phẩm không hợp lệ!");
     }
-    const ids = new Set();
-    const validOwnerId = value => (typeof value === "string" && value.trim() !== "") ||
-        (Number.isSafeInteger(value) && value > 0);
-    const statuses = ["DANG_BAN", "CHO_DUYET", "DA_AN", "TAM_KHOA"];
-    products.forEach((product, index) => {
-        const invalid = () => {
-            throw new Error(`Dữ liệu sản phẩm thứ ${index + 1} không hợp lệ. Vui lòng kiểm tra dữ liệu đã lưu.`);
-        };
-        if (!product || typeof product !== "object" || Array.isArray(product) ||
-            !Number.isSafeInteger(product.id) || product.id <= 0 || ids.has(product.id) ||
-            !validOwnerId(product.sellerId) || !validOwnerId(product.shopId) ||
-            !["name", "category", "image"].every(key => typeof product[key] === "string" && product[key].trim()) ||
-            !isValidProductImage(product.image) || !statuses.includes(product.status) ||
-            !["oldPrice", "newPrice", "stock", "sold"].every(key => Number.isSafeInteger(product[key]) && product[key] >= 0) ||
-            product.newPrice > product.oldPrice) invalid();
-        if (product.rate !== undefined && (!Number.isFinite(product.rate) || product.rate < 0 || product.rate > 5)) invalid();
-        for (const key of ["sku", "barcode", "description", "shopName"]) {
-            if (product[key] !== undefined && typeof product[key] !== "string") invalid();
+    const ids = [];
+  products.forEach(product => {
+        if (
+            !product.id ||
+            !product.name ||
+            !product.category ||
+            !product.image ||
+            product.newPrice < 0 ||
+            product.stock < 0
+        ) {
+            throw new Error("Thông tin sản phẩm không hợp lệ!");
         }
-        if (product.gallery !== undefined) {
-            if (!product.gallery || typeof product.gallery !== "object" || Array.isArray(product.gallery) ||
-                (product.gallery.images !== undefined && (!Array.isArray(product.gallery.images) ||
-                    !product.gallery.images.every(isValidProductImage))) ||
-                (product.gallery.video !== undefined && !isValidProductAsset(product.gallery.video, "video"))) invalid();
+
+        if (ids.includes(product.id)) {
+            throw new Error("ID sản phẩm bị trùng!");
         }
-        if (product.options !== undefined) {
-            if (!product.options || typeof product.options !== "object" || Array.isArray(product.options)) invalid();
-            for (const key of ["color", "type"]) {
-                const options = product.options[key];
-                if (options !== undefined && (!Array.isArray(options) || options.some(option =>
-                    !option || typeof option.name !== "string" || typeof option.value !== "string" ||
-                    (option.image !== undefined && !isValidProductImage(option.image))))) invalid();
-            }
-        }
-        ids.add(product.id);
+        ids.push(product.id);
     });
     return products;
 }
@@ -240,7 +245,7 @@ export function getProductList() {
     } catch {
         throw new Error("Dữ liệu sản phẩm đã lưu bị lỗi định dạng JSON. Chưa có dữ liệu nào bị ghi đè.");
     }
-    return validateProductList(products);
+    return migrateProductCategories(validateProductList(products));
 }
 
 export function saveProductList(products) {

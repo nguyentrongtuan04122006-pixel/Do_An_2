@@ -235,6 +235,70 @@ body {
 }
 
 /* Nút hành động */
+.nova-table td:last-child {
+    min-width: 220px;
+}
+
+.nova-table [data-action] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: .4rem .7rem;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+.nova-table [data-action]:hover {
+    transform: translateY(-1px);
+}
+
+.nova-table [data-action]:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, .2);
+    outline-offset: 2px;
+}
+
+.nova-table [data-action="edit"] {
+    color: var(--nova-primary-dark);
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.nova-table [data-action="edit"]:hover {
+    color: #fff;
+    background: var(--nova-primary);
+    border-color: var(--nova-primary);
+}
+
+.nova-table [data-action="deactivate"] {
+    color: #b91c1c;
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.nova-table [data-action="deactivate"]:hover {
+    color: #fff;
+    background: var(--nova-danger);
+    border-color: var(--nova-danger);
+}
+
+.nova-table [data-action="activate"] {
+    color: #15803d;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.nova-table [data-action="activate"]:hover {
+    color: #fff;
+    background: #16a34a;
+    border-color: #16a34a;
+}
+
 .nova-table .btn-link {
     display: inline-grid;
     place-items: center;
@@ -259,6 +323,37 @@ body {
     background: #fef2f2;
     border-color: var(--nova-danger);
     color: var(--nova-danger) !important;
+}
+
+/* ---------- Phân loại sản phẩm ---------- */
+.product-variants {
+    background: #f8fafc;
+    border-color: var(--nova-line) !important;
+}
+
+.variant-list {
+    display: grid;
+    gap: .5rem;
+}
+
+.variant-row {
+    margin: 0;
+    padding: .625rem;
+    background: #fff;
+    border: 1px solid var(--nova-line);
+    border-radius: 7px;
+}
+
+.variant-remove {
+    width: 34px;
+    height: 31px;
+    padding: 0;
+}
+
+.variant-remove:hover {
+    color: #fff;
+    background: var(--nova-danger);
+    border-color: var(--nova-danger);
 }
 
 /* ---------- Phân trang ---------- */
